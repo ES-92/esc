@@ -1,0 +1,16 @@
+{
+  "name": "esc-local",
+  "owner": {
+    "name": "Erik Schröder"
+  },
+  "metadata": {
+    "description": "Lokales Marketplace zum Testen von ESC, bevor es auf GitHub deployed wird."
+  },
+  "plugins": [
+    {
+      "name": "esc",
+      "source": "./",
+      "description": "ESC — scale-adaptiver Spec-Driven-Development-Workflow."
+    }
+  ]
+}

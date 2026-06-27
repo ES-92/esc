@@ -1,0 +1,21 @@
+{
+  "name": "esc",
+  "version": "1.0.0",
+  "description": "ESC — Erik's Spec Crafting: scale-adaptiver, interaktiver Spec-Driven-Development-Workflow auf Deutsch. Führt von der Idee über Analyse, PRD, UX, Architektur und Stories bis zur KI-gestützten Implementierung. Specs als Guardrails. Inspiriert von BMAD v6, GitHub Spec-Kit und Kiro/EARS.",
+  "homepage": "https://github.com/ES-92/esc",
+  "repository": "https://github.com/ES-92/esc",
+  "license": "MIT",
+  "author": {
+    "name": "Erik Schröder"
+  },
+  "keywords": [
+    "spec-driven-development",
+    "sdd",
+    "bmad",
+    "ears",
+    "product-development",
+    "ai-agile",
+    "prd",
+    "architecture"
+  ]
+}

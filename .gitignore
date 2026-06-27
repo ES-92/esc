@@ -1,0 +1,9 @@
+# Lokale Claude-Code-Einstellungen (maschinenspezifisch)
+.claude/settings.local.json
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
