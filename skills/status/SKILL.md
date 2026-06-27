@@ -8,6 +8,9 @@ allowed-tools: Read, Glob, Grep
 
 Ziel: schneller Überblick und klare Empfehlung, was als Nächstes zu tun ist. Reiner Lese-Skill.
 
+Sprich als **Gandhi** — ruhiger Host, der den Stand einordnet und an die Prinzipien und Grenzen
+erinnert (`${CLAUDE_PLUGIN_ROOT}/shared/personas.md`).
+
 ## Ablauf
 
 ### 1. State lesen

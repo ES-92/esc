@@ -5,7 +5,7 @@
 > und Stories bis zur **KI-gestützten Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare
 > Regeln und Grenzen setzen — gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.0.0** · Namespace `esc:` · 12 Skills · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.1.0** · Namespace `esc:` · 15 Skills · Experten-Personas · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -28,8 +28,9 @@
 
 ## Was ist ESC?
 
-ESC ist eine Sammlung von **12 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
-Produktentwicklungs-Prozess abbilden. Der Grundgedanke: **Erst die Spezifikation, dann der Code.**
+ESC ist eine Sammlung von **15 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
+Produktentwicklungs-Prozess abbilden — geführt von benannten **Experten-Personas** (Curie, Jobs,
+Einstein, Sokrates u. a.). Der Grundgedanke: **Erst die Spezifikation, dann der Code.**
 
 Statt einer KI vage Prompts zuzuwerfen und zu hoffen, erarbeitet ESC mit dir Schritt für Schritt
 präzise, testbare Spezifikationen. Diese Specs werden zur **Single Source of Truth** und zu
@@ -73,7 +74,9 @@ ESC verschmilzt bewährte Ideen aus drei führenden Ansätzen und schließt dere
   zeigt 2–3 Optionen mit Pro/Contra und wird als **ADR** mit verworfenen Alternativen dokumentiert.
 - 📊 **Mitlaufende Doku & Tracker.** Fortschritt und Architektur werden nebenbei in Markdown mit
   Mermaid-Diagrammen gepflegt — ohne dass du es anstoßen musst.
-- 🇩🇪 **Durchgängig deutsch** und auf interaktives Terminal-Arbeiten ausgelegt.
+- 🎭 **Experten-Personas mit Biss.** Jede Phase wird von einer benannten Persona mit eigener kritischer
+  Linse geführt; der Skeptiker **Sokrates** greift an jedem Gate an. Schärfe **skaliert mit dem Level**.
+- 🇩🇪 **Durchgängig deutsch** und auf interaktives Terminal-Arbeiten (Auswahl per Pfeil + Leertaste) ausgelegt.
 
 ---
 
@@ -116,10 +119,10 @@ Vollständig: [`shared/ears-guide.md`](shared/ears-guide.md).
 
 ### 4. Elicitation-Gates (kritisches Hinterfragen)
 
-ESC interagiert über ein festes Protokoll: **nummerierte Fragen mit mehreren Optionen pro Zeile**,
-immer mit einer offenen Option und einem aus dem Kontext abgeleiteten Default — und es **wartet** auf
-deine Antwort, bevor es weitermacht. An kritischen Gates verlangt es zusätzlich eine **Vertiefungs-
-Methode** (Pre-Mortem, Red-Team vs. Blue-Team, Edge-Case-Jagd, 5-mal-Warum, Stakeholder-Runde, …),
+ESC interagiert über ein festes Protokoll: **Auswahl-first** — Entscheidungen triffst du per native
+Auswahl (Pfeil + Leertaste), nicht durch Tippen; freie Eingabe ist immer möglich, und es **wartet** auf
+deine Antwort, bevor es weitermacht. An kritischen Gates verlangt es eine **Vertiefungs-Methode**
+(Pre-Mortem, Edge-Case-Jagd, 5-mal-Warum, …) **und** lässt **Sokrates** mit konkreten Einwänden angreifen,
 bevor ein Artefakt als fertig gilt. Protokoll & Methoden: [`shared/elicitation.md`](shared/elicitation.md).
 
 ### 5. State als Single Source of Truth
@@ -140,6 +143,40 @@ Zwei Markdown-Dateien werden **nebenbei von jeder Phase** aktualisiert (Teil der
   Datenmodell (`erDiagram`), Kern-Flows (`sequenceDiagram`), Glossar. Wächst mit jeder Phase.
 
 Beide rendern direkt in GitHub und IDE. Format & Vorlagen: [`shared/tracking.md`](shared/tracking.md).
+
+### 7. Experten-Personas
+
+Jede Phase wird von einer benannten Persona geführt, modelliert nach einer berühmten Person, deren
+realer Ruf zur Rolle passt — mit eigener Stimme **und** kritischer Linse (kein Deko-Theater):
+
+| Persona | Vorbild | Rolle · Phase | Biss |
+|---|---|---|---|
+| **Mara** | Marie Curie | Analystin · `discover` | „Zeig mir die Daten, nicht deine Hoffnung." |
+| **Jobs** | Steve Jobs | Product Lead · `prd` | „Was bauen wir bewusst **nicht**?" |
+| **Walt** | Walt Disney | UX · `ux` | „Zeig mir den leeren und den kaputten Zustand." |
+| **Albert** | Albert Einstein | Architekt · `architecture` | „Welche Annahme trägt das? Was bereust du in 2 Jahren?" |
+| **Ike** | Dwight D. Eisenhower | Planer · `epics`/`story` | „Ist das wirklich vertikal und unabhängig?" |
+| **Linus** | Linus Torvalds | Engineer · `implement` | „Talk is cheap. Test zuerst, dann grün." |
+| **🔪 Sokrates** | Sokrates | Skeptiker · `review` + **alle Gates** | „Und *warum* glaubst du das? Beweise es mir." |
+| **Gandhi** | Mahatma Gandhi | Host · `init`/`status` | „Bleibe deinen Grenzen treu." |
+
+Du kannst Personas auch direkt rufen: `esc:consult` (eine Persona befragen), `esc:council` (Party-Mode:
+mehrere debattieren), `esc:challenge` (Sokrates' adversarialer Zweit-Pass). Cast: [`shared/personas.md`](shared/personas.md).
+
+### 8. Intensitäts-Regler (Schärfe nach Level)
+
+Wie hart kritisch nachgefragt wird, **skaliert mit dem Level** — schnell beim Kleinen, kompromisslos
+beim Großen:
+
+| Level | Personas | Sokrates | Annahmen-Audit | Adversarialer Zweit-Pass | Council |
+|------|----------|----------|----------------|--------------------------|---------|
+| **0** | leise | 1 Einwand am Akzeptanz-Gate | – | – | – |
+| **1** | pro Phase | alle Gates (2–3 Einwände) | bei Requirements | – | – |
+| **2** | voll | alle Gates, hartnäckig | alle Gates | PRD + Architektur | auf Wunsch |
+| **3** | voll | maximal | alle Gates | alle großen Artefakte | auf Wunsch |
+| **4** | voll + Council | maximal | alle Gates | alle Artefakte | automatisch an Schlüssel-Gates |
+
+Details: [`shared/intensity.md`](shared/intensity.md).
 
 ---
 
@@ -179,7 +216,7 @@ flowchart TB
   class track,status side;
 ```
 
-### Die 12 Skills im Detail
+### Die 15 Skills im Detail
 
 #### Phase 0 — Setup
 
@@ -241,6 +278,12 @@ flowchart TB
 
 **`/esc:status`** — Stand & nächster Schritt (reiner Lese-Skill): Level, Phasen, Gates, Story-Fortschritt + konkrete Empfehlung.
 **`/esc:track`** — `esc/TRACKER.md` regenerieren. **`/esc:docs`** — `esc/DOCUMENTATION.md` pflegen. (Beide laufen am Ende jeder Phase automatisch mit.)
+
+#### Personas auf Abruf
+
+**`/esc:consult [persona] [frage]`** — eine Persona gezielt befragen („was würde Einstein zur DB-Wahl sagen?").
+**`/esc:council [frage]`** — Party-Mode: mehrere Personas debattieren eine Entscheidung und liefern eine Synthese.
+**`/esc:challenge [artefakt]`** — Sokrates' adversarialer Zweit-Pass: ein frischer Subagent liest ein fertiges Artefakt ohne Bias gegen und meldet konkrete Befunde.
 
 ---
 
@@ -413,18 +456,21 @@ mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker se
 ```text
 .
 ├── .claude-plugin/
-│   ├── plugin.json          # Plugin-Manifest (name: esc, v1.0.0)
+│   ├── plugin.json          # Plugin-Manifest (name: esc, v1.1.0)
 │   └── marketplace.json     # Lokales Marketplace (esc-local) zum Testen/Entwickeln
-├── skills/                  # Die 12 Workflow-Skills (je SKILL.md)
+├── skills/                  # Die 15 Skills (je SKILL.md)
 │   ├── init/  discover/  prd/  ux/  architecture/  epics/
-│   └── story/  implement/  review/  status/  track/  docs/
+│   ├── story/  implement/  review/  status/  track/  docs/
+│   └── consult/  council/  challenge/        # Persona-Skills
 ├── scripts/
 │   └── render_tracker.py    # Deterministisches TRACKER.md-Rendering (stdlib-only Fallback)
 ├── shared/                  # Geteilte Referenzen, die alle Skills laden
 │   ├── principles.md        # Leitprinzipien
 │   ├── levels.md            # Scale-adaptive Level 0–4
 │   ├── ears-guide.md        # EARS-Notation
-│   ├── elicitation.md       # Frage-Protokoll + Vertiefungs-Methoden
+│   ├── elicitation.md       # Frage-Protokoll (Auswahl-first) + Vertiefungs-Methoden
+│   ├── personas.md          # Der Experten-Cast (Curie, Jobs, Einstein, Sokrates …)
+│   ├── intensity.md         # Intensitäts-Regler (Schärfe nach Level)
 │   ├── state.md             # state.yaml-Schema + Workspace-Konventionen
 │   ├── tracking.md          # Tracker- & Doku-Format (Mermaid-Vorlagen)
 │   └── templates/           # ADR-Template u. a.

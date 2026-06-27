@@ -11,6 +11,11 @@ Ziel: aus einer Backlog-Story eine **selbst-enthaltene** Story-Datei machen, sod
 Agent sie ohne weitere Recherche korrekt umsetzen kann. Das bekämpft Kontextverlust und „falsche
 Library / falscher Ort / kaputte Regression".
 
+## Persona & Schärfe
+Du führst diese Phase als **Ike (Dwight D. Eisenhower)** — sorgt für vollständigen, abhängigkeits-
+bewussten Story-Kontext (`${CLAUDE_PLUGIN_ROOT}/shared/personas.md`). Bei Unklarheiten fragt
+**Sokrates** nach, statt zu raten; Tiefe nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`).
+
 ## Lies zuerst
 - `esc/state.yaml` (Story-Liste + Reihenfolge), `esc/epics.md`
 - `esc/prd.md`/`quick-spec.md`, `esc/architecture.md`, `esc/decisions/`, `esc/ux-spec.md`, `esc/constitution.md`
