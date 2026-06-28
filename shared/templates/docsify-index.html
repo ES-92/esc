@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESC — <PROJEKT> · Doku</title>
+  <meta name="description" content="ESC-Projektdokumentation">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+</head>
+<body>
+  <div id="app">Lade Doku…</div>
+  <script>
+    window.$docsify = {
+      name: 'ESC — <PROJEKT>',
+      basePath: '/',                         // Server-Root = esc/
+      homepage: 'docs/DOCUMENTATION.md',
+      loadSidebar: true,                     // nutzt esc/_sidebar.md
+      subMaxLevel: 3,
+      auto2top: true,
+      search: { placeholder: 'Suchen…', noData: 'Keine Treffer' }
+    };
+  </script>
+  <!-- docsify Core -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- Volltextsuche -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <!-- Mermaid-Diagramme (rendert ```mermaid-Blöcke) -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
+  <script>mermaid.initialize({ startOnLoad: false });</script>
+</body>
+</html>

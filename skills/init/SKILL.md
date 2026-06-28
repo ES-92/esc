@@ -66,6 +66,10 @@ Lege die mitlaufenden Dateien initial an (Vorlagen in `${CLAUDE_PLUGIN_ROOT}/sha
 - `esc/docs/TRACKER.md` — via `esc:track` (Skript oder manuell) auf Basis des frischen `state.yaml`.
 - `esc/docs/DOCUMENTATION.md` — Skelett mit Überblick (aus der Idee) und Platzhaltern „_folgt_".
 
+Biete **optional** an (Auswahl, kein Zwang), einen leichten lokalen Doku-Viewer (docsify) einzurichten —
+nach `${CLAUDE_PLUGIN_ROOT}/shared/viewer.md`. Bei Ja die Viewer-Dateien anlegen; der Server wird erst
+auf Wunsch gestartet (Port wird dann explizit erfragt).
+
 ### 6. Routen
 Zeige eine kompakte Zusammenfassung (Projekt, Level, welche Phasen vorgesehen sind — Tabelle aus
 `levels.md`) und schlage den nächsten Skill vor:

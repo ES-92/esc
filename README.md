@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.5.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.6.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -76,6 +76,8 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
   generierten Sichten (Fortschritts-Tracker, Diagramm-Doku) in `esc/docs/` — beide nebenbei aktuell gehalten.
 - 🔁 **Weiterentwicklung eingebaut.** `esc:evolve` erarbeitet nach einem fertigen Stand kritisch neue
   Features und speist sie als Epics/Stories zurück in die Pipeline.
+- 🖥️ **Optionaler Doku-Viewer.** Auf Wunsch serviert ESC die Doku als leichte lokale Website (docsify —
+  zero-build, kein `node_modules`); angeboten bei `esc:init`/`esc:docs`, der Port wird explizit erfragt.
 - 🇩🇪 **Durchgängig deutsch** und auf Terminal-Bedienung per Auswahl (Pfeil + Leertaste) ausgelegt.
 
 ---
@@ -480,9 +482,10 @@ mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker se
 │   ├── inspiration.md       # Inspiration & Wettbewerb (kritisch, beidseitig)
 │   ├── viewpoints.md        # Die kritischen Sichtweisen
 │   ├── intensity.md         # Intensitäts-Regler (Schärfe nach Level)
+│   ├── viewer.md            # Optionaler docsify-Doku-Viewer (Setup & Serve)
 │   ├── state.md             # state.yaml-Schema + Workspace-Konventionen
 │   ├── tracking.md          # Tracker- & Doku-Format (Mermaid-Vorlagen)
-│   └── templates/           # ADR-Template u. a.
+│   └── templates/           # ADR-Template, docsify-index.html u. a.
 └── README.md
 ```
 
