@@ -8,22 +8,23 @@ allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion, WebSearch, WebFet
 
 Ziel: das **WIE** festlegen — Tech-Stack, Struktur, Datenmodell, Schnittstellen — und jede wichtige
 Entscheidung **mit Begründung und verworfenen Alternativen** dokumentieren. Das ist der bewusste
-Gegenentwurf zum v6-Problem „Empfehlung ohne Trade-off".
+Gegenentwurf zum bekannten Problem „Empfehlung ohne Trade-off".
 
-## Persona & Schärfe
-Du führst diese Phase als **Albert (Einstein)** — Erste Prinzipien & Einfachheit: „So einfach wie
-möglich, aber nicht einfacher. Welche Annahme trägt das?" Sprich in seiner Stimme und prüfe jeden
-Trade-off (`${CLAUDE_PLUGIN_ROOT}/shared/personas.md`). An jeder ADR/jedem Gate tritt **Sokrates** auf;
-Tiefe nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`).
+## Sichtweise & Schärfe
+Diese Phase wird aus der **Architektur-Sicht** geführt — Trade-offs & Einfachheit: „Welche Annahme
+trägt das? Was bereuen wir in 2 Jahren?" (`${CLAUDE_PLUGIN_ROOT}/shared/viewpoints.md`). An jeder
+ADR/jedem Gate greift die **skeptische Sicht** an; Tiefe nach `level`
+(`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`). Erarbeite Abschnitt für Abschnitt
+(`${CLAUDE_PLUGIN_ROOT}/shared/coauthoring.md`).
 
 ## Lies zuerst
 - `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`, `${CLAUDE_PLUGIN_ROOT}/shared/principles.md`
-- `esc/state.yaml`, `esc/prd.md` (oder quick-spec), `esc/ux-spec.md`, `esc/constitution.md`
+- `esc/state.yaml`, `esc/docs/prd.md` (oder quick-spec), `esc/docs/ux-spec.md`, `esc/docs/constitution.md`
 - Bei Brownfield: bestehende Codebase scannen (Glob/Grep) — Stack, Muster, Konventionen erfassen.
 
 ## Routing nach Level
 - **Level 0/1:** in der Regel keine Architektur — verweise auf `esc:epics`. Nur wenn eine echte
-  Entscheidung ansteht, eine einzelne ADR erstellen.
+ Entscheidung ansteht, eine einzelne ADR erstellen.
 - **Level 2:** „leicht" — nur ADRs für die 1–3 nicht-trivialen Entscheidungen, kein volles Dokument.
 - **Level 3/4:** volles Architektur-Dokument + ADRs.
 
@@ -45,19 +46,19 @@ Für **jede** nicht-triviale Entscheidung:
 2. Tabelle Option · Pro · Contra · Risiko (bei Bedarf via WebSearch aktuelle Fakten holen).
 3. Empfehlung mit Begründung gegen die Treiber.
 4. **Pflicht-Vertiefung** (Red-Team oder Pre-Mortem) auf die Empfehlung anwenden.
-5. Nutzer entscheiden lassen, dann **ADR schreiben**: `esc/decisions/ADR-NNNN-<slug>.md` mit
-   Status/Kontext/Entscheidung/Begründung/verworfene Alternativen/Konsequenzen.
-   Auch ins `decisions`-Log in state.yaml spiegeln.
+5. Nutzer entscheiden lassen, dann **ADR schreiben**: `esc/docs/architecture/decisions/ADR-NNNN-<slug>.md` mit
+  Status/Kontext/Entscheidung/Begründung/verworfene Alternativen/Konsequenzen.
+  Auch ins `decisions`-Log in state.yaml spiegeln.
 Nach allen ADRs `gates.architecture_adrs: true`.
 
 ### 4. Architektur-Dokument (Level 3/4)
-`esc/architecture.md`: Überblick & Treiber · Systemkontext/Komponenten · Datenmodell (Kern-Entitäten
+`esc/docs/architecture/architecture.md`: Überblick & Treiber · Systemkontext/Komponenten · Datenmodell (Kern-Entitäten
 & Beziehungen) · Schlüssel-Schnittstellen/APIs · Querschnitt (Auth, Fehler, Logging, Tests) ·
 Verweise auf die ADRs · bekannte Risiken. Kein Pseudo-Code — „Right Altitude".
 
 ### 5. Constitution abgleichen
 Prüfe, ob neue verbindliche Regeln entstanden sind (z. B. „Datenzugriff nur über Repository-Layer").
-Wenn ja, in `esc/constitution.md` ergänzen.
+Wenn ja, in `esc/docs/constitution.md` ergänzen.
 
 ### 6. Routen
 state.yaml aktualisieren (`artifacts.architecture: done`, `phase` weiter) → `esc:epics`.

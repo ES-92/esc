@@ -1,43 +1,43 @@
 ---
 name: council
-description: Party-Mode von ESC — mehrere Personas (Curie, Jobs, Disney, Einstein, Eisenhower, Torvalds, Sokrates, Gandhi) debattieren eine Entscheidung oder Frage aus ihren jeweiligen Linsen und liefern eine synthetisierte Empfehlung. Use when the user says "council", "party mode", "lass die Experten diskutieren", "Rat einberufen", "esc council [frage]", or faces a cross-cutting decision with trade-offs.
+description: Lässt mehrere kritische Sichtweisen aufeinanderprallen, um eine Entscheidung mit Trade-offs aus verschiedenen Linsen zu beleuchten, und liefert eine synthetisierte Empfehlung. Use when the user says "mehrere Perspektiven", "lass die Sichtweisen diskutieren", "Pro und Contra abwägen", "esc council", or faces a cross-cutting decision with trade-offs.
 argument-hint: "[frage/entscheidung]"
 allowed-tools: Read, Glob, Grep, AskUserQuestion
 ---
 
-# esc:council — Der Rat debattiert
+# esc:council — Mehr-Perspektiven-Runde
 
-Ziel: eine Entscheidung mit Trade-offs aus **mehreren Linsen** beleuchten — eine moderierte
-Mini-Debatte der Personas, die in einer klaren Synthese mündet. Bei Level 4 an Schlüssel-Gates automatisch.
+Ziel: eine Entscheidung mit Trade-offs aus **mehreren Sichtweisen** beleuchten — eine moderierte
+Mini-Debatte der Linsen, die in einer klaren Synthese mündet. Bei Level 4 an Schlüssel-Gates automatisch.
 
 ## Lies zuerst
-- `${CLAUDE_PLUGIN_ROOT}/shared/personas.md` — Cast & Linsen
+- `${CLAUDE_PLUGIN_ROOT}/shared/viewpoints.md` — die Sichtweisen & ihre Linsen
 - Relevanter `esc/`-Kontext (state.yaml, betroffenes Artefakt/ADR)
 
 ## Ablauf
 
 ### 1. Frage & Teilnehmer
-Aus `$ARGUMENTS` die Frage/Entscheidung nehmen (sonst kurz erfragen). Wähle die 3–5 Personas, deren
-Linsen am relevantesten sind (z. B. bei einer Tech-Entscheidung: Einstein, Torvalds, Jobs, Sokrates).
+Aus `$ARGUMENTS` die Frage/Entscheidung nehmen (sonst kurz erfragen). Wähle die 3–5 Sichtweisen, deren
+Linsen am relevantesten sind (z. B. bei einer Tech-Entscheidung: Architektur, pragmatisch, Fokus, skeptisch).
 Biete die Auswahl an, falls sinnvoll.
 
 ### 2. Runde 1 — Positionen
-Jede gewählte Persona äußert sich **kurz** (1–3 Sätze) in ihrer Stimme aus ihrer Linse: Position +
-wichtigstes Argument. Konkret auf die Frage bezogen, kein Geplänkel.
+Jede gewählte Sichtweise äußert sich **kurz** (1–3 Sätze) aus ihrer Linse: Position + wichtigstes
+Argument. Konkret auf die Frage bezogen, kein Geplänkel.
 
 ### 3. Runde 2 — Reibung
-Lass die Positionen aufeinanderprallen: wo widersprechen sie sich? Sokrates bohrt bei jeder Position
-nach („und warum…?"). Spannungen und echte Trade-offs herausarbeiten, nicht glätten.
+Lass die Positionen aufeinanderprallen: wo widersprechen sie sich? Die skeptische Sicht bohrt bei jeder
+Position nach („und warum…?"). Spannungen und echte Trade-offs herausarbeiten, nicht glätten.
 
 ### 4. Synthese
-Moderiere zu einer **Empfehlung**: was die Mehrheit/Beste-Argumente nahelegen, welche Bedenken bestehen
-bleiben, welche Bedingung die Entscheidung kippen würde. Dem Nutzer als Auswahl zur Entscheidung vorlegen.
+Moderiere zu einer **Empfehlung**: was die beste Argumentlage nahelegt, welche Bedenken bestehen bleiben,
+welche Bedingung die Entscheidung kippen würde. Dem Nutzer als Auswahl zur Entscheidung vorlegen.
 
 ### 5. Festhalten
 Bei einer getroffenen Entscheidung: ins `decisions`-Log (mit den wichtigsten Gegenargumenten als
 verworfene Alternativen). Betrifft es eine Architektur-Frage, ADR über `esc:architecture` anstoßen.
 
 ## Definition of Done
-- [ ] Mind. 3 Personas mit unterscheidbaren, konkreten Positionen zur Frage.
+- [ ] Mind. 3 Sichtweisen mit unterscheidbaren, konkreten Positionen zur Frage.
 - [ ] Echte Reibung/Trade-offs sichtbar gemacht (kein künstlicher Konsens).
 - [ ] Klare Synthese + Entscheidung; Ergebnis im Decision-Log.

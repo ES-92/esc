@@ -2,8 +2,9 @@
 
 Dieses Protokoll definiert, **wie** ESC im Terminal mit dem Nutzer interagiert. Alle Phasen-Skills
 verwenden es. Ziel: geführte, kritisch hinterfragende Konversation statt Monolog — der Nutzer trifft
-Entscheidungen, die KI hält sie fest. Gesprochen wird durch die jeweilige **Persona** (`personas.md`),
-die Schärfe richtet sich nach dem **Level** (`intensity.md`).
+Entscheidungen, die KI hält sie fest. Geführt wird jede Phase durch ihre **kritische Sichtweise**
+(`viewpoints.md`); die Schärfe richtet sich nach dem **Level** (`intensity.md`). Specs werden dabei
+**Abschnitt für Abschnitt** erarbeitet (`coauthoring.md`).
 
 ## Goldene Regeln
 1. **Immer warten.** Stelle eine Frage (oder eine eng zusammengehörige Gruppe) und **warte auf die
@@ -19,14 +20,14 @@ die Schärfe richtet sich nach dem **Level** (`intensity.md`).
    und setze sie als erste Option mit Zusatz „(empfohlen)".
 6. **Sofort persistieren.** Schreibe jede Antwort unmittelbar in das zugehörige Artefakt bzw. ins
    Decision-Log (`esc/state.yaml`), bevor du die nächste Frage stellst.
-7. **In Persona & kritisch.** Stelle Fragen in der Stimme der aktiven Persona und nimm Antworten nicht
+7. **Aus der Sichtweise & kritisch.** Stelle Fragen aus der aktiven Sichtweise und nimm Antworten nicht
    unkritisch hin — Widersprüche, fehlende Fälle und unausgesprochene Annahmen aufdecken.
 
 ## Frage-Format (Standard)
 
 **Bevorzugt — `AskUserQuestion`** (Auswahl per Pfeil + Leertaste):
 - `header`: kurzes Label (≤12 Zeichen), z. B. „Zielgruppe".
-- `question`: die Frage in der Stimme der Persona.
+- `question`: die Frage aus der aktiven Sichtweise.
 - `options`: 2–4 konkrete Optionen, jede mit `label` + kurzer `description` (Konsequenz/Trade-off).
   Erste Option = empfohlener Default.
 - `multiSelect: true`, wenn mehrere Antworten zulässig sind.
@@ -34,7 +35,7 @@ die Schärfe richtet sich nach dem **Level** (`intensity.md`).
 **Fallback — nummeriertes Markdown-Menü** (nur bei offenem Brainstorming oder wenn Auswahl unpassend):
 
 ```
-❓ Schritt 2/5 — Zielgruppe   (Mara/Curie)
+❓ Schritt 2/5 — Zielgruppe   (analytische Sicht)
 
 Wer ist die primäre Zielgruppe?
   1) Endkunden (B2C)   2) Unternehmen (B2B)   3) Interne Teams   4) Entwickler/API
@@ -64,14 +65,11 @@ Auswahl (4 relevanteste + „➕ weitere"):
 ## Gate-Regel (Pflicht, skaliert nach Level)
 
 An kritischen Gates ist die Vertiefung **nicht optional**. Vorgehen (Details + Staffel: `intensity.md`):
-1. Die aktive Persona schärft den Abschnitt mit der passenden Methode.
-2. **Sokrates** (der Skeptiker) tritt auf und formuliert **konkrete** Einwände gegen *dieses* Artefakt
+1. Die führende Sichtweise schärft den Abschnitt mit der passenden Methode.
+2. Die **skeptische Sichtweise** greift an und formuliert **konkrete** Einwände gegen *dieses* Artefakt
    (Anzahl je Level). Jeder Einwand wird adressiert oder bewusst akzeptiert (Begründung → Decision-Log).
-3. Ab Level 1/2 zusätzlich **Annahmen-Audit**; ab Level 2 **adversarialer Zweit-Pass** (`esc:challenge`).
+3. Ab Level 1/2 zusätzlich **Annahmen-Audit**; ab Level 2 **skeptischer Zweit-Pass** (`esc:challenge`).
 4. Erst wenn alle Einwände/Befunde ausgeräumt oder akzeptiert sind: `gates.<x>: true`.
 
-Gates sind: PRD-Erfolgsmetriken · PRD-Requirements (inkl. Edge-Case-Jagd) · jede Architektur-ADR ·
+Gates sind: PRD-Erfolgsmetriken · funktionale Requirements (inkl. Edge-Case-Jagd) · jede Architektur-ADR ·
 Story-Akzeptanzkriterien — plus jede Stelle, an der ein Artefakt `done` werden soll.
-
-Diese Pflicht-Gates holen bewusst die in BMAD v6 verloren gegangene erzwungene Elicitation aus v4 zurück
-— und verschärfen sie über Sokrates und den Intensitäts-Regler.

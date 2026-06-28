@@ -10,14 +10,14 @@ allowed-tools: Read, Glob, Grep, Bash, Edit
 Ziel: die Umsetzung **kritisch gegen die Spec** prüfen. Haltung: Skeptiker, nicht Cheerleader. Der
 Reviewer ist bewusst nicht der Umsetzer — suche aktiv nach Lücken.
 
-## Persona & Schärfe
-Dies ist **Sokrates' Zuhause** — du führst das Review als der Skeptiker: Advocatus Diaboli,
-unerbittlich fragend, **konkrete** Einwände gegen *dieses* Artefakt, nie generisch
-(`${CLAUDE_PLUGIN_ROOT}/shared/personas.md`). Tiefe nach `level`
-(`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`); ab Level 2 zusätzlich `esc:challenge` (frischer Zweit-Pass).
+## Sichtweise & Schärfe
+Dies ist das Zuhause der **skeptischen Sicht** — Advocatus Diaboli, unerbittlich fragend, **konkrete**
+Einwände gegen *dieses* Artefakt, nie generisch (`${CLAUDE_PLUGIN_ROOT}/shared/viewpoints.md`). Tiefe
+nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`); ab Level 2 zusätzlich `esc:challenge`
+(frischer Zweit-Pass).
 
 ## Lies zuerst
-- `esc/stories/<id>-*.md` (Akzeptanzkriterien!), `esc/constitution.md`
+- `esc/docs/stories/<id>-*.md` (Akzeptanzkriterien!), `esc/docs/constitution.md`
 - Den tatsächlichen Diff/Code (via Bash `git diff`, Glob/Grep auf die betroffenen Dateien)
 
 ## Ablauf
@@ -26,7 +26,7 @@ unerbittlich fragend, **konkrete** Einwände gegen *dieses* Artefakt, nie generi
 Nimm `$ARGUMENTS` als ID. Lies die Story und sieh dir die geänderten Dateien an.
 
 ### 2. Akzeptanzkriterien einzeln verifizieren
-Gehe **jedes** EARS-Akzeptanzkriterium durch und belege mit Code/Test, ob es erfüllt ist
+Gehe **jedes** testbares Akzeptanzkriterium durch und belege mit Code/Test, ob es erfüllt ist
 (erfüllt / teilweise / nicht erfüllt). Tests selbst ausführen, nicht auf die Behauptung verlassen.
 
 ### 3. Kritische Dimensionen prüfen

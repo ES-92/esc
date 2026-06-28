@@ -1,6 +1,6 @@
 ---
 name: story
-description: Bereitet eine einzelne Story von ESC zur Implementierung vor, indem sie zu einer self-contained Story-Datei angereichert wird — mit allem Kontext (relevante Requirements, ADRs, betroffene Dateien, Constitution-Regeln, EARS-Akzeptanzkriterien, Testplan), den ein KI-Agent zur fehlerfreien Umsetzung braucht. Use when the user says "create story", "nächste Story vorbereiten", "Story-Kontext", "esc story [id]" before implementing.
+description: Bereitet eine einzelne Story von ESC zur Implementierung vor, indem sie zu einer self-contained Story-Datei angereichert wird — mit allem Kontext (relevante Requirements, ADRs, betroffene Dateien, Constitution-Regeln, testbaren Akzeptanzkriterien, Testplan), den ein KI-Agent zur fehlerfreien Umsetzung braucht. Use when the user says "create story", "nächste Story vorbereiten", "Story-Kontext", "esc story [id]" before implementing.
 argument-hint: "[story-id, z. B. 1.2]"
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
@@ -11,14 +11,14 @@ Ziel: aus einer Backlog-Story eine **selbst-enthaltene** Story-Datei machen, sod
 Agent sie ohne weitere Recherche korrekt umsetzen kann. Das bekämpft Kontextverlust und „falsche
 Library / falscher Ort / kaputte Regression".
 
-## Persona & Schärfe
-Du führst diese Phase als **Ike (Dwight D. Eisenhower)** — sorgt für vollständigen, abhängigkeits-
-bewussten Story-Kontext (`${CLAUDE_PLUGIN_ROOT}/shared/personas.md`). Bei Unklarheiten fragt
-**Sokrates** nach, statt zu raten; Tiefe nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`).
+## Sichtweise & Schärfe
+Diese Phase wird aus der **Planungs-Sicht** geführt — vollständiger, abhängigkeits-bewusster
+Story-Kontext (`${CLAUDE_PLUGIN_ROOT}/shared/viewpoints.md`). Bei Unklarheiten fragt die **skeptische
+Sicht** nach, statt zu raten; Tiefe nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`).
 
 ## Lies zuerst
-- `esc/state.yaml` (Story-Liste + Reihenfolge), `esc/epics.md`
-- `esc/prd.md`/`quick-spec.md`, `esc/architecture.md`, `esc/decisions/`, `esc/ux-spec.md`, `esc/constitution.md`
+- `esc/state.yaml` (Story-Liste + Reihenfolge), `esc/docs/epics.md`
+- `esc/docs/prd.md`/`quick-spec.md`, `esc/docs/architecture/architecture.md`, `esc/docs/architecture/decisions/`, `esc/docs/ux-spec.md`, `esc/docs/constitution.md`
 - Relevante Codebase-Stellen via Glob/Grep (tatsächliche Dateipfade, bestehende Muster).
 
 ## Ablauf
@@ -29,16 +29,16 @@ Reihenfolge vor. Status auf `in_progress` setzen.
 
 ### 2. Kontext zusammentragen (nur das Relevante — Just-in-Time)
 Extrahiere gezielt:
-- Die zugehörigen **Requirement-IDs** + EARS-Text aus dem PRD.
+- Die zugehörigen **Requirement-IDs** + die testbare Anforderung aus dem PRD.
 - Relevante **ADR-Entscheidungen** und **Constitution-Regeln**, die hier gelten.
 - **Konkrete betroffene Dateien/Module** (echte Pfade) und bestehende Muster, an die sich die
-  Umsetzung halten soll.
+ Umsetzung halten soll.
 - UX-Verhaltensregeln (falls UI).
 
 ### 3. Story-Datei schreiben
-`esc/stories/<id>-<slug>.md` mit diesen Abschnitten:
+`esc/docs/stories/<id>-<slug>.md` mit diesen Abschnitten:
 - **Story** — „Als … will ich … damit …".
-- **Akzeptanzkriterien** — EARS, nummeriert, jedes testbar.
+- **Akzeptanzkriterien** — nummeriert, jedes testbar (festes Satzmuster).
 - **Kontext & Constraints** — relevante Requirements, ADRs, Constitution-Regeln (zitiert, nicht nur verlinkt).
 - **Betroffene Dateien** — konkrete Pfade + ob neu/ändern, bestehende Muster zum Nachahmen.
 - **Testplan** — welche Tests (Unit/Integration/E2E) decken welche Akzeptanzkriterien ab.
@@ -55,6 +55,6 @@ Wenn der Nutzer offene Fragen geklärt hat → `esc:implement <id>`.
 ## Definition of Done
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (Story-Status auf in_progress).
 - [ ] Story-Datei ist self-contained (Agent braucht nichts weiter zu lesen).
-- [ ] Akzeptanzkriterien sind EARS-konform und mit Tests verknüpft.
+- [ ] Akzeptanzkriterien sind testbar und mit Tests verknüpft.
 - [ ] Betroffene Dateien sind mit echten Pfaden benannt.
 - [ ] Offene Fragen sind markiert, nicht überspielt.

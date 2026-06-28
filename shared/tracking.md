@@ -4,7 +4,7 @@ ESC führt **zwei mitlaufende Markdown-Dateien**, die nebenbei von jeder Phase a
 werden — als menschenlesbare Sicht auf den maschinellen Zustand (`esc/state.yaml`):
 
 - `esc/TRACKER.md` — **Projekt-Tracker** (Fortschritt, Status, Decision-Log) — wird **regeneriert**.
-- `esc/DOCUMENTATION.md` — **lebende Dokumentation** (Architektur, Datenmodell, Flows) — wächst inkrementell.
+- `esc/docs/DOCUMENTATION.md` — **lebende Dokumentation** (Architektur, Datenmodell, Flows) — wächst inkrementell.
 
 Beide nutzen Mermaid-Diagramme, damit sie in GitHub/IDE direkt gerendert werden.
 
@@ -13,7 +13,7 @@ Am Ende jeder Phase, als Teil der Definition of Done, **immer**:
 1. `esc/state.yaml` aktualisieren (autoritativ).
 2. `esc/TRACKER.md` aus `state.yaml` neu erzeugen (siehe Vorlage unten). Wenn das Skript
    `${CLAUDE_PLUGIN_ROOT}/scripts/render_tracker.py` läuft, darf es genutzt werden; sonst manuell rendern.
-3. `esc/DOCUMENTATION.md` um die Abschnitte ergänzen, die diese Phase liefert (Tabelle unten).
+3. `esc/docs/DOCUMENTATION.md` um die Abschnitte ergänzen, die diese Phase liefert (Tabelle unten).
 Existieren die Dateien noch nicht (erste Phase), aus den Vorlagen neu anlegen.
 
 ## Welche Phase füllt welchen Doku-Abschnitt
@@ -90,7 +90,7 @@ pie showData title Story-Status
 
 ---
 
-## Vorlage: `esc/DOCUMENTATION.md`
+## Vorlage: `esc/docs/DOCUMENTATION.md`
 
 ````markdown
 # 📚 <Projektname> — Dokumentation
@@ -137,9 +137,9 @@ sequenceDiagram
 |---|---|
 
 ## Verweise
-- PRD: `esc/prd.md`
-- ADRs: `esc/decisions/`
-- Stories: `esc/stories/`
+- PRD: `esc/docs/prd.md`
+- ADRs: `esc/docs/architecture/decisions/`
+- Stories: `esc/docs/stories/`
 ````
 
 ## Mermaid-Hinweise

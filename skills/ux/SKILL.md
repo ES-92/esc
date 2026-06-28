@@ -9,15 +9,15 @@ allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion
 Ziel: das **Verhalten der Oberfläche** so festlegen, dass die KI sie eindeutig umsetzen kann — Flows,
 Zustände, Regeln. Kein Pixel-Design, sondern überprüfbare Verhaltensspezifikation.
 
-## Persona & Schärfe
-Du führst diese Phase als **Walt (Walt Disney)** — besessen vom Erlebnis: „Wie fühlt sich der
-*schlimmste* Moment an?" Sprich in seiner Stimme und jage leere/kaputte Zustände
-(`${CLAUDE_PLUGIN_ROOT}/shared/personas.md`). An jedem Gate tritt **Sokrates** auf; Tiefe nach `level`
-(`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`).
+## Sichtweise & Schärfe
+Diese Phase wird aus der **Nutzer-Sicht** geführt — Erlebnis & Fehlerpfade: „Wie fühlt sich der
+schlechteste Moment an?" (`${CLAUDE_PLUGIN_ROOT}/shared/viewpoints.md`). An jedem Gate greift die
+**skeptische Sicht** an; Tiefe nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`). Erarbeite
+Abschnitt für Abschnitt (`${CLAUDE_PLUGIN_ROOT}/shared/coauthoring.md`).
 
 ## Lies zuerst
-- `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`, `${CLAUDE_PLUGIN_ROOT}/shared/ears-guide.md`
-- `esc/state.yaml`, `esc/prd.md`, `esc/constitution.md`
+- `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`, `${CLAUDE_PLUGIN_ROOT}/shared/requirements-syntax.md`
+- `esc/state.yaml`, `esc/docs/prd.md`, `esc/docs/constitution.md`
 
 ## Vorbedingung
 Nur sinnvoll, wenn das Produkt eine UI hat. Bei reinen Backends/CLIs/Libraries kurz nachfragen und
@@ -33,9 +33,9 @@ Ansicht mit Zweck und den darauf möglichen Aktionen.
 Für die 3–5 wichtigsten Aufgaben den Flow Schritt für Schritt: Einstieg → Schritte → Erfolg.
 Jeden Flow gegen die PRD-Requirements prüfen (Lücken aufdecken).
 
-### 3. Zustände & Verhaltensregeln (EARS)
+### 3. Zustände & Verhaltensregeln
 Für jede wichtige Ansicht/Komponente die Zustände definieren: **Leer · Lädt · Erfolg · Fehler ·
-Keine-Rechte**. Interaktions-/Verhaltensregeln als EARS-Sätze formulieren
+Keine-Rechte**. Interaktions-/Verhaltensregeln als testbare Sätze formulieren
 (z. B. „WENN das Formular ungültig ist, MUSS der Absende-Button deaktiviert sein.").
 
 ### 4. Edge-Cases & Barrierefreiheit
@@ -43,7 +43,7 @@ Keine-Rechte**. Interaktions-/Verhaltensregeln als EARS-Sätze formulieren
 Barrierefreiheit knapp: Tastatur-Navigation, Fokus, Kontrast, Screenreader-Labels — soweit relevant.
 
 ### 5. UX-Spec schreiben
-`esc/ux-spec.md`: Screen-Inventar & IA · Kern-Flows · Zustände je Ansicht · Verhaltensregeln (EARS) ·
+`esc/docs/ux-spec.md`: Screen-Inventar & IA · Kern-Flows · Zustände je Ansicht · Verhaltensregeln (testbar) ·
 Edge-/Leerzustände · Barrierefreiheit · offene Design-Fragen.
 state.yaml: `artifacts.ux_spec: done`, `phase` weiter. Routen zu `esc:architecture`.
 
@@ -51,4 +51,4 @@ state.yaml: `artifacts.ux_spec: done`, `phase` weiter. Routen zu `esc:architectu
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (TRACKER.md) und `esc:docs` (Kern-Flows).
 - [ ] Alle Kern-Flows abgedeckt und mit PRD-Requirements rückverknüpft.
 - [ ] Für jede wichtige Ansicht sind Leer-/Lade-/Fehler-/Erfolgszustände definiert.
-- [ ] Verhaltensregeln sind als testbare EARS-Sätze formuliert.
+- [ ] Verhaltensregeln sind als testbare testbare Sätze formuliert.

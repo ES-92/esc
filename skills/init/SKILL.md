@@ -11,10 +11,9 @@ Du bist der ESC-Startpunkt. Ziel dieses Schritts: das Vorhaben verstehen, scale-
 einstufen, den Workspace anlegen und eine Constitution (Guardrails für die KI) erarbeiten. **Noch
 kein Brief, kein PRD, kein Code.**
 
-## Persona & Schärfe
-Du führst diese Phase als **Gandhi (Mahatma Gandhi)** — der ruhige Host und Hüter der Prinzipien.
-Sprich in seiner Stimme und halte die nicht-verhandelbaren Grenzen hoch
-(`${CLAUDE_PLUGIN_ROOT}/shared/personas.md`). Die Gate-Schärfe richtet sich nach `level`
+## Sichtweise & Schärfe
+Diese Phase wird aus der **Prinzipien-Sicht** geführt — Hüterin der Guardrails/Constitution
+(`${CLAUDE_PLUGIN_ROOT}/shared/viewpoints.md`). Die Gate-Schärfe richtet sich nach `level`
 (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`).
 
 ## Lies zuerst
@@ -35,7 +34,7 @@ Nimm `$ARGUMENTS` als Startpunkt. Erarbeite per Elicitation-Protokoll knapp:
 1. **Was** soll entstehen? (ein Satz in eigenen Worten zurückspiegeln zur Bestätigung)
 2. **Welches Problem / welcher Schmerz** wird gelöst, für **wen**?
 3. **Greenfield oder Brownfield?** (neues Projekt vs. Änderung an bestehendem Code — bei Brownfield
-   kurz die Codebase scannen: Sprache, Framework, Struktur via Glob/Grep)
+  kurz die Codebase scannen: Sprache, Framework, Struktur via Glob/Grep)
 4. **Grobe Größe?** Biete die Level-Beschreibungen aus `levels.md` als nummerierte Optionen an.
 
 ### 2. Level vorschlagen & bestätigen
@@ -56,16 +55,16 @@ Halte die Constitution knapp und prüfbar (eine Regel = eine Zeile, im Zweifel a
 Bei sehr kleinen Vorhaben (Level 0/1) reicht eine Minimal-Constitution (Stack + Test-Regel).
 
 ### 4. Workspace schreiben
-Lege an (per Bash `mkdir -p esc/decisions esc/stories`):
+Lege an (per Bash `mkdir -p esc/docs/requirements esc/docs/architecture/decisions esc/docs/stories`):
 - `esc/state.yaml` nach Schema (`level`, `phase: init`→ als Nächstes setzen, `artifacts` je nach Level
-  auf `pending`/`n/a`, leeres `decisions`-Array mit ggf. erster Stack-Entscheidung).
-- `esc/constitution.md` aus Schritt 3.
+ auf `pending`/`n/a`, leeres `decisions`-Array mit ggf. erster Stack-Entscheidung).
+- `esc/docs/constitution.md` aus Schritt 3.
 Verwende das aktuelle Datum (frage nach oder nutze `date +%F` via Bash) für `created`.
 
 ### 5. Tracker & Doku anlegen
 Lege die mitlaufenden Dateien initial an (Vorlagen in `${CLAUDE_PLUGIN_ROOT}/shared/tracking.md`):
 - `esc/TRACKER.md` — via `esc:track` (Skript oder manuell) auf Basis des frischen `state.yaml`.
-- `esc/DOCUMENTATION.md` — Skelett mit Überblick (aus der Idee) und Platzhaltern „_folgt_".
+- `esc/docs/DOCUMENTATION.md` — Skelett mit Überblick (aus der Idee) und Platzhaltern „_folgt_".
 
 ### 6. Routen
 Zeige eine kompakte Zusammenfassung (Projekt, Level, welche Phasen vorgesehen sind — Tabelle aus
@@ -77,7 +76,7 @@ Frage, ob direkt weiter (`[1] ja, weiter mit <Skill>` / `[2] später`).
 
 ## Definition of Done
 - [ ] `esc/state.yaml` existiert mit korrektem `level` und Phasen-Plan.
-- [ ] `esc/constitution.md` existiert und ist prüfbar formuliert.
+- [ ] `esc/docs/constitution.md` existiert und ist prüfbar formuliert.
 - [ ] Mindestens die Stack-/Test-Grundregeln sind festgehalten.
-- [ ] `esc/TRACKER.md` und `esc/DOCUMENTATION.md` initial angelegt.
+- [ ] `esc/TRACKER.md` und `esc/docs/DOCUMENTATION.md` initial angelegt.
 - [ ] Nächster Schritt wurde dem Nutzer klar vorgeschlagen.

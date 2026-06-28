@@ -1,18 +1,19 @@
 # ESC — Erik's Spec Crafting
 
 > Ein scale-adaptiver, interaktiver **Spec-Driven-Development**-Workflow als Claude-Code-Plugin — auf Deutsch.
-> ESC führt dich strukturiert und kritisch hinterfragend von der **Idee** über Analyse, PRD, UX, Architektur
-> und Stories bis zur **KI-gestützten Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare
-> Regeln und Grenzen setzen — gegen Halluzination, Scope-Creep und Kontextverlust.
+> ESC erarbeitet mit dir **Abschnitt für Abschnitt, kritisch hinterfragend** die Spezifikationen deines
+> Produkts — von der **Idee** über Analyse, PRD, UX, Architektur und Stories bis zur **KI-gestützten
+> Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
+> gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.1.0** · Namespace `esc:` · 15 Skills · Experten-Personas · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.2.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
 ## Inhalt
 
 1. [Was ist ESC?](#was-ist-esc)
-2. [Woher es kommt — und was ESC anders macht](#woher-es-kommt--und-was-esc-anders-macht)
+2. [Was ESC ausmacht](#was-esc-ausmacht)
 3. [Kernkonzepte](#kernkonzepte)
 4. [Der komplette Workflow](#der-komplette-workflow)
 5. [Beispiel-Durchlauf](#beispiel-durchlauf)
@@ -28,55 +29,50 @@
 
 ## Was ist ESC?
 
-ESC ist eine Sammlung von **15 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
-Produktentwicklungs-Prozess abbilden — geführt von benannten **Experten-Personas** (Curie, Jobs,
-Einstein, Sokrates u. a.). Der Grundgedanke: **Erst die Spezifikation, dann der Code.**
+ESC ist eine Sammlung von **16 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
+Produktentwicklungs-Prozess abbilden. Der Grundgedanke: **Erst die Spezifikation, dann der Code.**
 
-Statt einer KI vage Prompts zuzuwerfen und zu hoffen, erarbeitet ESC mit dir Schritt für Schritt
-präzise, testbare Spezifikationen. Diese Specs werden zur **Single Source of Truth** und zu
-**Leitplanken (Guardrails)**, an die sich die KI bei der Umsetzung halten *muss*. Das Ergebnis ist
-weniger Raten, weniger Halluzination und ein nachvollziehbarer roter Faden von der Idee bis zum Code.
+Statt einer KI vage Prompts zuzuwerfen und zu hoffen, erarbeitet ESC mit dir **Abschnitt für Abschnitt**
+präzise, testbare Spezifikationen — und betrachtet sie dabei aus wechselnden **kritischen Sichtweisen**.
+Diese Specs werden zur **Single Source of Truth** und zu **Leitplanken (Guardrails)**, an die sich die KI
+bei der Umsetzung halten *muss*. Das Ergebnis: weniger Raten, weniger Halluzination, ein nachvollziehbarer
+roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über jeden Abschnitt.
 
 **ESC ist für dich, wenn du:**
 - ein Softwareprodukt oder Feature strukturiert und durchdacht aufbauen willst,
 - die KI-Entwicklung an klaren Regeln und Akzeptanzkriterien ausrichten möchtest,
-- gern interaktiv im Terminal geführt wirst — mit Fragen, Optionen und kritischem Hinterfragen,
-- Dokumentation und Fortschritt automatisch mitlaufen lassen willst.
+- gern interaktiv im Terminal geführt wirst — mit Auswahl-Fragen und kritischem Hinterfragen,
+- die volle Doku (Specs, FR/NFR, ADRs, Diagramme) gebündelt und mitlaufend haben willst.
 
-### Die sieben Leitprinzipien
+### Die Leitprinzipien
 
 1. **Spec vor Code** — jede Phase erzeugt ein Artefakt, das die nächste speist. Code ist die letzte Aktivität.
-2. **Specs als Guardrails** — Non-Goals, Constitution und EARS-Akzeptanzkriterien lassen keinen Raum für Halluzination oder Scope-Creep.
+2. **Specs als Guardrails** — Non-Goals, Constitution und testbare Akzeptanzkriterien lassen keinen Raum für Halluzination oder Scope-Creep.
 3. **WAS vor WIE** — Problem und Anforderungen werden *ohne* Technologie beschrieben; der Stack fällt bewusst erst in der Architektur-Phase.
-4. **Testbar oder es zählt nicht** — Anforderungen in [EARS-Notation](shared/ears-guide.md), jede 1:1 in einen Test überführbar.
+4. **Testbar oder es zählt nicht** — Anforderungen in fester, testbarer [Satzsyntax](shared/requirements-syntax.md).
 5. **Begründungen festhalten** — jede wichtige Entscheidung mit Trade-offs und verworfenen Alternativen im Decision-Log.
-6. **Kritisch hinterfragen ist Pflicht** — Pre-Mortem, Red-Team, Edge-Case-Jagd an definierten Gates, nicht optional.
-7. **Single Source of Truth auf der Platte** — der Zustand lebt im `esc/`-Ordner, nicht im flüchtigen Chatverlauf. Pausier-, fortsetz- und übergebbar.
+6. **Kritisch hinterfragen ist Pflicht** — an definierten Gates greift die skeptische Sichtweise an, nicht optional.
+7. **Der Nutzer behält die Kontrolle** — Specs werden Abschnitt für Abschnitt gemeinsam erarbeitet; nichts wird ohne Zustimmung festgeschrieben.
+8. **Single Source of Truth auf der Platte** — der Zustand lebt im `esc/`-Ordner, nicht im flüchtigen Chatverlauf. Pausier-, fortsetz- und übergebbar.
 
 ---
 
-## Woher es kommt — und was ESC anders macht
+## Was ESC ausmacht
 
-ESC verschmilzt bewährte Ideen aus drei führenden Ansätzen und schließt deren Lücken:
-
-| Quelle | Was ESC übernimmt |
-|---|---|
-| **[BMAD v6](https://github.com/bmad-code-org/BMAD-METHOD)** | Phasen-/Rollen-Denken (Analyse → Planung → Architektur → Stories → Umsetzung) und **scale-adaptive Levels 0–4** |
-| **[GitHub Spec-Kit](https://github.com/github/spec-kit)** | Die **Constitution** (nicht-verhandelbare Guardrails) und die saubere Trennung **WAS/WARUM vs. WIE** |
-| **[Kiro](https://kiro.dev) / [EARS](https://alistairmavin.com/ears/)** | **Testbare Requirements** in fester Satz-Syntax als Brücke von Spec zu Akzeptanzkriterium |
-
-**Was ESC bewusst besser macht** (gezielte Antwort auf dokumentierte Schwächen von BMAD v6):
-
-- 🔁 **Erzwungene kritische Elicitation an Gates.** BMAD v6 hat die in v4 verpflichtende Vertiefung
-  optional gemacht — ESC holt sie zurück: An kritischen Stellen (Erfolgsmetriken, Requirements,
-  Architektur-Entscheidungen, Akzeptanzkriterien) ist mindestens eine Vertiefungs-Methode Pflicht.
-- ⚖️ **Trade-off-Begründungen statt blanker Empfehlung.** Jede nicht-triviale Technologieentscheidung
-  zeigt 2–3 Optionen mit Pro/Contra und wird als **ADR** mit verworfenen Alternativen dokumentiert.
-- 📊 **Mitlaufende Doku & Tracker.** Fortschritt und Architektur werden nebenbei in Markdown mit
-  Mermaid-Diagrammen gepflegt — ohne dass du es anstoßen musst.
-- 🎭 **Experten-Personas mit Biss.** Jede Phase wird von einer benannten Persona mit eigener kritischer
-  Linse geführt; der Skeptiker **Sokrates** greift an jedem Gate an. Schärfe **skaliert mit dem Level**.
-- 🇩🇪 **Durchgängig deutsch** und auf interaktives Terminal-Arbeiten (Auswahl per Pfeil + Leertaste) ausgelegt.
+- 🧩 **Abschnitt-für-Abschnitt-Co-Authoring.** Specs werden nicht in einem Rutsch generiert, sondern
+  gemeinsam erarbeitet: *Entwurf → kritisch hinterfragen → du entscheidest → nächster Abschnitt.*
+- 🔍 **Kritische Sichtweisen statt Ja-Sager.** Jede Phase betrachtet das Artefakt aus einer Linse
+  (analytisch, Fokus, Nutzer, Architektur, Planung, pragmatisch); an den Gates greift die **skeptische
+  Sicht** mit konkreten Einwänden an.
+- 🎚️ **Schärfe skaliert mit dem Level.** Kleinkram (Level 0/1) bleibt schnell, große Vorhaben (Level 3/4)
+  werden kompromisslos geprüft — inkl. Annahmen-Audit und skeptischem Zweit-Pass.
+- 🛡️ **Specs als Guardrails.** Constitution (nicht-verhandelbare Regeln), explizite Non-Goals und
+  testbare Akzeptanzkriterien geben der KI klare Grenzen.
+- 📚 **Gebündelte, mitlaufende Doku.** Die gesamte Produkt-Doku (Specs, FR/NFR getrennt, ADRs, Diagramme)
+  lebt in `esc/docs/` und wird nebenbei mit Mermaid-Diagrammen aktuell gehalten.
+- 🔁 **Weiterentwicklung eingebaut.** `esc:evolve` erarbeitet nach einem fertigen Stand kritisch neue
+  Features und speist sie als Epics/Stories zurück in die Pipeline.
+- 🇩🇪 **Durchgängig deutsch** und auf Terminal-Bedienung per Auswahl (Pfeil + Leertaste) ausgelegt.
 
 ---
 
@@ -99,12 +95,12 @@ Details: [`shared/levels.md`](shared/levels.md).
 
 ### 2. Die Constitution (Guardrails)
 
-Beim Start erarbeitet ESC eine `esc/constitution.md`: **nicht-verhandelbare Regeln**, an die sich jede
-spätere KI-Implementierung halten muss — Stack-Zwänge, Coding-Standards, Test-Anspruch,
+Beim Start erarbeitet ESC eine `esc/docs/constitution.md`: **nicht-verhandelbare Regeln**, an die sich
+jede spätere KI-Implementierung halten muss — Stack-Zwänge, Coding-Standards, Test-Anspruch,
 Security/Compliance-Grenzen, Architektur-Leitplanken, Out-of-Scope-Grundsätze. Jede Regel ist prüfbar
 formuliert (eine Zeile, im Zweifel als „MUSS"-Satz).
 
-### 3. EARS-Notation (testbare Anforderungen)
+### 3. Testbare Anforderungssyntax
 
 Anforderungen und Akzeptanzkriterien folgen festen Satzmustern, damit sie eindeutig und testbar sind:
 
@@ -115,68 +111,65 @@ Anforderungen und Akzeptanzkriterien folgen festen Satzmustern, damit sie eindeu
 | Unerwünscht | **FALLS** `<Bedingung>`, **DANN MUSS** das System `<Reaktion>`. | FALLS die Zahlung fehlschlägt, DANN MUSS das System den Warenkorb erhalten. |
 | Optional | **WO** `<Feature>`, **MUSS** das System `<Reaktion>`. | WO 2FA aktiv ist, MUSS das System nach dem Passwort einen Code abfragen. |
 
-Vollständig: [`shared/ears-guide.md`](shared/ears-guide.md).
+Vollständig: [`shared/requirements-syntax.md`](shared/requirements-syntax.md).
 
-### 4. Elicitation-Gates (kritisches Hinterfragen)
+### 4. Co-Authoring (Abschnitt für Abschnitt)
 
-ESC interagiert über ein festes Protokoll: **Auswahl-first** — Entscheidungen triffst du per native
-Auswahl (Pfeil + Leertaste), nicht durch Tippen; freie Eingabe ist immer möglich, und es **wartet** auf
-deine Antwort, bevor es weitermacht. An kritischen Gates verlangt es eine **Vertiefungs-Methode**
-(Pre-Mortem, Edge-Case-Jagd, 5-mal-Warum, …) **und** lässt **Sokrates** mit konkreten Einwänden angreifen,
-bevor ein Artefakt als fertig gilt. Protokoll & Methoden: [`shared/elicitation.md`](shared/elicitation.md).
+Specs werden **nicht** in einem Rutsch generiert. Für jeden Abschnitt: ESC legt einen Entwurf vor, greift
+ihn kritisch an, **du** bestätigst/änderst/verwirfst — erst dann der nächste Abschnitt. Nichts wird ohne
+deine Zustimmung festgeschrieben. Tiefe skaliert mit dem Level. Protokoll: [`shared/coauthoring.md`](shared/coauthoring.md).
 
-### 5. State als Single Source of Truth
+### 5. Elicitation per Auswahl
 
-Der gesamte Prozess-Zustand liegt in `esc/state.yaml` — Level, aktuelle Phase, Artefakt-Status,
-Gate-Status, Decision-Log und Story-Liste. Jeder Skill liest und schreibt diese Datei. Dadurch ist die
-Arbeit jederzeit pausier-, fortsetz- und an einen frischen Agenten übergebbar. Schema:
-[`shared/state.md`](shared/state.md).
+Entscheidungen triffst du per native Auswahl (Pfeil + Leertaste), nicht durch Tippen; freie Eingabe ist
+immer möglich, und ESC **wartet** auf deine Antwort. Lange Optionslisten werden in 4er-Häppchen
+angeboten. Protokoll & Vertiefungs-Methoden: [`shared/elicitation.md`](shared/elicitation.md).
 
-### 6. Mitlaufender Tracker & lebende Doku
+### 6. Kritische Sichtweisen
 
-Zwei Markdown-Dateien werden **nebenbei von jeder Phase** aktualisiert (Teil der Definition of Done):
+Jede Phase wird aus einer **kritischen Sichtweise** geführt — einer Linse, die das Artefakt konkret
+angreift und schärft (kein Deko-Theater):
 
-- **`esc/TRACKER.md`** — Pipeline-Fortschritt als Mermaid-Flowchart, Artefakt-/Gate-Status,
-  Story-Board (Mermaid-Pie + Tabelle), Decision-Log. Deterministisch aus `state.yaml` gerendert
-  (`scripts/render_tracker.py`, stdlib-only Fallback ohne PyYAML) oder vom Skill selbst.
-- **`esc/DOCUMENTATION.md`** — lebende Doku mit Mermaid: Systemkontext, Architektur/Komponenten,
-  Datenmodell (`erDiagram`), Kern-Flows (`sequenceDiagram`), Glossar. Wächst mit jeder Phase.
+| Sichtweise | Phase | Leitfrage |
+|---|---|---|
+| **Analytisch** | `discover` | „Woher *wissen* wir das? Wo sind die Daten?" |
+| **Fokus** | `prd` | „Was bauen wir bewusst **nicht**? Woran messen wir Erfolg?" |
+| **Nutzer** | `ux` | „Wie fühlt sich der schlechteste Moment an?" |
+| **Architektur** | `architecture` | „Welche Annahme trägt das? Was bereuen wir in 2 Jahren?" |
+| **Planung** | `epics`/`story` | „Ist das wirklich vertikal und unabhängig?" |
+| **Pragmatisch** | `implement` | „Läuft es? Beweise es mit grünen Tests." |
+| **🔪 Skeptisch** | `review` + **alle Gates** | „Und *warum* glaubst du das? Was, wenn das Gegenteil stimmt?" |
+| **Prinzipien** | `init`/`status` | „Bleibt das innerhalb unserer Regeln?" |
 
-Beide rendern direkt in GitHub und IDE. Format & Vorlagen: [`shared/tracking.md`](shared/tracking.md).
+Direkt abrufbar: `esc:consult` (eine Sichtweise), `esc:council` (mehrere debattieren),
+`esc:challenge` (skeptischer Zweit-Pass). Details: [`shared/viewpoints.md`](shared/viewpoints.md).
 
-### 7. Experten-Personas
+### 7. Intensitäts-Regler (Schärfe nach Level)
 
-Jede Phase wird von einer benannten Persona geführt, modelliert nach einer berühmten Person, deren
-realer Ruf zur Rolle passt — mit eigener Stimme **und** kritischer Linse (kein Deko-Theater):
+Wie hart kritisch nachgefragt wird, **skaliert mit dem Level** — schnell beim Kleinen, kompromisslos beim Großen:
 
-| Persona | Vorbild | Rolle · Phase | Biss |
-|---|---|---|---|
-| **Mara** | Marie Curie | Analystin · `discover` | „Zeig mir die Daten, nicht deine Hoffnung." |
-| **Jobs** | Steve Jobs | Product Lead · `prd` | „Was bauen wir bewusst **nicht**?" |
-| **Walt** | Walt Disney | UX · `ux` | „Zeig mir den leeren und den kaputten Zustand." |
-| **Albert** | Albert Einstein | Architekt · `architecture` | „Welche Annahme trägt das? Was bereust du in 2 Jahren?" |
-| **Ike** | Dwight D. Eisenhower | Planer · `epics`/`story` | „Ist das wirklich vertikal und unabhängig?" |
-| **Linus** | Linus Torvalds | Engineer · `implement` | „Talk is cheap. Test zuerst, dann grün." |
-| **🔪 Sokrates** | Sokrates | Skeptiker · `review` + **alle Gates** | „Und *warum* glaubst du das? Beweise es mir." |
-| **Gandhi** | Mahatma Gandhi | Host · `init`/`status` | „Bleibe deinen Grenzen treu." |
-
-Du kannst Personas auch direkt rufen: `esc:consult` (eine Persona befragen), `esc:council` (Party-Mode:
-mehrere debattieren), `esc:challenge` (Sokrates' adversarialer Zweit-Pass). Cast: [`shared/personas.md`](shared/personas.md).
-
-### 8. Intensitäts-Regler (Schärfe nach Level)
-
-Wie hart kritisch nachgefragt wird, **skaliert mit dem Level** — schnell beim Kleinen, kompromisslos
-beim Großen:
-
-| Level | Personas | Sokrates | Annahmen-Audit | Adversarialer Zweit-Pass | Council |
-|------|----------|----------|----------------|--------------------------|---------|
+| Level | Sichtweisen | Skeptische Sicht | Annahmen-Audit | Skeptischer Zweit-Pass | Perspektiven-Runde |
+|------|-------------|------------------|----------------|------------------------|--------------------|
 | **0** | leise | 1 Einwand am Akzeptanz-Gate | – | – | – |
 | **1** | pro Phase | alle Gates (2–3 Einwände) | bei Requirements | – | – |
 | **2** | voll | alle Gates, hartnäckig | alle Gates | PRD + Architektur | auf Wunsch |
 | **3** | voll | maximal | alle Gates | alle großen Artefakte | auf Wunsch |
-| **4** | voll + Council | maximal | alle Gates | alle Artefakte | automatisch an Schlüssel-Gates |
+| **4** | voll + Runde | maximal | alle Gates | alle Artefakte | automatisch an Schlüssel-Gates |
 
 Details: [`shared/intensity.md`](shared/intensity.md).
+
+### 8. State & mitlaufende Doku
+
+Der Prozess-Zustand liegt in `esc/state.yaml` (Level, Phase, Gate-Status, Decision-Log, Story-Liste) —
+die Single Source of Truth, jederzeit pausier- und fortsetzbar. Zwei Dateien laufen **nebenbei** mit:
+
+- **`esc/TRACKER.md`** — Pipeline-Fortschritt als Mermaid-Flowchart, Artefakt-/Gate-Status, Story-Board,
+  Decision-Log. Deterministisch aus `state.yaml` gerendert (`scripts/render_tracker.py`, stdlib-only
+  Fallback) oder vom Skill selbst.
+- **`esc/docs/DOCUMENTATION.md`** — lebende Doku mit Mermaid: Systemkontext, Architektur/Komponenten,
+  Datenmodell (`erDiagram`), Kern-Flows (`sequenceDiagram`), Glossar.
+
+Schema & Konventionen: [`shared/state.md`](shared/state.md) · [`shared/tracking.md`](shared/tracking.md).
 
 ---
 
@@ -193,7 +186,7 @@ flowchart TB
     discover["/esc:discover<br/>Brainstorming & Analyse"]
   end
   subgraph P2["Phase 2 · Definition"]
-    prd["/esc:prd<br/>Requirements (EARS)"]
+    prd["/esc:prd<br/>Requirements (FR/NFR)"]
     ux["/esc:ux<br/>UX-Spezifikation"]
   end
   subgraph P3["Phase 3 · Design"]
@@ -203,11 +196,13 @@ flowchart TB
     epics["/esc:epics<br/>Epics & Stories<br/>+ Readiness-Gate"]
   end
   subgraph P5["Phase 5 · Lieferung (pro Story)"]
-    story["/esc:story<br/>Kontext anreichern"] --> impl["/esc:implement<br/>TDD-Umsetzung"] --> review["/esc:review<br/>Adversariales Review"]
+    story["/esc:story<br/>Kontext anreichern"] --> impl["/esc:implement<br/>TDD-Umsetzung"] --> review["/esc:review<br/>Skeptisches Review"]
   end
 
   init --> discover --> prd --> ux --> arch --> epics --> story
   review -->|naechste Story| story
+  review -->|Iteration fertig| evolve["/esc:evolve<br/>neue Features"]
+  evolve -.-> epics
 
   track[/"esc:track + esc:docs<br/>laufen nebenbei mit"/] -.-> init
   status[/"esc:status<br/>jederzeit: Stand & naechster Schritt"/] -.-> epics
@@ -216,74 +211,76 @@ flowchart TB
   class track,status side;
 ```
 
-### Die 15 Skills im Detail
+### Die 16 Skills im Detail
 
 #### Phase 0 — Setup
 
 **`/esc:init "<idee>"`** — Vorhaben starten & klassifizieren
 - **Zweck:** Idee erfassen, scale-adaptiv einstufen (Level 0–4), Workspace anlegen, **Constitution** erarbeiten.
 - **Interaktion:** Kurze Konversation zu Was/Problem/Greenfield-vs-Brownfield/Größe; bei Brownfield wird die Codebase gescannt.
-- **Erzeugt:** `esc/state.yaml`, `esc/constitution.md`, initiale `esc/TRACKER.md` + `esc/DOCUMENTATION.md`.
-- **Danach:** routet je nach Level zu `discover`, `prd` oder direkt `epics`.
+- **Erzeugt:** `esc/state.yaml`, `esc/docs/constitution.md`, initiale `esc/TRACKER.md` + `esc/docs/DOCUMENTATION.md`.
 
 #### Phase 1 — Discovery
 
 **`/esc:discover`** — Brainstorming & Analyse → Product Brief
-- **Zweck:** Problemfeld durchdringen (WAS/WARUM, keine Technologie).
-- **Themen:** Problem, Zielgruppe & Jobs-to-be-Done, heutige Alternativen, Vision, Ziele, Scope (MoSCoW inkl. **Non-Goals**), Risiken & Annahmen. Bei Level 3/4 optional Markt-/Domänen-Research.
-- **Gate:** mind. eine Vertiefung (z. B. Pre-Mortem) bei Level 3/4.
-- **Erzeugt:** `esc/product-brief.md`.
+- **Zweck:** Problemfeld durchdringen (WAS/WARUM, keine Technologie), aus analytischer Sicht.
+- **Themen:** Problem, Zielgruppe & Jobs-to-be-Done, Alternativen, Vision, Ziele, Scope (inkl. **Non-Goals**), Risiken & Annahmen.
+- **Erzeugt:** `esc/docs/product-brief.md`.
 
 #### Phase 2 — Definition
 
-**`/esc:prd`** — Requirements definieren (EARS)
-- **Zweck:** testbare Anforderungen als Guardrails. Bei Level 0/1 stattdessen eine schlanke **Quick-Spec**.
-- **Gates (Pflicht):** messbare Erfolgsmetriken (mit Vertiefung) · funktionale Requirements inkl. **Edge-Case-Jagd**.
-- **Erzeugt:** `esc/prd.md` (oder `esc/quick-spec.md`).
+**`/esc:prd`** — Requirements definieren
+- **Zweck:** testbare Anforderungen als Guardrails, aus Fokus-Sicht. Bei Level 0/1 stattdessen eine schlanke **Quick-Spec**.
+- **Gates (Pflicht):** messbare Erfolgsmetriken · funktionale Requirements inkl. **Edge-Case-Jagd**.
+- **Erzeugt:** `esc/docs/prd.md` (Überblick) + getrennt `esc/docs/requirements/functional.md` (FR) und `non-functional.md` (NFR).
 
 **`/esc:ux`** — UX-Spezifikation (nur bei UI)
-- **Zweck:** Verhalten der Oberfläche eindeutig festlegen — Screen-Inventar, Kern-User-Flows, Zustände (Leer/Lädt/Erfolg/Fehler/Keine-Rechte), Verhaltensregeln als EARS-Sätze, Barrierefreiheit.
-- **Erzeugt:** `esc/ux-spec.md`.
+- **Zweck:** Verhalten der Oberfläche festlegen, aus Nutzer-Sicht — Screen-Inventar, Flows, Zustände (Leer/Lädt/Erfolg/Fehler/Keine-Rechte), Verhaltensregeln, Barrierefreiheit.
+- **Erzeugt:** `esc/docs/ux-spec.md`.
 
 #### Phase 3 — Design
 
 **`/esc:architecture`** — Solution Design & ADRs
-- **Zweck:** das WIE festlegen — Stack, Struktur, Datenmodell, Schnittstellen.
-- **Gate (Pflicht):** je nicht-trivialer Entscheidung 2–3 Optionen mit Pro/Contra/Risiko, Empfehlung, Vertiefung (Red-Team/Pre-Mortem), dann **ADR** mit verworfenen Alternativen.
-- **Erzeugt:** `esc/architecture.md` (Level 3/4) und `esc/decisions/ADR-*.md`.
+- **Zweck:** das WIE festlegen, aus Architektur-Sicht — Stack, Struktur, Datenmodell, Schnittstellen.
+- **Gate (Pflicht):** je nicht-trivialer Entscheidung 2–3 Optionen mit Pro/Contra/Risiko, Empfehlung, Vertiefung, dann **ADR** mit verworfenen Alternativen.
+- **Erzeugt:** `esc/docs/architecture/architecture.md` und `esc/docs/architecture/decisions/ADR-*.md`.
 
 #### Phase 4 — Zerlegung
 
 **`/esc:epics`** — Epics & Stories + Readiness-Gate
-- **Zweck:** Anforderungen in vertikal geschnittene, unabhängig testbare Stories zerlegen.
+- **Zweck:** Anforderungen in vertikal geschnittene, unabhängig testbare Stories zerlegen, aus Planungs-Sicht.
 - **Readiness-Gate:** prüft, ob PRD/UX/Architektur reif sind, bevor Stories entstehen.
-- **Gate (Pflicht):** jede Story hat **EARS-Akzeptanzkriterien** mit Requirement-Rückverweis.
-- **Erzeugt:** `esc/epics.md` + Story-Einträge in `state.yaml`.
+- **Gate (Pflicht):** jede Story hat **testbare Akzeptanzkriterien** mit Requirement-Rückverweis.
+- **Erzeugt:** `esc/docs/epics.md` + Story-Einträge in `state.yaml`.
 
 #### Phase 5 — Lieferung (iterativ pro Story)
 
 **`/esc:story <id>`** — Self-contained Story-Kontext
-- **Zweck:** eine Story so anreichern, dass ein frischer Agent sie **ohne weitere Recherche** korrekt umsetzen kann (relevante Requirements, ADRs, Constitution-Regeln, echte Dateipfade, Testplan, Out-of-Scope, offene Fragen).
-- **Erzeugt:** `esc/stories/<id>-<slug>.md`.
+- **Zweck:** eine Story so anreichern, dass ein frischer Agent sie **ohne weitere Recherche** umsetzen kann (Requirements, ADRs, Constitution-Regeln, echte Dateipfade, Testplan, Out-of-Scope, offene Fragen).
+- **Erzeugt:** `esc/docs/stories/<id>-<slug>.md`.
 
 **`/esc:implement <id>`** — Testgetriebene Umsetzung
-- **Zweck:** Story **strikt nach Spec** bauen — red-green-refactor, im Rahmen der Constitution, kein Scope-Creep.
+- **Zweck:** Story **strikt nach Spec** bauen, aus pragmatischer Sicht — red-green-refactor, im Rahmen der Constitution, kein Scope-Creep.
 - **Verifikation:** Tests/Build/Linter werden tatsächlich ausgeführt; kein „fertig" ohne Beleg.
 
-**`/esc:review <id>`** — Adversariales Review
-- **Zweck:** kritisch gegen die Spec prüfen (Skeptiker-Haltung). Jedes Akzeptanzkriterium verifizieren; Korrektheit, Edge-Cases, Constitution-Konformität, Sicherheit, Spec-Drift, Wartbarkeit.
-- **Ergebnis:** Findings nach Schweregrad; Freigabe oder zurück zu `implement`.
+**`/esc:review <id>`** — Skeptisches Review
+- **Zweck:** kritisch gegen die Spec prüfen (skeptische Sicht). Jedes Akzeptanzkriterium verifizieren; Korrektheit, Edge-Cases, Constitution-Konformität, Sicherheit, Spec-Drift, Wartbarkeit.
+
+#### Weiterentwicklung
+
+**`/esc:evolve`** — Neue Features erarbeiten
+- **Zweck:** nach einem fertigen Stand kritisch neue Features entwickeln (aus Code + Doku), priorisieren und als neue Epics/Stories in die Pipeline einspeisen.
 
 #### Querschnitt (jederzeit)
 
-**`/esc:status`** — Stand & nächster Schritt (reiner Lese-Skill): Level, Phasen, Gates, Story-Fortschritt + konkrete Empfehlung.
-**`/esc:track`** — `esc/TRACKER.md` regenerieren. **`/esc:docs`** — `esc/DOCUMENTATION.md` pflegen. (Beide laufen am Ende jeder Phase automatisch mit.)
+**`/esc:status`** — Stand & nächster Schritt (reiner Lese-Skill).
+**`/esc:track`** — `esc/TRACKER.md` regenerieren. **`/esc:docs`** — `esc/docs/DOCUMENTATION.md` pflegen. (Beide laufen nebenbei mit.)
 
-#### Personas auf Abruf
+#### Sichtweisen auf Abruf
 
-**`/esc:consult [persona] [frage]`** — eine Persona gezielt befragen („was würde Einstein zur DB-Wahl sagen?").
-**`/esc:council [frage]`** — Party-Mode: mehrere Personas debattieren eine Entscheidung und liefern eine Synthese.
-**`/esc:challenge [artefakt]`** — Sokrates' adversarialer Zweit-Pass: ein frischer Subagent liest ein fertiges Artefakt ohne Bias gegen und meldet konkrete Befunde.
+**`/esc:consult [sichtweise] [frage]`** — eine kritische Sichtweise gezielt auf eine Frage anlegen.
+**`/esc:council [frage]`** — mehrere Sichtweisen debattieren eine Entscheidung und liefern eine Synthese.
+**`/esc:challenge [artefakt]`** — skeptischer Zweit-Pass: ein frischer Subagent liest ein Artefakt ohne Bias gegen und meldet konkrete Befunde.
 
 ---
 
@@ -294,45 +291,52 @@ flowchart TB
 /esc:init "Eine App, mit der Vereine Mitgliedsbeiträge verwalten und Mahnungen verschicken"
    → ESC fragt nach Problem, Zielgruppe, Greenfield/Brownfield, Größe
    → schlägt Level 3 vor, erarbeitet die Constitution
-   → legt esc/state.yaml, esc/constitution.md, esc/TRACKER.md, esc/DOCUMENTATION.md an
+   → legt esc/state.yaml, esc/docs/constitution.md, esc/TRACKER.md, esc/docs/DOCUMENTATION.md an
 
-/esc:discover      → Product Brief (Problem, JTBD, Scope inkl. Non-Goals, Pre-Mortem)
-/esc:prd           → Requirements in EARS, Erfolgsmetriken (beide Gates)
+/esc:discover      → Product Brief — Abschnitt für Abschnitt, kritisch hinterfragt
+/esc:prd           → Ziele/Metriken + FR & NFR getrennt (functional.md / non-functional.md)
 /esc:ux            → Screen-Inventar, Flows, Zustände
 /esc:architecture  → 3 ADRs (DB, Auth, Mailversand) mit Pro/Contra
 /esc:epics         → Readiness-Gate ✓, Epics + Stories mit Akzeptanzkriterien
 
 /esc:story 1.1     → angereicherte Story-Datei
 /esc:implement 1.1 → TDD-Umsetzung, Tests grün
-/esc:review 1.1    → adversariales Review, Story auf „done"
+/esc:review 1.1    → skeptisches Review, Story auf „done"
 /esc:status        → „Als Nächstes: /esc:story 1.2"
+...
+/esc:evolve        → wenn die Iteration steht: neue Features → neue Epics/Stories
 ```
 
-Während des gesamten Laufs zeigen `esc/TRACKER.md` (Fortschritt) und `esc/DOCUMENTATION.md`
+Während des gesamten Laufs zeigen `esc/TRACKER.md` (Fortschritt) und `esc/docs/DOCUMENTATION.md`
 (Architektur, Datenmodell, Flows) jederzeit den aktuellen Stand — direkt als gerenderte Diagramme.
 
 ---
 
 ## Der `esc/`-Workspace
 
-ESC legt im **Ziel-Projekt** (dem Produkt, das du baust) einen sichtbaren `esc/`-Ordner an
-(bewusst kein Dot-Ordner, damit IDE/LLM ihn indexieren):
+ESC trennt **Prozess-State** (direkt in `esc/`) von der **Produkt-Doku** (gebündelt in `esc/docs/`).
+Der Ordner ist bewusst kein Dot-Ordner, damit IDE/LLM ihn indexieren:
 
 ```text
 esc/
-├── state.yaml            # Single Source of Truth (Level, Phase, Gates, Decisions, Stories)
-├── constitution.md       # Nicht-verhandelbare Guardrails für die KI
-├── TRACKER.md            # Mitlaufender Projekt-Tracker (Mermaid)
-├── DOCUMENTATION.md      # Lebende Doku (Mermaid: Kontext, Architektur, ER, Flows)
-├── product-brief.md       # aus /esc:discover
-├── prd.md                # aus /esc:prd  (oder quick-spec.md bei Level 0/1)
-├── ux-spec.md            # aus /esc:ux
-├── architecture.md        # aus /esc:architecture
-├── decisions/            # ADRs
-│   └── ADR-0001-*.md
-├── epics.md              # aus /esc:epics
-└── stories/
-    └── 1.1-*.md
+├── state.yaml                # Prozess-State + Decision-Log — Single Source of Truth
+├── TRACKER.md                # Mitlaufender Fortschritts-Tracker (Mermaid)
+└── docs/                     # die gesamte Produkt-Dokumentation (das Deliverable)
+    ├── DOCUMENTATION.md      # lebende Doku-Übersicht (Mermaid: Kontext, Architektur, ER, Flows)
+    ├── constitution.md       # Nicht-verhandelbare Guardrails für die KI
+    ├── product-brief.md      # aus /esc:discover
+    ├── prd.md                # aus /esc:prd  (oder quick-spec.md bei Level 0/1)
+    ├── requirements/
+    │   ├── functional.md     # FR — funktionale Anforderungen (testbar)
+    │   └── non-functional.md # NFR — nicht-funktionale Anforderungen
+    ├── ux-spec.md            # aus /esc:ux
+    ├── architecture/
+    │   ├── architecture.md   # aus /esc:architecture
+    │   └── decisions/        # ADRs
+    │       └── ADR-0001-*.md
+    ├── epics.md              # aus /esc:epics
+    └── stories/
+        └── 1.1-*.md
 ```
 
 ---
@@ -382,14 +386,12 @@ cp -R skills/* ~/.claude/skills/
 
 Dann heißen die Befehle **ohne** Namespace: `/init`, `/discover`, … (Kollisionsrisiko mit anderen
 Skills; deshalb ist der Plugin-Weg sauberer). Die `shared/`-Referenzen werden in diesem Fall über
-`${CLAUDE_PLUGIN_ROOT}` nicht aufgelöst — kopiere dann auch `shared/` und `scripts/` an einen festen
-Ort und passe die Pfade an, oder nutze Variante A/B.
+`${CLAUDE_PLUGIN_ROOT}` nicht aufgelöst — nutze dann besser Variante A/B.
 
 ### Claude Desktop / IDE-Erweiterungen
 
 Die Claude-Desktop-App und die IDE-Erweiterungen nutzen dieselbe Claude-Code-Engine. Öffne dort den
-Plugin-/Befehls-Dialog und führe dieselben `/plugin`-Befehle wie unter Variante A aus. Einmal
-installiert, sind die `/esc:*`-Befehle in allen Oberflächen verfügbar.
+Plugin-/Befehls-Dialog und führe dieselben `/plugin`-Befehle wie unter Variante A aus.
 
 ### Verifizieren
 
@@ -423,24 +425,22 @@ installiert, sind die `/esc:*`-Befehle in allen Oberflächen verfügbar.
 
 - **Starte im Produkt-Projekt, nicht im ESC-Repo.** Der `esc/`-Ordner gehört zu dem, was du baust.
 - **Vertraue dem Level.** Bei kleinem Kram wählt `init` Level 0/1 und führt dich über eine Quick-Spec
-  direkt zur Umsetzung — kein PRD-Overhead. Du kannst tiefere Phasen jederzeit per Opt-in erzwingen.
-- **Nimm die Gates ernst.** Die Pflicht-Vertiefungen (Pre-Mortem, Edge-Case-Jagd …) sind dort, wo die
-  meisten Spec-Fehler entstehen. Hier zahlt sich Gründlichkeit am stärksten aus.
-- **Committe den `esc/`-Ordner mit.** TRACKER.md und DOCUMENTATION.md sind reviewbare, gerenderte
+  direkt zur Umsetzung — du kannst tiefere Phasen jederzeit per Opt-in erzwingen.
+- **Nimm die Gates ernst.** Dort, wo die skeptische Sicht angreift, entstehen die meisten Spec-Fehler.
+- **Committe `esc/docs/` mit.** Specs, ADRs, TRACKER und DOCUMENTATION sind reviewbare, gerenderte
   Artefakte — ideal für Pull Requests und Übergaben.
-- **Pausieren ist gefahrlos.** Da der State auf der Platte liegt, kannst du jederzeit aufhören und mit
-  `/esc:status` wieder einsteigen.
-- **Eine Story nach der anderen.** `story → implement → review` pro Story; das hält den Kontext klein
-  und die Qualität hoch.
+- **Pausieren ist gefahrlos.** Da der State auf der Platte liegt, steigst du mit `/esc:status` wieder ein.
+- **Eine Story nach der anderen.** `story → implement → review` pro Story; das hält den Kontext klein.
 
 ---
 
 ## FAQ
 
-**Brauche ich BMAD dafür?** Nein. ESC ist eigenständig und unabhängig lauffähig.
-
 **Muss ich alle Phasen durchlaufen?** Nein — das Level steuert, welche Phasen aktiv sind. ESC
 überspringt nichts still, sondern weist auf ausgelassene Phasen hin und lässt dich opt-in nachziehen.
+
+**Wie behalte ich die Kontrolle über die Specs?** Jeder Abschnitt wird einzeln vorgeschlagen, kritisch
+hinterfragt und erst nach deiner Zustimmung festgeschrieben (Co-Authoring).
 
 **Funktioniert es ohne Python?** Ja. `scripts/render_tracker.py` ist nur ein deterministischer Helfer
 mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker selbst.
@@ -456,20 +456,22 @@ mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker se
 ```text
 .
 ├── .claude-plugin/
-│   ├── plugin.json          # Plugin-Manifest (name: esc, v1.1.0)
+│   ├── plugin.json          # Plugin-Manifest (name: esc, v1.2.0)
 │   └── marketplace.json     # Lokales Marketplace (esc-local) zum Testen/Entwickeln
-├── skills/                  # Die 15 Skills (je SKILL.md)
+├── skills/                  # Die 16 Skills (je SKILL.md)
 │   ├── init/  discover/  prd/  ux/  architecture/  epics/
-│   ├── story/  implement/  review/  status/  track/  docs/
-│   └── consult/  council/  challenge/        # Persona-Skills
+│   ├── story/  implement/  review/  evolve/
+│   ├── status/  track/  docs/
+│   └── consult/  council/  challenge/        # Sichtweisen auf Abruf
 ├── scripts/
 │   └── render_tracker.py    # Deterministisches TRACKER.md-Rendering (stdlib-only Fallback)
 ├── shared/                  # Geteilte Referenzen, die alle Skills laden
 │   ├── principles.md        # Leitprinzipien
 │   ├── levels.md            # Scale-adaptive Level 0–4
-│   ├── ears-guide.md        # EARS-Notation
+│   ├── requirements-syntax.md # Testbare Anforderungssyntax
 │   ├── elicitation.md       # Frage-Protokoll (Auswahl-first) + Vertiefungs-Methoden
-│   ├── personas.md          # Der Experten-Cast (Curie, Jobs, Einstein, Sokrates …)
+│   ├── coauthoring.md       # Abschnitt-für-Abschnitt-Protokoll
+│   ├── viewpoints.md        # Die kritischen Sichtweisen
 │   ├── intensity.md         # Intensitäts-Regler (Schärfe nach Level)
 │   ├── state.md             # state.yaml-Schema + Workspace-Konventionen
 │   ├── tracking.md          # Tracker- & Doku-Format (Mermaid-Vorlagen)
@@ -482,6 +484,3 @@ mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker se
 ## Lizenz
 
 MIT © Erik Schröder
-
-*Inspiriert von BMAD v6, GitHub Spec-Kit und Kiro/EARS — mit eigenem Fokus auf erzwungene kritische
-Elicitation, Begründungspflicht und mitlaufende Doku.*

@@ -8,7 +8,7 @@ nächste speist. Code ist die letzte, nicht die erste Aktivität.
 
 ## 2. Specs sind Guardrails für die KI
 Specs existieren, um der KI-Implementierung **klare Grenzen** zu setzen: was gebaut wird, was nicht
-(Non-Goals), welche Regeln gelten (Constitution), wann es fertig ist (EARS-Akzeptanzkriterien).
+(Non-Goals), welche Regeln gelten (Constitution), wann es fertig ist (testbare Akzeptanzkriterien).
 Eine gute Spec lässt keinen Raum für Halluzination oder Scope-Creep.
 
 ## 3. WAS vor WIE
@@ -17,10 +17,10 @@ Technologieentscheidungen fallen bewusst erst in `esc:architecture`. Dieselbe Sp
 verschiedenen Stacks umgesetzt werden.
 
 ## 4. Testbar oder es zählt nicht
-Anforderungen und Akzeptanzkriterien in EARS-Notation (`shared/ears-guide.md`). Vage Aussagen
-(„schnell", „benutzerfreundlich") werden zurückgewiesen und in messbare Form gebracht.
+Anforderungen und Akzeptanzkriterien in fester, testbarer Syntax (`shared/requirements-syntax.md`).
+Vage Aussagen („schnell", „benutzerfreundlich") werden zurückgewiesen und in messbare Form gebracht.
 
-## 5. Begründungen festhalten (gegen den v6-Fehler)
+## 5. Begründungen festhalten
 Jede wichtige Entscheidung wird mit **Trade-offs und verworfenen Alternativen** ins Decision-Log
 geschrieben. Bei Technologie immer 2–3 Optionen mit Pro/Contra zeigen, bevor empfohlen wird.
 
@@ -43,3 +43,8 @@ Präzise definieren, was zählt — den Rest dem Urteil der KI überlassen.
 ## 10. Verifikation statt Behauptung
 Kein „fertig" ohne Beleg: Tests existieren und laufen, Build ist grün, Akzeptanzkriterien erfüllt.
 Niemals über Tests oder Status lügen.
+
+## 11. Der Nutzer behält die Kontrolle
+Specs werden **Abschnitt für Abschnitt** gemeinsam erarbeitet (`shared/coauthoring.md`): entwerfen,
+kritisch hinterfragen, der Nutzer entscheidet — erst dann der nächste Abschnitt. ESC schlägt vor und
+fordert heraus, schreibt aber nichts ohne Zustimmung fest.

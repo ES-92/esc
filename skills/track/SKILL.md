@@ -19,17 +19,17 @@ Existiert `esc/state.yaml` nicht, auf `esc:init` verweisen und stoppen.
 
 ### 2. Rendern — zwei Wege
 1. **Bevorzugt (deterministisch):** Versuche das Skript:
-   ```
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_tracker.py esc
-   ```
-   Meldet es Erfolg („TRACKER.md geschrieben"), bist du fertig mit dem Rendern.
+  ```
+  python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_tracker.py esc
+  ```
+  Meldet es Erfolg („TRACKER.md geschrieben"), bist du fertig mit dem Rendern.
 2. **Fallback (manuell):** Meldet das Skript, dass es übersprungen hat (kein Python/nicht parsebar),
-   oder ist es nicht vorhanden, dann erzeuge `esc/TRACKER.md` selbst exakt nach der Vorlage in
-   `shared/tracking.md`:
-   - Pipeline-Flowchart: jeden Knoten nach `artifacts`-Status stylen (done/active/pending), für das
-     Level nicht vorgesehene Phasen als `:::skipped`.
-   - Artefakt-, Gate-, Story-Tabellen + Story-Pie aus `state.yaml`.
-   - Decision-Log aus dem `decisions`-Array; Risiken/offene Fragen aus den Artefakten.
+  oder ist es nicht vorhanden, dann erzeuge `esc/TRACKER.md` selbst exakt nach der Vorlage in
+  `shared/tracking.md`:
+  - Pipeline-Flowchart: jeden Knoten nach `artifacts`-Status stylen (done/active/pending), für das
+   Level nicht vorgesehene Phasen als `:::skipped`.
+  - Artefakt-, Gate-, Story-Tabellen + Story-Pie aus `state.yaml`.
+  - Decision-Log aus dem `decisions`-Array; Risiken/offene Fragen aus den Artefakten.
 
 ### 3. Kurz bestätigen
 Eine Zeile: was sich seit dem letzten Stand geändert hat (z. B. „PRD abgeschlossen, Phase → ux").

@@ -6,21 +6,30 @@ die **Single Source of Truth** — ein frischer Agent kann jederzeit aus ihnen w
 ## Workspace-Layout (im ZIEL-Projekt, das gebaut wird)
 
 ```
-esc/                      # bewusst KEIN Dot-Ordner (Dot-Ordner werden von IDE/LLM-Kontext gefiltert)
-├── state.yaml              # Pipeline-Status + Decision-Log — Single Source of Truth
-├── constitution.md         # Nicht-verhandelbare Guardrails für die KI-Entwicklung
-├── product-brief.md        # Phase: discover
-├── prd.md                  # Phase: prd (oder quick-spec.md bei Level 0/1)
-├── ux-spec.md              # Phase: ux (wenn UI-relevant)
-├── architecture.md         # Phase: architecture
-├── decisions/              # ADRs (Architecture Decision Records)
-│   └── ADR-0001-<slug>.md
-├── epics.md                # Phase: epics
-└── stories/
-    └── <epic>.<nr>-<slug>.md
+esc/                          # bewusst KEIN Dot-Ordner (Dot-Ordner werden von IDE/LLM gefiltert)
+├── state.yaml                # Prozess-State + Decision-Log — Single Source of Truth
+├── TRACKER.md                # Mitlaufender Fortschritts-Tracker
+└── docs/                     # die gesamte Produkt-Dokumentation (das Deliverable)
+    ├── DOCUMENTATION.md      # lebende Doku-Übersicht (Diagramme)
+    ├── constitution.md       # Nicht-verhandelbare Guardrails für die KI-Entwicklung
+    ├── product-brief.md      # Phase: discover
+    ├── prd.md                # Phase: prd (Überblick; bei Level 0/1 stattdessen quick-spec.md)
+    ├── requirements/
+    │   ├── functional.md     # FR — funktionale Anforderungen (testbar)
+    │   └── non-functional.md # NFR — nicht-funktionale Anforderungen
+    ├── ux-spec.md            # Phase: ux (wenn UI-relevant)
+    ├── architecture/
+    │   ├── architecture.md   # Phase: architecture
+    │   └── decisions/        # ADRs (Architecture Decision Records)
+    │       └── ADR-0001-<slug>.md
+    ├── epics.md              # Phase: epics
+    └── stories/
+        └── <epic>.<nr>-<slug>.md
 ```
 
-> Hinweis: `esc/` liegt im jeweiligen Produkt-Projekt, NICHT im ESC-Skill-Repo.
+> Hinweise: `esc/` liegt im jeweiligen Produkt-Projekt, NICHT im ESC-Skill-Repo.
+> **Prozess-State** (`state.yaml`, `TRACKER.md`) liegt direkt in `esc/`; die **Produkt-Doku**
+> (Specs, FR/NFR, ADRs, Diagramme) gebündelt in `esc/docs/`.
 
 ## `esc/state.yaml` — Schema
 

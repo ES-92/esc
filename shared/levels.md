@@ -16,7 +16,7 @@ braucht ein PRD oder eine Architektur. `esc:init` klassifiziert einmalig und sch
 
 ### Erkennungs-Heuristiken (für `esc:init`)
 - **Story-Anzahl** (geschätzt), **Anzahl betroffener Subsysteme**, **Neuheitsgrad** (Greenfield vs. Brownfield),
-  **Architektur-Risiko** (neue Technologie/Persistenz/externe Integration?), **Reversibilität**.
+ **Architektur-Risiko** (neue Technologie/Persistenz/externe Integration?), **Reversibilität**.
 - Im Zweifel **eine Stufe niedriger** wählen — Phasen lassen sich jederzeit per Opt-in nachziehen.
 
 ## Welche Phasen pro Level (Default)
@@ -25,16 +25,16 @@ braucht ein PRD oder eine Architektur. `esc:init` klassifiziert einmalig und sch
 |---|---|---|---|---|---|
 | `esc:init` (Constitution + State) | ✓ | ✓ | ✓ | ✓ | ✓ |
 | `esc:discover` (Product Brief) | – | optional | ✓ | ✓ | ✓ |
-| `esc:prd` (Requirements/EARS) | Quick-Spec¹ | Quick-Spec¹ | ✓ | ✓ | ✓ |
+| `esc:prd` (Requirements) | Quick-Spec¹ | Quick-Spec¹ | ✓ | ✓ | ✓ |
 | `esc:ux` (UX-Spec) | – | wenn UI | wenn UI | wenn UI | ✓ |
 | `esc:architecture` (ADRs) | – | – | leicht² | ✓ | ✓ |
 | `esc:epics` (Epics & Stories) | 1 Story | ✓ | ✓ | ✓ | ✓ |
 | `esc:story` + `esc:implement` | ✓ | ✓ | ✓ | ✓ | ✓ |
 | `esc:review` | ✓ | ✓ | ✓ | ✓ | ✓ |
 
-¹ **Quick-Spec**: ein einziges schlankes Dokument (`esc/quick-spec.md`) statt vollem PRD —
-   Problem, Lösung, Akzeptanzkriterien (EARS), betroffene Dateien. `esc:prd` erkennt Level 0/1
-   automatisch und erzeugt diese Kurzform.
+¹ **Quick-Spec**: ein einziges schlankes Dokument (`esc/docs/quick-spec.md`) statt vollem PRD —
+  Problem, Lösung, Akzeptanzkriterien (testbar), betroffene Dateien. `esc:prd` erkennt Level 0/1
+  automatisch und erzeugt diese Kurzform.
 ² **leicht**: nur ADRs für die ein, zwei nicht-trivialen Entscheidungen, kein volles Architektur-Dokument.
 
 ## Routing-Regel
