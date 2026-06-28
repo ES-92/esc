@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.6.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.7.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -78,6 +78,9 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
   Features und speist sie als Epics/Stories zurück in die Pipeline.
 - 🖥️ **Optionaler Doku-Viewer.** Auf Wunsch serviert ESC die Doku als leichte lokale Website (docsify —
   zero-build, kein `node_modules`); angeboten bei `esc:init`/`esc:docs`, der Port wird explizit erfragt.
+- 🎨 **Visuelle UX (optional).** `esc:ux` bietet einen intensiveren Modus: pro Schlüssel-Screen 3–4
+  HTML/CSS/JS-Mockup-Varianten zur Auswahl, mit Live-Browser-Preview (Wireframe → volle Fidelity, deine
+  Wahl). Die gewählte Richtung wird in die UX-Spec destilliert — Mockup bleibt Referenz, nicht Spec.
 - 🇩🇪 **Durchgängig deutsch** und auf Terminal-Bedienung per Auswahl (Pfeil + Leertaste) ausgelegt.
 
 ---
@@ -483,6 +486,7 @@ mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker se
 │   ├── viewpoints.md        # Die kritischen Sichtweisen
 │   ├── intensity.md         # Intensitäts-Regler (Schärfe nach Level)
 │   ├── viewer.md            # Optionaler docsify-Doku-Viewer (Setup & Serve)
+│   ├── mockups.md           # Visuelle UX-Erarbeitung (HTML-Mockup-Varianten)
 │   ├── state.md             # state.yaml-Schema + Workspace-Konventionen
 │   ├── tracking.md          # Tracker- & Doku-Format (Mermaid-Vorlagen)
 │   └── templates/           # ADR-Template, docsify-index.html u. a.
