@@ -16,7 +16,7 @@ Ziel: eine Frage aus **einer** kritischen Sichtweise beleuchten — kurz, scharf
 ## Ablauf
 1. **Sichtweise bestimmen.** Aus `$ARGUMENTS`. Ist keine genannt, schlage die 2–4 relevantesten
    Sichtweisen zur Frage als Auswahl vor (AskUserQuestion) und lass wählen.
-2. **Kontext laden.** Bezieht sich die Frage auf ein Artefakt (`esc/docs/prd.md`, eine ADR …), lies es kurz.
+2. **Kontext laden.** Bezieht sich die Frage auf ein Artefakt (`esc/specs/prd.md`, eine ADR …), lies es kurz.
 3. **Aus der Linse antworten.** Wende die Leitfrage und den Fokus der Sichtweise **konkret** auf die
    Frage an: Was ist tragfähig, was greift sie an, welche Annahme prüft sie, was empfiehlt sie?
    Keine generischen Floskeln — immer auf *diese* Frage/dieses Artefakt bezogen.

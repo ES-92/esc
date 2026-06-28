@@ -9,7 +9,7 @@ die **Single Source of Truth** — ein frischer Agent kann jederzeit aus ihnen w
 esc/                          # bewusst KEIN Dot-Ordner (Dot-Ordner werden von IDE/LLM gefiltert)
 ├── state.yaml                # Prozess-State + Decision-Log — Single Source of Truth
 ├── TRACKER.md                # Mitlaufender Fortschritts-Tracker
-└── docs/                     # die gesamte Produkt-Dokumentation (das Deliverable)
+└── specs/                    # die gesamte Produkt-Spezifikation (das Deliverable)
     ├── DOCUMENTATION.md      # lebende Doku-Übersicht (Diagramme)
     ├── constitution.md       # Nicht-verhandelbare Guardrails für die KI-Entwicklung
     ├── product-brief.md      # Phase: discover
@@ -29,7 +29,7 @@ esc/                          # bewusst KEIN Dot-Ordner (Dot-Ordner werden von I
 
 > Hinweise: `esc/` liegt im jeweiligen Produkt-Projekt, NICHT im ESC-Skill-Repo.
 > **Prozess-State** (`state.yaml`, `TRACKER.md`) liegt direkt in `esc/`; die **Produkt-Doku**
-> (Specs, FR/NFR, ADRs, Diagramme) gebündelt in `esc/docs/`.
+> (Specs, FR/NFR, ADRs, Diagramme) gebündelt in `esc/specs/`.
 
 ## `esc/state.yaml` — Schema
 

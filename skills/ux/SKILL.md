@@ -17,7 +17,7 @@ Abschnitt für Abschnitt (`${CLAUDE_PLUGIN_ROOT}/shared/coauthoring.md`).
 
 ## Lies zuerst
 - `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`, `${CLAUDE_PLUGIN_ROOT}/shared/requirements-syntax.md`
-- `esc/state.yaml`, `esc/docs/prd.md`, `esc/docs/constitution.md`
+- `esc/state.yaml`, `esc/specs/prd.md`, `esc/specs/constitution.md`
 
 ## Vorbedingung
 Nur sinnvoll, wenn das Produkt eine UI hat. Bei reinen Backends/CLIs/Libraries kurz nachfragen und
@@ -43,7 +43,7 @@ Keine-Rechte**. Interaktions-/Verhaltensregeln als testbare Sätze formulieren
 Barrierefreiheit knapp: Tastatur-Navigation, Fokus, Kontrast, Screenreader-Labels — soweit relevant.
 
 ### 5. UX-Spec schreiben
-`esc/docs/ux-spec.md`: Screen-Inventar & IA · Kern-Flows · Zustände je Ansicht · Verhaltensregeln (testbar) ·
+`esc/specs/ux-spec.md`: Screen-Inventar & IA · Kern-Flows · Zustände je Ansicht · Verhaltensregeln (testbar) ·
 Edge-/Leerzustände · Barrierefreiheit · offene Design-Fragen.
 state.yaml: `artifacts.ux_spec: done`, `phase` weiter. Routen zu `esc:architecture`.
 

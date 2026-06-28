@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.3.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.4.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -73,7 +73,7 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
 - 🛡️ **Specs als Guardrails.** Constitution (nicht-verhandelbare Regeln), explizite Non-Goals und
   testbare Akzeptanzkriterien geben der KI klare Grenzen.
 - 📚 **Gebündelte, mitlaufende Doku.** Die gesamte Produkt-Doku (Specs, FR/NFR getrennt, ADRs, Diagramme)
-  lebt in `esc/docs/` und wird nebenbei mit Mermaid-Diagrammen aktuell gehalten.
+  lebt in `esc/specs/` und wird nebenbei mit Mermaid-Diagrammen aktuell gehalten.
 - 🔁 **Weiterentwicklung eingebaut.** `esc:evolve` erarbeitet nach einem fertigen Stand kritisch neue
   Features und speist sie als Epics/Stories zurück in die Pipeline.
 - 🇩🇪 **Durchgängig deutsch** und auf Terminal-Bedienung per Auswahl (Pfeil + Leertaste) ausgelegt.
@@ -99,7 +99,7 @@ Details: [`shared/levels.md`](shared/levels.md).
 
 ### 2. Die Constitution (Guardrails)
 
-Beim Start erarbeitet ESC eine `esc/docs/constitution.md`: **nicht-verhandelbare Regeln**, an die sich
+Beim Start erarbeitet ESC eine `esc/specs/constitution.md`: **nicht-verhandelbare Regeln**, an die sich
 jede spätere KI-Implementierung halten muss — Stack-Zwänge, Coding-Standards, Test-Anspruch,
 Security/Compliance-Grenzen, Architektur-Leitplanken, Out-of-Scope-Grundsätze. Jede Regel ist prüfbar
 formuliert (eine Zeile, im Zweifel als „MUSS"-Satz).
@@ -170,7 +170,7 @@ die Single Source of Truth, jederzeit pausier- und fortsetzbar. Zwei Dateien lau
 - **`esc/TRACKER.md`** — Pipeline-Fortschritt als Mermaid-Flowchart, Artefakt-/Gate-Status, Story-Board,
   Decision-Log. Deterministisch aus `state.yaml` gerendert (`scripts/render_tracker.py`, stdlib-only
   Fallback) oder vom Skill selbst.
-- **`esc/docs/DOCUMENTATION.md`** — lebende Doku mit Mermaid: Systemkontext, Architektur/Komponenten,
+- **`esc/specs/DOCUMENTATION.md`** — lebende Doku mit Mermaid: Systemkontext, Architektur/Komponenten,
   Datenmodell (`erDiagram`), Kern-Flows (`sequenceDiagram`), Glossar.
 
 Schema & Konventionen: [`shared/state.md`](shared/state.md) · [`shared/tracking.md`](shared/tracking.md).
@@ -222,32 +222,32 @@ flowchart TB
 **`/esc:init "<idee>"`** — Vorhaben starten & klassifizieren
 - **Zweck:** Idee erfassen, scale-adaptiv einstufen (Level 0–4), Workspace anlegen, **Constitution** erarbeiten.
 - **Interaktion:** Kurze Konversation zu Was/Problem/Greenfield-vs-Brownfield/Größe; bei Brownfield wird die Codebase gescannt.
-- **Erzeugt:** `esc/state.yaml`, `esc/docs/constitution.md`, initiale `esc/TRACKER.md` + `esc/docs/DOCUMENTATION.md`.
+- **Erzeugt:** `esc/state.yaml`, `esc/specs/constitution.md`, initiale `esc/TRACKER.md` + `esc/specs/DOCUMENTATION.md`.
 
 #### Phase 1 — Discovery
 
 **`/esc:discover`** — Brainstorming & Analyse → Product Brief
 - **Zweck:** Problemfeld durchdringen (WAS/WARUM, keine Technologie), aus analytischer Sicht.
 - **Themen:** Problem, Zielgruppe & Jobs-to-be-Done, Alternativen, **Inspiration & Wettbewerb** (was du an anderen Produkten magst + eigene KI-Vorschläge, kritisch), Vision, Ziele, Scope (inkl. **Non-Goals**), Risiken & Annahmen.
-- **Erzeugt:** `esc/docs/product-brief.md`.
+- **Erzeugt:** `esc/specs/product-brief.md`.
 
 #### Phase 2 — Definition
 
 **`/esc:prd`** — Requirements definieren
 - **Zweck:** testbare Anforderungen als Guardrails, aus Fokus-Sicht. Bei Level 0/1 stattdessen eine schlanke **Quick-Spec**.
 - **Gates (Pflicht):** messbare Erfolgsmetriken · funktionale Requirements inkl. **Edge-Case-Jagd**.
-- **Erzeugt:** `esc/docs/prd.md` (Überblick) + getrennt `esc/docs/requirements/functional.md` (FR) und `non-functional.md` (NFR).
+- **Erzeugt:** `esc/specs/prd.md` (Überblick) + getrennt `esc/specs/requirements/functional.md` (FR) und `non-functional.md` (NFR).
 
 **`/esc:ux`** — UX-Spezifikation (nur bei UI)
 - **Zweck:** Verhalten der Oberfläche festlegen, aus Nutzer-Sicht — Screen-Inventar, Flows, Zustände (Leer/Lädt/Erfolg/Fehler/Keine-Rechte), Verhaltensregeln, Barrierefreiheit.
-- **Erzeugt:** `esc/docs/ux-spec.md`.
+- **Erzeugt:** `esc/specs/ux-spec.md`.
 
 #### Phase 3 — Design
 
 **`/esc:architecture`** — Solution Design & ADRs
 - **Zweck:** das WIE festlegen, aus Architektur-Sicht — Stack, Struktur, Datenmodell, Schnittstellen.
 - **Gate (Pflicht):** je nicht-trivialer Entscheidung 2–3 Optionen mit Pro/Contra/Risiko, Empfehlung, Vertiefung, dann **ADR** mit verworfenen Alternativen.
-- **Erzeugt:** `esc/docs/architecture/architecture.md` und `esc/docs/architecture/decisions/ADR-*.md`.
+- **Erzeugt:** `esc/specs/architecture/architecture.md` und `esc/specs/architecture/decisions/ADR-*.md`.
 
 #### Phase 4 — Zerlegung
 
@@ -255,13 +255,13 @@ flowchart TB
 - **Zweck:** Anforderungen in vertikal geschnittene, unabhängig testbare Stories zerlegen, aus Planungs-Sicht.
 - **Readiness-Gate:** prüft, ob PRD/UX/Architektur reif sind, bevor Stories entstehen.
 - **Gate (Pflicht):** jede Story hat **testbare Akzeptanzkriterien** mit Requirement-Rückverweis.
-- **Erzeugt:** `esc/docs/epics.md` + Story-Einträge in `state.yaml`.
+- **Erzeugt:** `esc/specs/epics.md` + Story-Einträge in `state.yaml`.
 
 #### Phase 5 — Lieferung (iterativ pro Story)
 
 **`/esc:story <id>`** — Self-contained Story-Kontext
 - **Zweck:** eine Story so anreichern, dass ein frischer Agent sie **ohne weitere Recherche** umsetzen kann (Requirements, ADRs, Constitution-Regeln, echte Dateipfade, Testplan, Out-of-Scope, offene Fragen).
-- **Erzeugt:** `esc/docs/stories/<id>-<slug>.md`.
+- **Erzeugt:** `esc/specs/stories/<id>-<slug>.md`.
 
 **`/esc:implement <id>`** — Testgetriebene Umsetzung
 - **Zweck:** Story **strikt nach Spec** bauen, aus pragmatischer Sicht — red-green-refactor, im Rahmen der Constitution, kein Scope-Creep.
@@ -278,7 +278,7 @@ flowchart TB
 #### Querschnitt (jederzeit)
 
 **`/esc:status`** — Stand & nächster Schritt (reiner Lese-Skill).
-**`/esc:track`** — `esc/TRACKER.md` regenerieren. **`/esc:docs`** — `esc/docs/DOCUMENTATION.md` pflegen. (Beide laufen nebenbei mit.)
+**`/esc:track`** — `esc/TRACKER.md` regenerieren. **`/esc:docs`** — `esc/specs/DOCUMENTATION.md` pflegen. (Beide laufen nebenbei mit.)
 
 #### Sichtweisen auf Abruf
 
@@ -295,7 +295,7 @@ flowchart TB
 /esc:init "Eine App, mit der Vereine Mitgliedsbeiträge verwalten und Mahnungen verschicken"
    → ESC fragt nach Problem, Zielgruppe, Greenfield/Brownfield, Größe
    → schlägt Level 3 vor, erarbeitet die Constitution
-   → legt esc/state.yaml, esc/docs/constitution.md, esc/TRACKER.md, esc/docs/DOCUMENTATION.md an
+   → legt esc/state.yaml, esc/specs/constitution.md, esc/TRACKER.md, esc/specs/DOCUMENTATION.md an
 
 /esc:discover      → Product Brief — Abschnitt für Abschnitt, kritisch hinterfragt
 /esc:prd           → Ziele/Metriken + FR & NFR getrennt (functional.md / non-functional.md)
@@ -311,21 +311,21 @@ flowchart TB
 /esc:evolve        → wenn die Iteration steht: neue Features → neue Epics/Stories
 ```
 
-Während des gesamten Laufs zeigen `esc/TRACKER.md` (Fortschritt) und `esc/docs/DOCUMENTATION.md`
+Während des gesamten Laufs zeigen `esc/TRACKER.md` (Fortschritt) und `esc/specs/DOCUMENTATION.md`
 (Architektur, Datenmodell, Flows) jederzeit den aktuellen Stand — direkt als gerenderte Diagramme.
 
 ---
 
 ## Der `esc/`-Workspace
 
-ESC trennt **Prozess-State** (direkt in `esc/`) von der **Produkt-Doku** (gebündelt in `esc/docs/`).
+ESC trennt **Prozess-State** (direkt in `esc/`) von der **Produkt-Doku** (gebündelt in `esc/specs/`).
 Der Ordner ist bewusst kein Dot-Ordner, damit IDE/LLM ihn indexieren:
 
 ```text
 esc/
 ├── state.yaml                # Prozess-State + Decision-Log — Single Source of Truth
 ├── TRACKER.md                # Mitlaufender Fortschritts-Tracker (Mermaid)
-└── docs/                     # die gesamte Produkt-Dokumentation (das Deliverable)
+└── specs/                    # die gesamte Produkt-Spezifikation (das Deliverable)
     ├── DOCUMENTATION.md      # lebende Doku-Übersicht (Mermaid: Kontext, Architektur, ER, Flows)
     ├── constitution.md       # Nicht-verhandelbare Guardrails für die KI
     ├── product-brief.md      # aus /esc:discover
@@ -431,7 +431,7 @@ Plugin-/Befehls-Dialog und führe dieselben `/plugin`-Befehle wie unter Variante
 - **Vertraue dem Level.** Bei kleinem Kram wählt `init` Level 0/1 und führt dich über eine Quick-Spec
   direkt zur Umsetzung — du kannst tiefere Phasen jederzeit per Opt-in erzwingen.
 - **Nimm die Gates ernst.** Dort, wo die skeptische Sicht angreift, entstehen die meisten Spec-Fehler.
-- **Committe `esc/docs/` mit.** Specs, ADRs, TRACKER und DOCUMENTATION sind reviewbare, gerenderte
+- **Committe `esc/specs/` mit.** Specs, ADRs, TRACKER und DOCUMENTATION sind reviewbare, gerenderte
   Artefakte — ideal für Pull Requests und Übergaben.
 - **Pausieren ist gefahrlos.** Da der State auf der Platte liegt, steigst du mit `/esc:status` wieder ein.
 - **Eine Story nach der anderen.** `story → implement → review` pro Story; das hält den Kontext klein.

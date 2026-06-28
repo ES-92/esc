@@ -19,7 +19,7 @@ ADR/jedem Gate greift die **skeptische Sicht** an; Tiefe nach `level`
 
 ## Lies zuerst
 - `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`, `${CLAUDE_PLUGIN_ROOT}/shared/principles.md`
-- `esc/state.yaml`, `esc/docs/prd.md` (oder quick-spec), `esc/docs/ux-spec.md`, `esc/docs/constitution.md`
+- `esc/state.yaml`, `esc/specs/prd.md` (oder quick-spec), `esc/specs/ux-spec.md`, `esc/specs/constitution.md`
 - Bei Brownfield: bestehende Codebase scannen (Glob/Grep) — Stack, Muster, Konventionen erfassen.
 
 ## Routing nach Level
@@ -46,19 +46,19 @@ Für **jede** nicht-triviale Entscheidung:
 2. Tabelle Option · Pro · Contra · Risiko (bei Bedarf via WebSearch aktuelle Fakten holen).
 3. Empfehlung mit Begründung gegen die Treiber.
 4. **Pflicht-Vertiefung** (Red-Team oder Pre-Mortem) auf die Empfehlung anwenden.
-5. Nutzer entscheiden lassen, dann **ADR schreiben**: `esc/docs/architecture/decisions/ADR-NNNN-<slug>.md` mit
+5. Nutzer entscheiden lassen, dann **ADR schreiben**: `esc/specs/architecture/decisions/ADR-NNNN-<slug>.md` mit
   Status/Kontext/Entscheidung/Begründung/verworfene Alternativen/Konsequenzen.
   Auch ins `decisions`-Log in state.yaml spiegeln.
 Nach allen ADRs `gates.architecture_adrs: true`.
 
 ### 4. Architektur-Dokument (Level 3/4)
-`esc/docs/architecture/architecture.md`: Überblick & Treiber · Systemkontext/Komponenten · Datenmodell (Kern-Entitäten
+`esc/specs/architecture/architecture.md`: Überblick & Treiber · Systemkontext/Komponenten · Datenmodell (Kern-Entitäten
 & Beziehungen) · Schlüssel-Schnittstellen/APIs · Querschnitt (Auth, Fehler, Logging, Tests) ·
 Verweise auf die ADRs · bekannte Risiken. Kein Pseudo-Code — „Right Altitude".
 
 ### 5. Constitution abgleichen
 Prüfe, ob neue verbindliche Regeln entstanden sind (z. B. „Datenzugriff nur über Repository-Layer").
-Wenn ja, in `esc/docs/constitution.md` ergänzen.
+Wenn ja, in `esc/specs/constitution.md` ergänzen.
 
 ### 6. Routen
 state.yaml aktualisieren (`artifacts.architecture: done`, `phase` weiter) → `esc:epics`.

@@ -16,7 +16,7 @@ es? Beweise es mit grünen Tests." Keine Abkürzung, kein Scope-Creep
 (`${CLAUDE_PLUGIN_ROOT}/shared/viewpoints.md`, `${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`).
 
 ## Lies zuerst
-- `esc/docs/stories/<id>-*.md` (maßgeblich), `esc/docs/constitution.md`
+- `esc/specs/stories/<id>-*.md` (maßgeblich), `esc/specs/constitution.md`
 - Bei Lücken/Widersprüchen in der Story: **stoppen** und `esc:story` bzw. den Nutzer einschalten,
  nicht raten.
 

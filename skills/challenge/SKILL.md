@@ -12,13 +12,13 @@ Betriebsblindheit zu durchbrechen. Wer etwas baut, ist nicht der, der es benotet
 
 ## Lies zuerst
 - `${CLAUDE_PLUGIN_ROOT}/shared/viewpoints.md` (skeptische Sicht), `${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`
-- Das zu prüfende Artefakt + `esc/docs/constitution.md`
+- Das zu prüfende Artefakt + `esc/specs/constitution.md`
 
 ## Ablauf
 
 ### 1. Artefakt bestimmen
-Aus `$ARGUMENTS` das Zielartefakt ableiten (`esc/docs/prd.md`, `esc/docs/requirements/functional.md`,
-`esc/docs/architecture/architecture.md`, eine ADR, eine Story, `esc/docs/ux-spec.md`). Unklar? Per
+Aus `$ARGUMENTS` das Zielartefakt ableiten (`esc/specs/prd.md`, `esc/specs/requirements/functional.md`,
+`esc/specs/architecture/architecture.md`, eine ADR, eine Story, `esc/specs/ux-spec.md`). Unklar? Per
 Auswahl die vorhandenen Artefakte anbieten.
 
 ### 2. Frischen Subagenten beauftragen

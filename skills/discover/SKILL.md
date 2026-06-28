@@ -18,7 +18,7 @@ nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`). Erarbeite Abschnitt 
 ## Lies zuerst
 - `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md` (Frage-Protokoll + Vertiefungs-Methoden)
 - `${CLAUDE_PLUGIN_ROOT}/shared/principles.md`
-- `esc/state.yaml` und `esc/docs/constitution.md` (Kontext)
+- `esc/state.yaml` und `esc/specs/constitution.md` (Kontext)
 
 ## Vorbedingung
 `esc/state.yaml` muss existieren (sonst auf `esc:init` verweisen). Prüfe `level`: Bei Level 0/1 ist
@@ -57,7 +57,7 @@ Nach Vision und Scope mindestens **eine** Vertiefungs-Methode anbieten/durchfüh
 (empfohlen: Pre-Mortem oder Stakeholder-Runde), um blinde Flecken aufzudecken.
 
 ### 5. Brief schreiben
-Schreibe `esc/docs/product-brief.md` mit Abschnitten: Problem · Zielgruppe & JTBD · Alternativen ·
+Schreibe `esc/specs/product-brief.md` mit Abschnitten: Problem · Zielgruppe & JTBD · Alternativen ·
 **Inspiration & Wettbewerb** · Vision · Ziele · Scope (MoSCoW inkl. Non-Goals) · Risiken & Annahmen · offene Fragen.
 Aktualisiere `esc/state.yaml`: `artifacts.product_brief: done`, wichtige Entscheidungen ins
 `decisions`-Log, `phase` auf nächste Phase.
@@ -68,7 +68,7 @@ Schlage `esc:prd` als nächsten Schritt vor (bzw. `esc:ux`, falls UI-lastig und 
 ## Definition of Done
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (TRACKER.md) und `esc:docs` (Überblick/Kontext).
 - [ ] Inspiration & Wettbewerb durchgeführt: kurze Web-Wettbewerbsanalyse (immer), Nutzer-Vorlieben *und* eigene Produktvorschläge mit Quellen, je mit Begründung und bewussten Verzichten.
-- [ ] `esc/docs/product-brief.md` deckt alle Gerüst-Abschnitte ab; Non-Goals sind explizit.
+- [ ] `esc/specs/product-brief.md` deckt alle Gerüst-Abschnitte ab; Non-Goals sind explizit.
 - [ ] Mindestens eine kritische Vertiefung erfolgte (Level 3/4: Pflicht).
 - [ ] Offene Annahmen/Fragen sind festgehalten, nicht verschwiegen.
 - [ ] state.yaml und Decision-Log aktualisiert.

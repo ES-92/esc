@@ -18,7 +18,7 @@ Abschnitt für Abschnitt (`${CLAUDE_PLUGIN_ROOT}/shared/coauthoring.md`).
 
 ## Lies zuerst
 - `${CLAUDE_PLUGIN_ROOT}/shared/requirements-syntax.md`, `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`
-- `esc/state.yaml`, `esc/docs/prd.md`/`quick-spec.md`, `esc/docs/architecture/architecture.md`, `esc/docs/ux-spec.md`, `esc/docs/constitution.md`
+- `esc/state.yaml`, `esc/specs/prd.md`/`quick-spec.md`, `esc/specs/architecture/architecture.md`, `esc/specs/ux-spec.md`, `esc/specs/constitution.md`
 
 ## Ablauf
 
@@ -48,9 +48,9 @@ Stelle sicher, dass **jede** Story testbare testbare Kriterien hat. Für risikor
 **Edge-Case-Jagd** durchführen. Danach `gates.story_acceptance: true`.
 
 ### 5. Schreiben
-`esc/docs/epics.md` (Epics + Story-Übersicht in Reihenfolge). Lege je Story einen Eintrag in
+`esc/specs/epics.md` (Epics + Story-Übersicht in Reihenfolge). Lege je Story einen Eintrag in
 `esc/state.yaml` unter `stories` an (`id`, `title`, `status: todo`). Optional pro Story bereits eine
-Datei-Stub in `esc/docs/stories/` — die volle Kontextanreicherung macht `esc:story`.
+Datei-Stub in `esc/specs/stories/` — die volle Kontextanreicherung macht `esc:story`.
 state.yaml: `artifacts.epics: done`, `phase: deliver`.
 
 ### 6. Routen

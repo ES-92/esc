@@ -17,7 +17,7 @@ nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`); ab Level 2 zusätzli
 (frischer Zweit-Pass).
 
 ## Lies zuerst
-- `esc/docs/stories/<id>-*.md` (Akzeptanzkriterien!), `esc/docs/constitution.md`
+- `esc/specs/stories/<id>-*.md` (Akzeptanzkriterien!), `esc/specs/constitution.md`
 - Den tatsächlichen Diff/Code (via Bash `git diff`, Glob/Grep auf die betroffenen Dateien)
 
 ## Ablauf

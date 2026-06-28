@@ -18,10 +18,10 @@ Abschnitt (`${CLAUDE_PLUGIN_ROOT}/shared/coauthoring.md`).
 ## Lies zuerst
 - `${CLAUDE_PLUGIN_ROOT}/shared/requirements-syntax.md` — testbare Anforderungssyntax (verbindlich für Requirements)
 - `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`
-- `esc/state.yaml`, `esc/docs/constitution.md`, `esc/docs/product-brief.md` (falls vorhanden)
+- `esc/state.yaml`, `esc/specs/constitution.md`, `esc/specs/product-brief.md` (falls vorhanden)
 
 ## Routing nach Level (aus state.yaml)
-- **Level 0/1 → Quick-Spec.** Erzeuge `esc/docs/quick-spec.md`: Problem · Lösung in 1–3 Sätzen ·
+- **Level 0/1 → Quick-Spec.** Erzeuge `esc/specs/quick-spec.md`: Problem · Lösung in 1–3 Sätzen ·
  Akzeptanzkriterien (testbar) · betroffene Dateien/Bereiche · Out-of-Scope. Kurz halten, dann zu
  `esc:epics`/`esc:story` routen. Überspringe die übrigen Schritte.
 - **Level 2–4 → volles PRD** (unten).
@@ -44,10 +44,10 @@ und eine eindeutige ID bekommen (`FR-001` …). Pro Bereich:
 1. Happy Path als Ereignis-/Zustands-Anforderungen.
 2. **Edge-Case-Jagd** (Pflicht): Fehlerpfade, leere/maximale Eingaben, Nebenläufigkeit, Rechte →
    als `FALLS … DANN`-Anforderungen ergänzen.
-Schreibe sie nach `esc/docs/requirements/functional.md`. Nach Abschluss `gates.prd_requirements: true`.
+Schreibe sie nach `esc/specs/requirements/functional.md`. Nach Abschluss `gates.prd_requirements: true`.
 
 ### 4. Nicht-funktionale Anforderungen (NFR) — eigenes Dokument
-Erarbeite die NFR nach `esc/docs/requirements/non-functional.md`, gegliedert in: Performance ·
+Erarbeite die NFR nach `esc/specs/requirements/non-functional.md`, gegliedert in: Performance ·
 Sicherheit · Datenschutz · Zugänglichkeit · Skalierung · Betrieb. Nur was relevant ist, jeweils mit
 **messbarer Schwelle**. Verweise auf die Constitution, statt Regeln zu duplizieren.
 
@@ -55,7 +55,7 @@ Sicherheit · Datenschutz · Zugänglichkeit · Skalierung · Betrieb. Nur was r
 Non-Goals explizit auflisten (aus Brief übernehmen/schärfen). Offene Annahmen markieren.
 
 ### 6. PRD-Überblick schreiben
-`esc/docs/prd.md` ist der **Überblick**, der auf die Detail-Dokumente verlinkt: Problem · Ziele &
+`esc/specs/prd.md` ist der **Überblick**, der auf die Detail-Dokumente verlinkt: Problem · Ziele &
 Metriken · Verweis auf `requirements/functional.md` (FR) und `requirements/non-functional.md` (NFR) ·
 Non-Goals · Annahmen & offene Fragen.
 state.yaml: `artifacts.prd: done`, Entscheidungen ins Log, `phase` weiter.

@@ -17,8 +17,8 @@ Story-Kontext (`${CLAUDE_PLUGIN_ROOT}/shared/viewpoints.md`). Bei Unklarheiten f
 Sicht** nach, statt zu raten; Tiefe nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/intensity.md`).
 
 ## Lies zuerst
-- `esc/state.yaml` (Story-Liste + Reihenfolge), `esc/docs/epics.md`
-- `esc/docs/prd.md`/`quick-spec.md`, `esc/docs/architecture/architecture.md`, `esc/docs/architecture/decisions/`, `esc/docs/ux-spec.md`, `esc/docs/constitution.md`
+- `esc/state.yaml` (Story-Liste + Reihenfolge), `esc/specs/epics.md`
+- `esc/specs/prd.md`/`quick-spec.md`, `esc/specs/architecture/architecture.md`, `esc/specs/architecture/decisions/`, `esc/specs/ux-spec.md`, `esc/specs/constitution.md`
 - Relevante Codebase-Stellen via Glob/Grep (tatsächliche Dateipfade, bestehende Muster).
 
 ## Ablauf
@@ -36,7 +36,7 @@ Extrahiere gezielt:
 - UX-Verhaltensregeln (falls UI).
 
 ### 3. Story-Datei schreiben
-`esc/docs/stories/<id>-<slug>.md` mit diesen Abschnitten:
+`esc/specs/stories/<id>-<slug>.md` mit diesen Abschnitten:
 - **Story** — „Als … will ich … damit …".
 - **Akzeptanzkriterien** — nummeriert, jedes testbar (festes Satzmuster).
 - **Kontext & Constraints** — relevante Requirements, ADRs, Constitution-Regeln (zitiert, nicht nur verlinkt).

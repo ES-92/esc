@@ -32,7 +32,7 @@ braucht ein PRD oder eine Architektur. `esc:init` klassifiziert einmalig und sch
 | `esc:story` + `esc:implement` | ✓ | ✓ | ✓ | ✓ | ✓ |
 | `esc:review` | ✓ | ✓ | ✓ | ✓ | ✓ |
 
-¹ **Quick-Spec**: ein einziges schlankes Dokument (`esc/docs/quick-spec.md`) statt vollem PRD —
+¹ **Quick-Spec**: ein einziges schlankes Dokument (`esc/specs/quick-spec.md`) statt vollem PRD —
   Problem, Lösung, Akzeptanzkriterien (testbar), betroffene Dateien. `esc:prd` erkennt Level 0/1
   automatisch und erzeugt diese Kurzform.
 ² **leicht**: nur ADRs für die ein, zwei nicht-trivialen Entscheidungen, kein volles Architektur-Dokument.

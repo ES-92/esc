@@ -18,7 +18,7 @@ Geführt aus **analytischer** und **Fokus-Sicht** (Bedarf vs. bewusster Verzicht
 
 ## Lies zuerst
 - `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`, `${CLAUDE_PLUGIN_ROOT}/shared/coauthoring.md`
-- `esc/state.yaml`, `esc/docs/prd.md`, `esc/docs/requirements/`, `esc/docs/architecture/`, `esc/docs/epics.md`, `esc/docs/constitution.md`
+- `esc/state.yaml`, `esc/specs/prd.md`, `esc/specs/requirements/`, `esc/specs/architecture/`, `esc/specs/epics.md`, `esc/specs/constitution.md`
 - Den **tatsächlichen Code** (Glob/Grep) — was existiert bereits, was sind die Lücken?
 
 ## Vorbedingung
@@ -59,10 +59,10 @@ gezieltes Delta verweisen, statt es zu unterschätzen.
 
 ### 5. Als Epics/Stories anlegen
 Für die ausgewählten Features:
-- neues/erweitertes Epic in `esc/docs/epics.md` mit Zielen,
+- neues/erweitertes Epic in `esc/specs/epics.md` mit Zielen,
 - Stories mit testbaren Akzeptanzkriterien (festes Satzmuster, `shared/requirements-syntax.md`),
 - Einträge in `esc/state.yaml` unter `stories` (`status: todo`).
-Betroffene Requirements in `esc/docs/requirements/functional.md` ergänzen. Entscheidungen ins `decisions`-Log.
+Betroffene Requirements in `esc/specs/requirements/functional.md` ergänzen. Entscheidungen ins `decisions`-Log.
 
 ### 6. Routen
 state.yaml `phase: deliver`. Tracker & Doku aktualisieren. Schlage `esc:story <id>` für die erste neue
