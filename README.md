@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.4.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.5.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -72,8 +72,8 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
   werden kompromisslos geprüft — inkl. Annahmen-Audit und skeptischem Zweit-Pass.
 - 🛡️ **Specs als Guardrails.** Constitution (nicht-verhandelbare Regeln), explizite Non-Goals und
   testbare Akzeptanzkriterien geben der KI klare Grenzen.
-- 📚 **Gebündelte, mitlaufende Doku.** Die gesamte Produkt-Doku (Specs, FR/NFR getrennt, ADRs, Diagramme)
-  lebt in `esc/specs/` und wird nebenbei mit Mermaid-Diagrammen aktuell gehalten.
+- 📚 **Gebündelt & klar getrennt.** Normative Specs (FR/NFR getrennt, ADRs) leben in `esc/specs/`; die
+  generierten Sichten (Fortschritts-Tracker, Diagramm-Doku) in `esc/docs/` — beide nebenbei aktuell gehalten.
 - 🔁 **Weiterentwicklung eingebaut.** `esc:evolve` erarbeitet nach einem fertigen Stand kritisch neue
   Features und speist sie als Epics/Stories zurück in die Pipeline.
 - 🇩🇪 **Durchgängig deutsch** und auf Terminal-Bedienung per Auswahl (Pfeil + Leertaste) ausgelegt.
@@ -167,10 +167,10 @@ Details: [`shared/intensity.md`](shared/intensity.md).
 Der Prozess-Zustand liegt in `esc/state.yaml` (Level, Phase, Gate-Status, Decision-Log, Story-Liste) —
 die Single Source of Truth, jederzeit pausier- und fortsetzbar. Zwei Dateien laufen **nebenbei** mit:
 
-- **`esc/TRACKER.md`** — Pipeline-Fortschritt als Mermaid-Flowchart, Artefakt-/Gate-Status, Story-Board,
+- **`esc/docs/TRACKER.md`** — Pipeline-Fortschritt als Mermaid-Flowchart, Artefakt-/Gate-Status, Story-Board,
   Decision-Log. Deterministisch aus `state.yaml` gerendert (`scripts/render_tracker.py`, stdlib-only
   Fallback) oder vom Skill selbst.
-- **`esc/specs/DOCUMENTATION.md`** — lebende Doku mit Mermaid: Systemkontext, Architektur/Komponenten,
+- **`esc/docs/DOCUMENTATION.md`** — lebende Doku mit Mermaid: Systemkontext, Architektur/Komponenten,
   Datenmodell (`erDiagram`), Kern-Flows (`sequenceDiagram`), Glossar.
 
 Schema & Konventionen: [`shared/state.md`](shared/state.md) · [`shared/tracking.md`](shared/tracking.md).
@@ -222,7 +222,7 @@ flowchart TB
 **`/esc:init "<idee>"`** — Vorhaben starten & klassifizieren
 - **Zweck:** Idee erfassen, scale-adaptiv einstufen (Level 0–4), Workspace anlegen, **Constitution** erarbeiten.
 - **Interaktion:** Kurze Konversation zu Was/Problem/Greenfield-vs-Brownfield/Größe; bei Brownfield wird die Codebase gescannt.
-- **Erzeugt:** `esc/state.yaml`, `esc/specs/constitution.md`, initiale `esc/TRACKER.md` + `esc/specs/DOCUMENTATION.md`.
+- **Erzeugt:** `esc/state.yaml`, `esc/specs/constitution.md`, initiale `esc/docs/TRACKER.md` + `esc/docs/DOCUMENTATION.md`.
 
 #### Phase 1 — Discovery
 
@@ -278,7 +278,7 @@ flowchart TB
 #### Querschnitt (jederzeit)
 
 **`/esc:status`** — Stand & nächster Schritt (reiner Lese-Skill).
-**`/esc:track`** — `esc/TRACKER.md` regenerieren. **`/esc:docs`** — `esc/specs/DOCUMENTATION.md` pflegen. (Beide laufen nebenbei mit.)
+**`/esc:track`** — `esc/docs/TRACKER.md` regenerieren. **`/esc:docs`** — `esc/docs/DOCUMENTATION.md` pflegen. (Beide laufen nebenbei mit.)
 
 #### Sichtweisen auf Abruf
 
@@ -295,7 +295,7 @@ flowchart TB
 /esc:init "Eine App, mit der Vereine Mitgliedsbeiträge verwalten und Mahnungen verschicken"
    → ESC fragt nach Problem, Zielgruppe, Greenfield/Brownfield, Größe
    → schlägt Level 3 vor, erarbeitet die Constitution
-   → legt esc/state.yaml, esc/specs/constitution.md, esc/TRACKER.md, esc/specs/DOCUMENTATION.md an
+   → legt esc/state.yaml, esc/specs/constitution.md, esc/docs/TRACKER.md, esc/docs/DOCUMENTATION.md an
 
 /esc:discover      → Product Brief — Abschnitt für Abschnitt, kritisch hinterfragt
 /esc:prd           → Ziele/Metriken + FR & NFR getrennt (functional.md / non-functional.md)
@@ -311,22 +311,24 @@ flowchart TB
 /esc:evolve        → wenn die Iteration steht: neue Features → neue Epics/Stories
 ```
 
-Während des gesamten Laufs zeigen `esc/TRACKER.md` (Fortschritt) und `esc/specs/DOCUMENTATION.md`
+Während des gesamten Laufs zeigen `esc/docs/TRACKER.md` (Fortschritt) und `esc/docs/DOCUMENTATION.md`
 (Architektur, Datenmodell, Flows) jederzeit den aktuellen Stand — direkt als gerenderte Diagramme.
 
 ---
 
 ## Der `esc/`-Workspace
 
-ESC trennt **Prozess-State** (direkt in `esc/`) von der **Produkt-Doku** (gebündelt in `esc/specs/`).
+ESC trennt drei Schichten: **`state.yaml`** (Maschinen-State) · **`specs/`** (normative, co-authored
+Spezifikationen = das Deliverable) · **`docs/`** (generierte, abgeleitete Sichten — nie von Hand editieren).
 Der Ordner ist bewusst kein Dot-Ordner, damit IDE/LLM ihn indexieren:
 
 ```text
 esc/
 ├── state.yaml                # Prozess-State + Decision-Log — Single Source of Truth
-├── TRACKER.md                # Mitlaufender Fortschritts-Tracker (Mermaid)
-└── specs/                    # die gesamte Produkt-Spezifikation (das Deliverable)
-    ├── DOCUMENTATION.md      # lebende Doku-Übersicht (Mermaid: Kontext, Architektur, ER, Flows)
+├── docs/                     # abgeleitete, generierte Sichten (NIE von Hand editieren)
+│   ├── TRACKER.md            # Fortschritts-Tracker (Mermaid, aus state.yaml)
+│   └── DOCUMENTATION.md      # lebende Doku-Übersicht (Mermaid: Kontext, Architektur, ER, Flows)
+└── specs/                    # normative Spezifikationen (das Deliverable, co-authored)
     ├── constitution.md       # Nicht-verhandelbare Guardrails für die KI
     ├── product-brief.md      # aus /esc:discover
     ├── prd.md                # aus /esc:prd  (oder quick-spec.md bei Level 0/1)

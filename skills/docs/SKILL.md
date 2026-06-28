@@ -1,12 +1,12 @@
 ---
 name: docs
-description: Pflegt die mitlaufende, lebende Projekt-Dokumentation esc/specs/DOCUMENTATION.md von ESC mit Mermaid-Diagrammen — Systemkontext, Architektur/Komponenten, Datenmodell (erDiagram), Kern-Flows (sequenceDiagram) und Glossar. Use when the user says "doku aktualisieren", "dokumentation", "diagramme", "esc docs", or wird am Ende relevanter Phasen automatisch aufgerufen.
+description: Pflegt die mitlaufende, lebende Projekt-Dokumentation esc/docs/DOCUMENTATION.md von ESC mit Mermaid-Diagrammen — Systemkontext, Architektur/Komponenten, Datenmodell (erDiagram), Kern-Flows (sequenceDiagram) und Glossar. Use when the user says "doku aktualisieren", "dokumentation", "diagramme", "esc docs", or wird am Ende relevanter Phasen automatisch aufgerufen.
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 
 # esc:docs — Lebende Dokumentation pflegen
 
-Ziel: `esc/specs/DOCUMENTATION.md` als immer aktuelle, diagrammgestützte Sicht auf das Produkt führen.
+Ziel: `esc/docs/DOCUMENTATION.md` als immer aktuelle, diagrammgestützte Sicht auf das Produkt führen.
 Die Doku wird aus den vorhandenen Artefakten abgeleitet, nicht neu erfunden.
 
 ## Lies zuerst

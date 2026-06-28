@@ -55,7 +55,7 @@ Halte die Constitution knapp und prüfbar (eine Regel = eine Zeile, im Zweifel a
 Bei sehr kleinen Vorhaben (Level 0/1) reicht eine Minimal-Constitution (Stack + Test-Regel).
 
 ### 4. Workspace schreiben
-Lege an (per Bash `mkdir -p esc/specs/requirements esc/specs/architecture/decisions esc/specs/stories`):
+Lege an (per Bash `mkdir -p esc/docs esc/specs/requirements esc/specs/architecture/decisions esc/specs/stories`):
 - `esc/state.yaml` nach Schema (`level`, `phase: init`→ als Nächstes setzen, `artifacts` je nach Level
  auf `pending`/`n/a`, leeres `decisions`-Array mit ggf. erster Stack-Entscheidung).
 - `esc/specs/constitution.md` aus Schritt 3.
@@ -63,8 +63,8 @@ Verwende das aktuelle Datum (frage nach oder nutze `date +%F` via Bash) für `cr
 
 ### 5. Tracker & Doku anlegen
 Lege die mitlaufenden Dateien initial an (Vorlagen in `${CLAUDE_PLUGIN_ROOT}/shared/tracking.md`):
-- `esc/TRACKER.md` — via `esc:track` (Skript oder manuell) auf Basis des frischen `state.yaml`.
-- `esc/specs/DOCUMENTATION.md` — Skelett mit Überblick (aus der Idee) und Platzhaltern „_folgt_".
+- `esc/docs/TRACKER.md` — via `esc:track` (Skript oder manuell) auf Basis des frischen `state.yaml`.
+- `esc/docs/DOCUMENTATION.md` — Skelett mit Überblick (aus der Idee) und Platzhaltern „_folgt_".
 
 ### 6. Routen
 Zeige eine kompakte Zusammenfassung (Projekt, Level, welche Phasen vorgesehen sind — Tabelle aus
@@ -78,5 +78,5 @@ Frage, ob direkt weiter (`[1] ja, weiter mit <Skill>` / `[2] später`).
 - [ ] `esc/state.yaml` existiert mit korrektem `level` und Phasen-Plan.
 - [ ] `esc/specs/constitution.md` existiert und ist prüfbar formuliert.
 - [ ] Mindestens die Stack-/Test-Grundregeln sind festgehalten.
-- [ ] `esc/TRACKER.md` und `esc/specs/DOCUMENTATION.md` initial angelegt.
+- [ ] `esc/docs/TRACKER.md` und `esc/docs/DOCUMENTATION.md` initial angelegt.
 - [ ] Nächster Schritt wurde dem Nutzer klar vorgeschlagen.

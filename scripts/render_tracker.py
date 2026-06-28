@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rendert esc/TRACKER.md deterministisch aus esc/state.yaml.
+"""Rendert esc/docs/TRACKER.md deterministisch aus esc/state.yaml.
 
 Best-effort-Helfer für ESC. Wird er nicht ausgeführt (z. B. PyYAML fehlt),
 rendert der Skill den Tracker stattdessen selbst. Bricht den Workflow nie ab (Exit 0).
@@ -182,7 +182,9 @@ def main():
     for d in decisions:
         out.append(f"| {d.get('id','')} | {d.get('topic','')} | {d.get('decision','')} | {d.get('rationale','')} |")
 
-    target = os.path.join(base, "TRACKER.md")
+    docs_dir = os.path.join(base, "docs")
+    os.makedirs(docs_dir, exist_ok=True)
+    target = os.path.join(docs_dir, "TRACKER.md")
     with open(target, "w", encoding="utf-8") as f:
         f.write("\n".join(out) + "\n")
     print(f"[render_tracker] {target} geschrieben.")

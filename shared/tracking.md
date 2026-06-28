@@ -3,17 +3,17 @@
 ESC führt **zwei mitlaufende Markdown-Dateien**, die nebenbei von jeder Phase aktualisiert
 werden — als menschenlesbare Sicht auf den maschinellen Zustand (`esc/state.yaml`):
 
-- `esc/TRACKER.md` — **Projekt-Tracker** (Fortschritt, Status, Decision-Log) — wird **regeneriert**.
-- `esc/specs/DOCUMENTATION.md` — **lebende Dokumentation** (Architektur, Datenmodell, Flows) — wächst inkrementell.
+- `esc/docs/TRACKER.md` — **Projekt-Tracker** (Fortschritt, Status, Decision-Log) — wird **regeneriert**.
+- `esc/docs/DOCUMENTATION.md` — **lebende Dokumentation** (Architektur, Datenmodell, Flows) — wächst inkrementell.
 
 Beide nutzen Mermaid-Diagramme, damit sie in GitHub/IDE direkt gerendert werden.
 
 ## Die mitlaufen-Regel (für alle Phasen-Skills)
 Am Ende jeder Phase, als Teil der Definition of Done, **immer**:
 1. `esc/state.yaml` aktualisieren (autoritativ).
-2. `esc/TRACKER.md` aus `state.yaml` neu erzeugen (siehe Vorlage unten). Wenn das Skript
+2. `esc/docs/TRACKER.md` aus `state.yaml` neu erzeugen (siehe Vorlage unten). Wenn das Skript
    `${CLAUDE_PLUGIN_ROOT}/scripts/render_tracker.py` läuft, darf es genutzt werden; sonst manuell rendern.
-3. `esc/specs/DOCUMENTATION.md` um die Abschnitte ergänzen, die diese Phase liefert (Tabelle unten).
+3. `esc/docs/DOCUMENTATION.md` um die Abschnitte ergänzen, die diese Phase liefert (Tabelle unten).
 Existieren die Dateien noch nicht (erste Phase), aus den Vorlagen neu anlegen.
 
 ## Welche Phase füllt welchen Doku-Abschnitt
@@ -29,7 +29,7 @@ Existieren die Dateien noch nicht (erste Phase), aus den Vorlagen neu anlegen.
 
 ---
 
-## Vorlage: `esc/TRACKER.md`
+## Vorlage: `esc/docs/TRACKER.md`
 
 ````markdown
 # 📊 ESC Tracker — <Projektname>
@@ -90,7 +90,7 @@ pie showData title Story-Status
 
 ---
 
-## Vorlage: `esc/specs/DOCUMENTATION.md`
+## Vorlage: `esc/docs/DOCUMENTATION.md`
 
 ````markdown
 # 📚 <Projektname> — Dokumentation

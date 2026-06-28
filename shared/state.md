@@ -8,9 +8,10 @@ die **Single Source of Truth** — ein frischer Agent kann jederzeit aus ihnen w
 ```
 esc/                          # bewusst KEIN Dot-Ordner (Dot-Ordner werden von IDE/LLM gefiltert)
 ├── state.yaml                # Prozess-State + Decision-Log — Single Source of Truth
-├── TRACKER.md                # Mitlaufender Fortschritts-Tracker
-└── specs/                    # die gesamte Produkt-Spezifikation (das Deliverable)
-    ├── DOCUMENTATION.md      # lebende Doku-Übersicht (Diagramme)
+├── docs/                     # abgeleitete, generierte Sichten (NIE von Hand editieren)
+│   ├── TRACKER.md            # Fortschritts-Tracker (generiert aus state.yaml)
+│   └── DOCUMENTATION.md      # lebende Doku-Übersicht (Diagramme, aus Specs/Code)
+└── specs/                    # normative Spezifikationen (das Deliverable, co-authored)
     ├── constitution.md       # Nicht-verhandelbare Guardrails für die KI-Entwicklung
     ├── product-brief.md      # Phase: discover
     ├── prd.md                # Phase: prd (Überblick; bei Level 0/1 stattdessen quick-spec.md)
@@ -28,8 +29,10 @@ esc/                          # bewusst KEIN Dot-Ordner (Dot-Ordner werden von I
 ```
 
 > Hinweise: `esc/` liegt im jeweiligen Produkt-Projekt, NICHT im ESC-Skill-Repo.
-> **Prozess-State** (`state.yaml`, `TRACKER.md`) liegt direkt in `esc/`; die **Produkt-Doku**
-> (Specs, FR/NFR, ADRs, Diagramme) gebündelt in `esc/specs/`.
+> Drei klar getrennte Schichten: **`state.yaml`** = Maschinen-State (Quelle der Wahrheit für den Prozess) ·
+> **`specs/`** = normative, co-authored Spezifikationen (das eigentliche Deliverable) ·
+> **`docs/`** = generierte, abgeleitete Sichten (`TRACKER.md`, `DOCUMENTATION.md`) — nie von Hand editieren,
+> sie werden aus State bzw. Specs/Code erzeugt.
 
 ## `esc/state.yaml` — Schema
 
