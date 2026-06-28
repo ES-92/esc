@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.7.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.8.0** · Namespace `esc:` · 19 Skills · kritische Sichtweisen · Greenfield & Brownfield · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -29,8 +29,9 @@
 
 ## Was ist ESC?
 
-ESC ist eine Sammlung von **16 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
-Produktentwicklungs-Prozess abbilden. Der Grundgedanke: **Erst die Spezifikation, dann der Code.**
+ESC ist eine Sammlung von **19 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
+Produktentwicklungs-Prozess abbilden — für neue *und* bestehende Projekte. Der Grundgedanke:
+**Erst die Spezifikation, dann der Code.**
 
 Statt einer KI vage Prompts zuzuwerfen und zu hoffen, erarbeitet ESC mit dir **Abschnitt für Abschnitt**
 präzise, testbare Spezifikationen — und betrachtet sie dabei aus wechselnden **kritischen Sichtweisen**.
@@ -81,6 +82,10 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
 - 🎨 **Visuelle UX (optional).** `esc:ux` bietet einen intensiveren Modus: pro Schlüssel-Screen 3–4
   HTML/CSS/JS-Mockup-Varianten zur Auswahl, mit Live-Browser-Preview (Wireframe → volle Fidelity, deine
   Wahl). Die gewählte Richtung wird in die UX-Spec destilliert — Mockup bleibt Referenz, nicht Spec.
+- 🧱 **Greenfield *und* Brownfield.** `esc:map` analysiert bestehenden Code (Stack, Struktur, Datenmodell,
+  Konventionen, Risiken) zu einem AI-lesbaren Ist-Stand, an den sich die Specs binden.
+- 🔗 **Specs als echte Guardrails.** `esc:bind` schreibt eine `CLAUDE.md`, die Claude Code dauerhaft auf
+  die Constitution + Specs verweist — auch außerhalb der ESC-Skills. Plus dedizierter Security-Pass im Review.
 - 🇩🇪 **Durchgängig deutsch** und auf Terminal-Bedienung per Auswahl (Pfeil + Leertaste) ausgelegt.
 
 ---
@@ -220,14 +225,18 @@ flowchart TB
   class track,status side;
 ```
 
-### Die 16 Skills im Detail
+### Die 19 Skills im Detail
 
 #### Phase 0 — Setup
 
 **`/esc:init "<idee>"`** — Vorhaben starten & klassifizieren
 - **Zweck:** Idee erfassen, scale-adaptiv einstufen (Level 0–4), Workspace anlegen, **Constitution** erarbeiten.
 - **Interaktion:** Kurze Konversation zu Was/Problem/Greenfield-vs-Brownfield/Größe; bei Brownfield wird die Codebase gescannt.
-- **Erzeugt:** `esc/state.yaml`, `esc/specs/constitution.md`, initiale `esc/docs/TRACKER.md` + `esc/docs/DOCUMENTATION.md`.
+- **Erzeugt:** `esc/state.yaml`, `esc/specs/constitution.md`, initiale `esc/docs/TRACKER.md` + `esc/docs/DOCUMENTATION.md`. Bietet optional `esc:bind` (CLAUDE.md-Guardrails) an.
+
+**`/esc:map`** — Bestehenden Code erfassen (Brownfield)
+- **Zweck:** Ist-Stand eines bestehenden Projekts faktenbasiert kartieren — Stack, Build/Test, Struktur, Architekturmuster, Datenmodell, Konventionen, Risiken — an den sich alle folgenden Phasen binden.
+- **Erzeugt:** `esc/specs/codebase-map.md`; bei Brownfield der erste Schritt nach `esc:init`.
 
 #### Phase 1 — Discovery
 
@@ -273,7 +282,10 @@ flowchart TB
 - **Verifikation:** Tests/Build/Linter werden tatsächlich ausgeführt; kein „fertig" ohne Beleg.
 
 **`/esc:review <id>`** — Skeptisches Review
-- **Zweck:** kritisch gegen die Spec prüfen (skeptische Sicht). Jedes Akzeptanzkriterium verifizieren; Korrektheit, Edge-Cases, Constitution-Konformität, Sicherheit, Spec-Drift, Wartbarkeit.
+- **Zweck:** kritisch gegen die Spec prüfen (skeptische Sicht). Jedes Akzeptanzkriterium verifizieren; Korrektheit, Edge-Cases, Constitution-Konformität, Spec-Drift, Wartbarkeit — plus dedizierter **Security-Pass** (ab Level 2 als isolierter Subagent).
+
+**`/esc:test [story|feature]`** — Tests aus Akzeptanzkriterien generieren
+- **Zweck:** testbare Akzeptanzkriterien in echte, laufende Tests (Unit/Integration/E2E) überführen — für eine Story oder ein bestehendes Feature, im Test-Framework des Projekts.
 
 #### Weiterentwicklung
 
@@ -284,6 +296,7 @@ flowchart TB
 
 **`/esc:status`** — Stand & nächster Schritt (reiner Lese-Skill).
 **`/esc:track`** — `esc/docs/TRACKER.md` regenerieren. **`/esc:docs`** — `esc/docs/DOCUMENTATION.md` pflegen. (Beide laufen nebenbei mit.)
+**`/esc:bind`** — `CLAUDE.md` im Produkt-Root erzeugen/aktualisieren, die Claude Code dauerhaft auf Constitution + Specs verweist (Specs als ambiente Guardrails).
 
 #### Sichtweisen auf Abruf
 
@@ -469,10 +482,10 @@ mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker se
 ├── .claude-plugin/
 │   ├── plugin.json          # Plugin-Manifest (name: esc, v1.2.0)
 │   └── marketplace.json     # Lokales Marketplace (esc-local) zum Testen/Entwickeln
-├── skills/                  # Die 16 Skills (je SKILL.md)
-│   ├── init/  discover/  prd/  ux/  architecture/  epics/
-│   ├── story/  implement/  review/  evolve/
-│   ├── status/  track/  docs/
+├── skills/                  # Die 19 Skills (je SKILL.md)
+│   ├── init/  map/  discover/  prd/  ux/  architecture/  epics/
+│   ├── story/  implement/  test/  review/  evolve/
+│   ├── status/  track/  docs/  bind/
 │   └── consult/  council/  challenge/        # Sichtweisen auf Abruf
 ├── scripts/
 │   └── render_tracker.py    # Deterministisches TRACKER.md-Rendering (stdlib-only Fallback)

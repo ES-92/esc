@@ -3,6 +3,7 @@ name: implement
 description: Implementiert eine vorbereitete ESC-Story strikt nach ihrer Story-Datei — testgetrieben, im Rahmen von Constitution und Akzeptanzkriterien — und aktualisiert den Status. Use when a story file is ready and the user says "implement", "Story umsetzen", "dev story", "esc implement [id]", or wants to build the code for a prepared story.
 argument-hint: "[story-id, z. B. 1.2]"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+disable-model-invocation: true
 ---
 
 # esc:implement — Story umsetzen
