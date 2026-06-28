@@ -39,9 +39,10 @@ nutzen, falls gegeben.
 **Inspiration & Wettbewerb** (nach `${CLAUDE_PLUGIN_ROOT}/shared/inspiration.md`, beidseitig):
 1. **Frag den Nutzer**, welche Produkte/Apps er mag und *warum* — welche Features/Flows er sich für unser
    Produkt wünscht; destilliere den Bedarf dahinter.
-2. **Schlage zusätzlich selbst** relevante (kommerzielle) Produkte vor und sage je konkret, *was* du
+2. **Immer** eine **kurze Web-Wettbewerbsanalyse** (WebSearch/WebFetch, 2–3 gezielte Suchen) als
+   Grundlage. **Schlage dann selbst** relevante (kommerzielle) Produkte vor und sage je konkret, *was* du
    übernehmen würdest, *warum* (Bezug zu unseren Nutzern/Zielen), *wie* angepasst — und *was bewusst nicht*.
-   Bei Bedarf via WebSearch aktuellen Stand prüfen.
+   Quellen nennen.
 
 **Skeptische Sicht:** Für jede Idee fragen „Löst das ein echtes Problem? Wer will das wirklich? Kopieren
 wir Oberfläche statt Bedarf?" — Passung zu Zielgruppe/Zielen/Constitution prüfen, nicht blind übernehmen.

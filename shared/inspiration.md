@@ -13,11 +13,16 @@ Frag den Nutzer offen: **Welche Produkte/Apps magst du** (auch aus anderen Domä
 es dir? Für jeden Punkt destilliert die KI den **dahinterliegenden Bedarf** und prüft, ob und wie er sich
 auf *dieses* Projekt übertragen lässt.
 
-### B) KI-getrieben — proaktive Vorschläge
+### B) KI-getrieben — proaktive Vorschläge (mit Web-Recherche)
 Danach schlägt die KI **zusätzlich von sich aus** 2–5 relevante (kommerzielle) Produkte/Anwendungen vor —
 auch aus angrenzenden Branchen — und sagt je konkret: **was** sie davon übernehmen würde, **warum** (Bezug
 zu unserem Problem/Nutzer), **wie** angepasst — *und* **was sie bewusst nicht** übernehmen würde
-(Anti-Pattern, schlechter Fit). Bei Bedarf via WebSearch/WebFetch den aktuellen Stand prüfen.
+(Anti-Pattern, schlechter Fit).
+
+**Immer** vorgeschaltet: eine **kurze Web-Wettbewerbsanalyse** (WebSearch/WebFetch) — 2–3 gezielte Suchen
+nach vergleichbaren/konkurrierenden Produkten, um die Vorschläge auf dem aktuellen Stand zu erden. Kurz
+halten (keine ausufernde Marktforschung); die Erkenntnisse fließen in die Vorschläge und werden mit Quelle
+genannt. Bei keinem Netz: transparent vermerken und auf Modellwissen zurückfallen.
 
 ## Kritische Regeln (skeptische Sicht greift an)
 - **Bedarf statt Oberfläche.** Nicht das sichtbare Feature kopieren, sondern den Job-to-be-done dahinter
@@ -31,7 +36,8 @@ zu unserem Problem/Nutzer), **wie** angepasst — *und* **was sie bewusst nicht*
 ## Ablauf
 1. **Sammeln (A):** Nutzer nennt Produkte + was + warum (Auswahl/offen, sofort festhalten).
 2. **Destillieren:** je Punkt → Bedarf dahinter, Übertragbarkeit auf uns, kritische Passungsprüfung.
-3. **Vorschlagen (B):** KI nennt 2–5 weitere Produkte mit „übernehmen / warum / wie / nicht übernehmen".
+3. **Vorschlagen (B):** **immer** zuerst eine kurze Web-Wettbewerbsanalyse, dann nennt die KI 2–5 weitere
+   Produkte mit „übernehmen / warum / wie / nicht übernehmen" — mit Quellen.
 4. **Entscheiden:** Nutzer wählt, was übernommen wird (Auswahl). Übernahmen + Begründung sowie bewusste
    Verzichte festhalten; Entscheidungen ins `decisions`-Log.
 

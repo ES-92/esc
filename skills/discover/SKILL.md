@@ -44,10 +44,12 @@ Erarbeite per Elicitation nacheinander:
 Führe die Inspirations-Analyse nach `${CLAUDE_PLUGIN_ROOT}/shared/inspiration.md` durch:
 1. **Frag den Nutzer**, welche Produkte/Apps er mag — *was genau* (Feature, Flow, Haptik, Geschäftsmodell)
    und *warum* — und destilliere den dahinterliegenden Bedarf sowie die Übertragbarkeit auf dieses Projekt.
-2. **Schlage zusätzlich selbst** 2–5 relevante (kommerzielle) Produkte vor und sage je konkret: *was* du
-   übernehmen würdest, *warum* (Bezug zu unserem Problem/Nutzer), *wie* angepasst — und *was bewusst nicht*.
+2. **Immer** eine **kurze Web-Wettbewerbsanalyse** (WebSearch/WebFetch, 2–3 gezielte Suchen nach
+   vergleichbaren/konkurrierenden Produkten) als Grundlage. **Schlage dann selbst** 2–5 relevante
+   (kommerzielle) Produkte vor und sage je konkret: *was* du übernehmen würdest, *warum* (Bezug zu unserem
+   Problem/Nutzer), *wie* angepasst — und *was bewusst nicht*. Quellen nennen.
 3. Die **skeptische Sicht** prüft jede Übernahme: Bedarf statt Oberfläche, Passung zu Zielgruppe/Zielen/
-   Constitution; Verzichte und Anti-Patterns explizit festhalten. Bei Bedarf via WebSearch aktuellen Stand prüfen.
+   Constitution; Verzichte und Anti-Patterns explizit festhalten.
 Ergebnis: ein Abschnitt „Inspiration & Wettbewerb" (Tabelle Quelle/Übernehmen/Warum/Anpassung + bewusste Verzichte).
 
 ### 4. Kritisch vertiefen (Pflicht bei Level 3/4)
@@ -65,7 +67,7 @@ Schlage `esc:prd` als nächsten Schritt vor (bzw. `esc:ux`, falls UI-lastig und 
 
 ## Definition of Done
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (TRACKER.md) und `esc:docs` (Überblick/Kontext).
-- [ ] Inspiration & Wettbewerb durchgeführt: Nutzer-Vorlieben *und* eigene Produktvorschläge, je mit Begründung und bewussten Verzichten.
+- [ ] Inspiration & Wettbewerb durchgeführt: kurze Web-Wettbewerbsanalyse (immer), Nutzer-Vorlieben *und* eigene Produktvorschläge mit Quellen, je mit Begründung und bewussten Verzichten.
 - [ ] `esc/docs/product-brief.md` deckt alle Gerüst-Abschnitte ab; Non-Goals sind explizit.
 - [ ] Mindestens eine kritische Vertiefung erfolgte (Level 3/4: Pflicht).
 - [ ] Offene Annahmen/Fragen sind festgehalten, nicht verschwiegen.

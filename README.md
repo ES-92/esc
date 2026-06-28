@@ -65,9 +65,9 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
   (analytisch, Fokus, Nutzer, Architektur, Planung, pragmatisch); an den Gates greift die **skeptische
   Sicht** mit konkreten Einwänden an.
 - 🧭 **Inspiration aus echten Produkten.** In Analyse und bei neuen Features fließen bestehende
-  (kommerzielle) Produkte ein — du bringst ein, was dir gefällt und warum, *und* die KI schlägt aktiv
-  Produkte samt konkreter Übernahmen und Begründung vor. Immer kritisch: Bedarf statt Oberfläche, mit
-  bewussten Verzichten.
+  (kommerzielle) Produkte ein — du bringst ein, was dir gefällt und warum, *und* die KI macht **immer eine
+  kurze Web-Wettbewerbsanalyse** und schlägt Produkte samt konkreter Übernahmen, Quellen und Begründung
+  vor. Immer kritisch: Bedarf statt Oberfläche, mit bewussten Verzichten.
 - 🎚️ **Schärfe skaliert mit dem Level.** Kleinkram (Level 0/1) bleibt schnell, große Vorhaben (Level 3/4)
   werden kompromisslos geprüft — inkl. Annahmen-Audit und skeptischem Zweit-Pass.
 - 🛡️ **Specs als Guardrails.** Constitution (nicht-verhandelbare Regeln), explizite Non-Goals und
