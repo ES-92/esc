@@ -132,7 +132,7 @@ angeboten. Protokoll & Vertiefungs-Methoden: [`shared/elicitation.md`](shared/el
 ### 6. Kritische Sichtweisen
 
 Jede Phase wird aus einer **kritischen Sichtweise** geführt — einer Linse, die das Artefakt konkret
-angreift und schärft (kein Deko-Theater):
+angreift und schärft:
 
 | Sichtweise | Phase | Leitfrage |
 |---|---|---|
