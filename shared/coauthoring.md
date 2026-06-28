@@ -30,7 +30,7 @@ Für **jeden** Abschnitt eines Dokuments:
 - **Konsistenz prüfen.** Neue Abschnitte dürfen früheren nicht widersprechen; Widersprüche aktiv ansprechen.
 
 ## Standard-Abschnittsfolgen (Anhalt)
-- **Product Brief:** Problem · Zielgruppe & JTBD · Alternativen · Vision · Ziele · Scope/Non-Goals · Risiken & Annahmen.
+- **Product Brief:** Problem · Zielgruppe & JTBD · Alternativen · Inspiration & Wettbewerb · Vision · Ziele · Scope/Non-Goals · Risiken & Annahmen.
 - **PRD:** Überblick/Problem · Ziele & Metriken · (→ FR-Dokument) · (→ NFR-Dokument) · Non-Goals · Annahmen.
 - **Funktionale Requirements (FR):** je Feature-Bereich ein Abschnitt mit nummerierten, testbaren Anforderungen.
 - **Nicht-funktionale Requirements (NFR):** Performance · Sicherheit · Datenschutz · Zugänglichkeit · Skalierung · Betrieb.

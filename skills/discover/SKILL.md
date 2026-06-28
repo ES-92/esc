@@ -1,6 +1,6 @@
 ---
 name: discover
-description: Discovery-Phase von ESC. Führt interaktiv durch Brainstorming und Analyse und erzeugt einen Product Brief (Problem, Nutzer, Ziele, Scope, Risiken) — noch ohne Technologie. Use when the user has run esc:init and wants to explore/analyze the idea, says "lass uns brainstormen", "discovery", "product brief", "esc discover", or needs to clarify problem and audience before writing a PRD.
+description: Discovery-Phase von ESC. Führt interaktiv durch Brainstorming und Analyse, betrachtet kritisch bestehende (kommerzielle) Produkte als Inspiration (was der Nutzer mag und warum, plus eigene Vorschläge der KI mit Begründung) und erzeugt einen Product Brief (Problem, Nutzer, Inspiration, Ziele, Scope, Risiken) — noch ohne Technologie. Use when the user has run esc:init and wants to explore/analyze the idea, says "lass uns brainstormen", "discovery", "product brief", "esc discover", or needs to clarify problem and audience before writing a PRD.
 allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion, WebSearch, WebFetch
 ---
 
@@ -40,24 +40,32 @@ Erarbeite per Elicitation nacheinander:
 6. **Scope** — MoSCoW: Must / Should / Could / **Won't** (Non-Goals explizit!).
 7. **Risiken & offene Annahmen** — was muss wahr sein, damit das funktioniert?
 
-Bei größeren Vorhaben (Level 3/4) optional **Research** anbieten: Markt/Wettbewerb/Domäne via
-WebSearch/WebFetch recherchieren und Erkenntnisse einarbeiten — nur auf Wunsch des Nutzers.
+### 3. Inspiration & Wettbewerb (kritisch, beidseitig)
+Führe die Inspirations-Analyse nach `${CLAUDE_PLUGIN_ROOT}/shared/inspiration.md` durch:
+1. **Frag den Nutzer**, welche Produkte/Apps er mag — *was genau* (Feature, Flow, Haptik, Geschäftsmodell)
+   und *warum* — und destilliere den dahinterliegenden Bedarf sowie die Übertragbarkeit auf dieses Projekt.
+2. **Schlage zusätzlich selbst** 2–5 relevante (kommerzielle) Produkte vor und sage je konkret: *was* du
+   übernehmen würdest, *warum* (Bezug zu unserem Problem/Nutzer), *wie* angepasst — und *was bewusst nicht*.
+3. Die **skeptische Sicht** prüft jede Übernahme: Bedarf statt Oberfläche, Passung zu Zielgruppe/Zielen/
+   Constitution; Verzichte und Anti-Patterns explizit festhalten. Bei Bedarf via WebSearch aktuellen Stand prüfen.
+Ergebnis: ein Abschnitt „Inspiration & Wettbewerb" (Tabelle Quelle/Übernehmen/Warum/Anpassung + bewusste Verzichte).
 
-### 3. Kritisch vertiefen (Pflicht bei Level 3/4)
+### 4. Kritisch vertiefen (Pflicht bei Level 3/4)
 Nach Vision und Scope mindestens **eine** Vertiefungs-Methode anbieten/durchführen
 (empfohlen: Pre-Mortem oder Stakeholder-Runde), um blinde Flecken aufzudecken.
 
-### 4. Brief schreiben
+### 5. Brief schreiben
 Schreibe `esc/docs/product-brief.md` mit Abschnitten: Problem · Zielgruppe & JTBD · Alternativen ·
-Vision · Ziele · Scope (MoSCoW inkl. Non-Goals) · Risiken & Annahmen · offene Fragen.
+**Inspiration & Wettbewerb** · Vision · Ziele · Scope (MoSCoW inkl. Non-Goals) · Risiken & Annahmen · offene Fragen.
 Aktualisiere `esc/state.yaml`: `artifacts.product_brief: done`, wichtige Entscheidungen ins
 `decisions`-Log, `phase` auf nächste Phase.
 
-### 5. Routen
+### 6. Routen
 Schlage `esc:prd` als nächsten Schritt vor (bzw. `esc:ux`, falls UI-lastig und gewünscht).
 
 ## Definition of Done
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (TRACKER.md) und `esc:docs` (Überblick/Kontext).
+- [ ] Inspiration & Wettbewerb durchgeführt: Nutzer-Vorlieben *und* eigene Produktvorschläge, je mit Begründung und bewussten Verzichten.
 - [ ] `esc/docs/product-brief.md` deckt alle Gerüst-Abschnitte ab; Non-Goals sind explizit.
 - [ ] Mindestens eine kritische Vertiefung erfolgte (Level 3/4: Pflicht).
 - [ ] Offene Annahmen/Fragen sind festgehalten, nicht verschwiegen.

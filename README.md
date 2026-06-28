@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.2.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.3.0** · Namespace `esc:` · 16 Skills · kritische Sichtweisen · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -64,6 +64,10 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
 - 🔍 **Kritische Sichtweisen statt Ja-Sager.** Jede Phase betrachtet das Artefakt aus einer Linse
   (analytisch, Fokus, Nutzer, Architektur, Planung, pragmatisch); an den Gates greift die **skeptische
   Sicht** mit konkreten Einwänden an.
+- 🧭 **Inspiration aus echten Produkten.** In Analyse und bei neuen Features fließen bestehende
+  (kommerzielle) Produkte ein — du bringst ein, was dir gefällt und warum, *und* die KI schlägt aktiv
+  Produkte samt konkreter Übernahmen und Begründung vor. Immer kritisch: Bedarf statt Oberfläche, mit
+  bewussten Verzichten.
 - 🎚️ **Schärfe skaliert mit dem Level.** Kleinkram (Level 0/1) bleibt schnell, große Vorhaben (Level 3/4)
   werden kompromisslos geprüft — inkl. Annahmen-Audit und skeptischem Zweit-Pass.
 - 🛡️ **Specs als Guardrails.** Constitution (nicht-verhandelbare Regeln), explizite Non-Goals und
@@ -224,7 +228,7 @@ flowchart TB
 
 **`/esc:discover`** — Brainstorming & Analyse → Product Brief
 - **Zweck:** Problemfeld durchdringen (WAS/WARUM, keine Technologie), aus analytischer Sicht.
-- **Themen:** Problem, Zielgruppe & Jobs-to-be-Done, Alternativen, Vision, Ziele, Scope (inkl. **Non-Goals**), Risiken & Annahmen.
+- **Themen:** Problem, Zielgruppe & Jobs-to-be-Done, Alternativen, **Inspiration & Wettbewerb** (was du an anderen Produkten magst + eigene KI-Vorschläge, kritisch), Vision, Ziele, Scope (inkl. **Non-Goals**), Risiken & Annahmen.
 - **Erzeugt:** `esc/docs/product-brief.md`.
 
 #### Phase 2 — Definition
@@ -471,6 +475,7 @@ mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker se
 │   ├── requirements-syntax.md # Testbare Anforderungssyntax
 │   ├── elicitation.md       # Frage-Protokoll (Auswahl-first) + Vertiefungs-Methoden
 │   ├── coauthoring.md       # Abschnitt-für-Abschnitt-Protokoll
+│   ├── inspiration.md       # Inspiration & Wettbewerb (kritisch, beidseitig)
 │   ├── viewpoints.md        # Die kritischen Sichtweisen
 │   ├── intensity.md         # Intensitäts-Regler (Schärfe nach Level)
 │   ├── state.md             # state.yaml-Schema + Workspace-Konventionen

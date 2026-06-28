@@ -1,6 +1,6 @@
 ---
 name: evolve
-description: Erarbeitet nach einem fertigen Stand neue Features für ein bestehendes ESC-Produkt — analysiert Produkt, Doku und Code, brainstormt kritisch Feature-Ideen, priorisiert sie und legt die ausgewählten direkt als neue Epics und Stories an (Wiedereinstieg in die Pipeline). Use when the user says "neue Features", "was als Nächstes bauen", "Produkt weiterentwickeln", "esc evolve", or is done with the current scope and wants the next iteration.
+description: Erarbeitet nach einem fertigen Stand neue Features für ein bestehendes ESC-Produkt — analysiert Produkt, Doku und Code, brainstormt kritisch Feature-Ideen (inkl. Inspiration aus bestehenden kommerziellen Produkten: was der Nutzer mag und eigene Vorschläge der KI mit Begründung), priorisiert sie und legt die ausgewählten direkt als neue Epics und Stories an. Use when the user says "neue Features", "was als Nächstes bauen", "Produkt weiterentwickeln", "esc evolve", or is done with the current scope and wants the next iteration.
 argument-hint: "[optional: Richtung/Thema]"
 allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion, WebSearch, WebFetch
 ---
@@ -34,8 +34,17 @@ Lücken/Schmerzpunkte? Lass den Nutzer bestätigen/ergänzen.
 ### 2. Feature-Ideen sammeln
 Erarbeite Kandidaten aus mehreren Quellen: offene Annahmen/Risiken aus dem PRD, frühere Non-Goals, die
 jetzt dran sein könnten, Nutzer-Schmerzpunkte, naheliegende Erweiterungen. `$ARGUMENTS` als Richtung
-nutzen, falls gegeben. Optional Markt-/Wettbewerbs-Research (nur auf Wunsch).
-**Skeptische Sicht:** Für jede Idee fragen „Löst das ein echtes Problem? Wer will das wirklich?"
+nutzen, falls gegeben.
+
+**Inspiration & Wettbewerb** (nach `${CLAUDE_PLUGIN_ROOT}/shared/inspiration.md`, beidseitig):
+1. **Frag den Nutzer**, welche Produkte/Apps er mag und *warum* — welche Features/Flows er sich für unser
+   Produkt wünscht; destilliere den Bedarf dahinter.
+2. **Schlage zusätzlich selbst** relevante (kommerzielle) Produkte vor und sage je konkret, *was* du
+   übernehmen würdest, *warum* (Bezug zu unseren Nutzern/Zielen), *wie* angepasst — und *was bewusst nicht*.
+   Bei Bedarf via WebSearch aktuellen Stand prüfen.
+
+**Skeptische Sicht:** Für jede Idee fragen „Löst das ein echtes Problem? Wer will das wirklich? Kopieren
+wir Oberfläche statt Bedarf?" — Passung zu Zielgruppe/Zielen/Constitution prüfen, nicht blind übernehmen.
 
 ### 3. Priorisieren — GATE
 Bewerte die Ideen entlang Wert · Aufwand · Risiko · Abhängigkeiten (z. B. als Auswahl/Matrix). Schärfe
