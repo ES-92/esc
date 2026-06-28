@@ -33,6 +33,7 @@ Gehe **jedes** testbares Akzeptanzkriterium durch und belege mit Code/Test, ob e
 - **Korrektheit** — Logikfehler, falsche Annahmen, Off-by-one, Race Conditions.
 - **Edge-Cases/Fehlerpfade** — die in PRD/Story genannten Fälle wirklich abgedeckt?
 - **Constitution-Konformität** — Standards, Test-Anspruch, Security-Regeln eingehalten?
+- **Quellen-Konformität** — hält die Umsetzung die bindenden externen Quellen (`esc/specs/sources.md`, falls vorhanden) ein? Verstöße sind **Blocker**.
 - **Sicherheit** — Injection, Secrets im Code, fehlende Validierung/Authz.
 - **Spec-Drift** — wurde etwas anderes/mehr gebaut als spezifiziert? Scope-Creep?
 - **Wartbarkeit** — Duplikate, Muster-Bruch, unnötige Komplexität.

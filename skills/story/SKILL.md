@@ -19,6 +19,7 @@ Sicht** nach, statt zu raten; Tiefe nach `level` (`${CLAUDE_PLUGIN_ROOT}/shared/
 ## Lies zuerst
 - `esc/state.yaml` (Story-Liste + Reihenfolge), `esc/specs/epics.md`
 - `esc/specs/prd.md`/`quick-spec.md`, `esc/specs/architecture/architecture.md`, `esc/specs/architecture/decisions/`, `esc/specs/ux-spec.md`, `esc/specs/constitution.md`
+- `esc/specs/sources.md` (bindende externe Quellen, falls vorhanden) — relevante Vorgaben in die Story-Constraints zitieren
 - Relevante Codebase-Stellen via Glob/Grep (tatsächliche Dateipfade, bestehende Muster).
 
 ## Ablauf

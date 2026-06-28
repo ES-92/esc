@@ -32,6 +32,7 @@ und einhalten.** Bei Konflikt gewinnt die Spec; Spec-Änderungen laufen über di
 - Architektur & Entscheidungen: `esc/specs/architecture/`
 - Stories (Akzeptanzkriterien): `esc/specs/stories/`
 - Ist-Stand (Brownfield): `esc/specs/codebase-map.md`
+- Bindende externe Quellen (SOPs/Vorschriften): `esc/specs/sources.md` (Cache: `esc/.cache/sources/`)
 
 **Kernregeln (Digest):**
 - <Regel 1>

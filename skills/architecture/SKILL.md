@@ -20,6 +20,7 @@ ADR/jedem Gate greift die **skeptische Sicht** an; Tiefe nach `level`
 ## Lies zuerst
 - `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`, `${CLAUDE_PLUGIN_ROOT}/shared/principles.md`
 - `esc/state.yaml`, `esc/specs/prd.md` (oder quick-spec), `esc/specs/ux-spec.md`, `esc/specs/constitution.md`
+- `esc/specs/sources.md` (bindende externe Quellen, falls vorhanden) — Geräte-/Schnittstellen-/Vorschriften-Vorgaben einhalten und zitieren
 - Bei Brownfield: bestehende Codebase scannen (Glob/Grep) — Stack, Muster, Konventionen erfassen.
 
 ## Routing nach Level

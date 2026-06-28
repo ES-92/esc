@@ -19,6 +19,7 @@ Abschnitt (`${CLAUDE_PLUGIN_ROOT}/shared/coauthoring.md`).
 - `${CLAUDE_PLUGIN_ROOT}/shared/requirements-syntax.md` — testbare Anforderungssyntax (verbindlich für Requirements)
 - `${CLAUDE_PLUGIN_ROOT}/shared/elicitation.md`
 - `esc/state.yaml`, `esc/specs/constitution.md`, `esc/specs/product-brief.md` (falls vorhanden)
+- `esc/specs/sources.md` (bindende externe Quellen, falls vorhanden) — relevante Inhalte aus `esc/.cache/sources/` lesen und in Requirements zitieren
 
 ## Routing nach Level (aus state.yaml)
 - **Level 0/1 → Quick-Spec.** Erzeuge `esc/specs/quick-spec.md`: Problem · Lösung in 1–3 Sätzen ·

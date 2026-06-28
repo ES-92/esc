@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.8.0** · Namespace `esc:` · 19 Skills · kritische Sichtweisen · Greenfield & Brownfield · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.9.0** · Namespace `esc:` · 21 Skills · kritische Sichtweisen · Greenfield & Brownfield · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -29,7 +29,7 @@
 
 ## Was ist ESC?
 
-ESC ist eine Sammlung von **19 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
+ESC ist eine Sammlung von **21 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
 Produktentwicklungs-Prozess abbilden — für neue *und* bestehende Projekte. Der Grundgedanke:
 **Erst die Spezifikation, dann der Code.**
 
@@ -86,6 +86,11 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
   Konventionen, Risiken) zu einem AI-lesbaren Ist-Stand, an den sich die Specs binden.
 - 🔗 **Specs als echte Guardrails.** `esc:bind` schreibt eine `CLAUDE.md`, die Claude Code dauerhaft auf
   die Constitution + Specs verweist — auch außerhalb der ESC-Skills. Plus dedizierter Security-Pass im Review.
+- 📎 **Externe Quellen der Wahrheit.** `esc:sources` bindet GitHub/GitLab-Repos mit verbindlichen Inhalten
+  (SOPs, Arbeitsanweisungen, Geräte-/Standort-Specs, Vorschriften) ein — flach gecached, gepinnt, in den
+  Specs zitiert; das Review erzwingt die Einhaltung.
+- 🧭 **Kurs korrigieren.** `esc:correct-course` fängt Änderungen mitten in der Umsetzung kontrolliert auf —
+  Impact-Analyse, Änderungsvorschlag, konsistentes Nachziehen der betroffenen Specs/Stories.
 - 🇩🇪 **Durchgängig deutsch** und auf Terminal-Bedienung per Auswahl (Pfeil + Leertaste) ausgelegt.
 
 ---
@@ -298,6 +303,11 @@ flowchart TB
 **`/esc:track`** — `esc/docs/TRACKER.md` regenerieren. **`/esc:docs`** — `esc/docs/DOCUMENTATION.md` pflegen. (Beide laufen nebenbei mit.)
 **`/esc:bind`** — `CLAUDE.md` im Produkt-Root erzeugen/aktualisieren, die Claude Code dauerhaft auf Constitution + Specs verweist (Specs als ambiente Guardrails).
 
+#### Quellen & Kurskorrektur
+
+**`/esc:sources [add|list|sync]`** — externe GitHub/GitLab-Repos als **bindende** Quellen der Wahrheit (SOPs, Arbeitsanweisungen, Geräte-/Standort-Specs, Vorschriften) registrieren, flach cachen und pinnen. Specs zitieren sie, das Review erzwingt die Einhaltung.
+**`/esc:correct-course`** — Änderung mitten in der Umsetzung kontrolliert auffangen: Impact-Analyse → Änderungsvorschlag → betroffene Specs/Stories konsistent nachziehen.
+
 #### Sichtweisen auf Abruf
 
 **`/esc:consult [sichtweise] [frage]`** — eine kritische Sichtweise gezielt auf eine Frage anlegen.
@@ -482,10 +492,10 @@ mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker se
 ├── .claude-plugin/
 │   ├── plugin.json          # Plugin-Manifest (name: esc, v1.2.0)
 │   └── marketplace.json     # Lokales Marketplace (esc-local) zum Testen/Entwickeln
-├── skills/                  # Die 19 Skills (je SKILL.md)
+├── skills/                  # Die 21 Skills (je SKILL.md)
 │   ├── init/  map/  discover/  prd/  ux/  architecture/  epics/
 │   ├── story/  implement/  test/  review/  evolve/
-│   ├── status/  track/  docs/  bind/
+│   ├── status/  track/  docs/  bind/  sources/  correct-course/
 │   └── consult/  council/  challenge/        # Sichtweisen auf Abruf
 ├── scripts/
 │   └── render_tracker.py    # Deterministisches TRACKER.md-Rendering (stdlib-only Fallback)
