@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.9.0** · Namespace `esc:` · 21 Skills · kritische Sichtweisen · Greenfield & Brownfield · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 1.9.1** · Namespace `esc:` · 21 Skills · kritische Sichtweisen · Greenfield & Brownfield · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 

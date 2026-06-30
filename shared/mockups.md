@@ -35,13 +35,18 @@ Erzeuge **eigenständige Single-File-HTML** (inline CSS/JS, **kein Build**, kein
 - Realistische Beispieldaten; die wichtigsten **Zustände** sichtbar oder umschaltbar (leer/lädt/fehler);
   responsives Grundgerüst.
 - Für Stil-Fidelity nur bei Bedarf + Netz CDN nutzen (z. B. Tailwind Play CDN, Google Fonts); sonst plain CSS.
-- Lege je Screen eine kleine Übersicht `index.html` an, die die Varianten verlinkt (zum schnellen Vergleich).
+- Erzeuge **eine einzige Galerie-Seite** `esc/docs/mockups/index.html`, die **alle** Varianten **aller**
+  bearbeiteten Screens auf *einer* Seite zeigt — je Variante ein `<iframe src="<screen-slug>/variant-N.html">`
+  mit Beschriftung, gruppiert pro Screen (z. B. horizontal scrollbare Reihe je Screen). Alles auf einen Blick,
+  keine Einzel-URLs. Die `variant-N.html` bleiben eigenständig (fürs Archiv); die Galerie bettet sie nur ein.
 
-### 4. Live-Preview (Static-Server, Port erfragen)
-Wie `shared/viewer.md`: lokalen Server starten, **Port immer explizit erfragen** und auf frei prüfen:
-`python3 -m http.server <PORT> --directory esc` (Hintergrund). Gib dem Nutzer die URLs:
-`http://localhost:<PORT>/docs/mockups/<screen-slug>/` (Übersicht) bzw. `/variant-N.html`.
-Lifecycle ehrlich: Server **starten**, nicht babysitten — Stopp-Hinweis nennen. Bei Änderungen Seite neu laden.
+### 4. Live-Preview (Static-Server, Port erfragen, Auto-Stop)
+Wie `shared/viewer.md`: **Port immer explizit erfragen** und auf frei prüfen. Server **im Hintergrund**
+starten und die **PID merken** (`python3 -m http.server <PORT> --directory esc`). Der primäre Stopp ist
+das explizite Killen der PID am Ende (Schritt 7). Zusätzlich einen **portablen Watchdog** als Sicherheitsnetz
+setzen (kein `timeout` — fehlt auf macOS): `( sleep 1800; kill <PID> 2>/dev/null ) &`.
+Gib dem Nutzer **eine** URL: `http://localhost:<PORT>/docs/mockups/` (die Galerie mit allen Varianten).
+Bei Änderungen genügt Seite neu laden. Der Server wird **am Ende automatisch beendet** (Schritt 7).
 
 ### 5. Auswählen (kritisch)
 Pro Screen wählt der Nutzer eine Variante (AskUserQuestion). Die **skeptische Sicht** greift an: Passt es
@@ -52,14 +57,17 @@ ehrlich geprüft (Tastatur, Fokus, Kontrast)? Freie Anpassungswünsche aufnehmen
 Wenn nicht schon „Volle Fidelity" und gewünscht: auf die **gewählte** Variante einen Stil-Pass —
 Farbton/Palette, Typo, Effekte (Auswahl an Paletten/Stilrichtungen anbieten). Weiterhin Single-File.
 
-### 7. In die Spec destillieren + archivieren
+### 7. In die Spec destillieren, archivieren, Server beenden
 - Gewählte Richtung in `esc/specs/ux-spec.md` festhalten: Layout, Komponenten, Verhalten, Zustände als
   Text — **plus Verweis** auf das gewählte Mockup (markiert als „visuelle Referenz, kein bindender Code").
 - **Verworfene** Varianten nach `esc/docs/mockups/_archiv/<screen-slug>/` verschieben (Referenz, klar abgelegt).
 - Die gewählte Variante bleibt unter `esc/docs/mockups/<screen-slug>/`.
+- **Server automatisch beenden:** die in Schritt 4 gemerkte PID killen (z. B. `kill <PID>` bzw.
+  `pkill -f "http.server <PORT>"`), kurz „Preview-Server beendet" bestätigen. Nicht laufen lassen.
 
 ## Regeln
 - Single-file, self-contained, kein npm/Build, keine Server-Logik in den Mockups.
+- **Eine** Galerie-Seite für alle Mockups; Preview-Server mit Auto-Stop (Timeout + am Ende PID killen), nie dauerhaft laufen lassen.
 - Schlüssel-Screens zuerst; Umfang nur auf Nachfrage ausweiten (Token-Bewusstsein).
 - Mockups widersprechen nie den Specs; Widersprüche ansprechen, nicht still glätten.
 - Am Ende ist die **ux-spec.md** vollständig — auch ohne dass jemand die Mockups öffnet.
