@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 2.0.0** · Namespace `esc:` · 22 Skills · kritische Sichtweisen · Greenfield & Brownfield · obra/superpowers-Disziplinen · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 2.0.1** · Namespace `esc:` · 22 Skills · kritische Sichtweisen · Greenfield & Brownfield · strenge Engineering-Disziplinen · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -91,10 +91,10 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
   Specs zitiert; das Review erzwingt die Einhaltung.
 - 🧭 **Kurs korrigieren.** `esc:correct-course` fängt Änderungen mitten in der Umsetzung kontrolliert auf —
   Impact-Analyse, Änderungsvorschlag, konsistentes Nachziehen der betroffenen Specs/Stories.
-- ⚡ **obra/superpowers-Disziplinen (v2.0).** Authentisch eingewoben (deutsch): **Verifikation-vor-Behauptung**
-  als Eisernes Gesetz, **TDD-Umsetzungspläne** pro Story („scheitern sehen"), **systematisches Debugging**
-  (`esc:debug`, Ursache vor Fix), **Spec-Self-Review**, **YAGNI**, **Git-Worktrees** und **Design-Taste**
-  (echte Design-Systeme, Anti-Slop) in den Mockups.
+- ⚡ **Strenge Engineering-Disziplinen (v2.0).** **Verifikation-vor-Behauptung** als Eisernes Gesetz,
+  **TDD-Umsetzungspläne** pro Story („scheitern sehen"), **systematisches Debugging** (`esc:debug`, Ursache
+  vor Fix), **Spec-Self-Review**, **YAGNI**, **Git-Worktrees** und **Anti-Slop-Design** (echte Design-Systeme)
+  in den Mockups.
 - 🇩🇪 **Durchgängig deutsch** und auf Terminal-Bedienung per Auswahl (Pfeil + Leertaste) ausgelegt.
 
 ---

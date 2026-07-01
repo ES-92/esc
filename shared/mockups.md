@@ -27,7 +27,7 @@ Pro Lauf den Nutzer wählen lassen:
 - **Struktur zuerst** — schlicht, Layout & Interaktion; Farbe/Effekte später als optionaler Polish-Pass.
 - **Volle Fidelity** — sofort mit Farbton, Typografie und Effekten (beeindruckend, aber teurer).
 
-### 2a. Design-Lesart & Dials (design-taste, gegen generisches Aussehen)
+### 2a. Design-Lesart & Dials (gegen generisches, templated Aussehen)
 Bevor du Pixel setzt, **lies den Brief** und gib **einen** Einzeiler aus:
 > „Lese das als: <Seitentyp> für <Zielgruppe>, mit <Vibe>-Sprache, Richtung <Design-System/Ästhetik>."
 

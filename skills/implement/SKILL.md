@@ -23,7 +23,7 @@ es? Beweise es mit grünen Tests." Keine Abkürzung, kein Scope-Creep
 
 ## Ablauf
 
-### 0. Isolierter Workspace (optional, `using-git-worktrees`)
+### 0. Isolierter Workspace (optional, Git-Worktree)
 Biete an, die Story in einem **isolierten Git-Worktree** umzusetzen (main bleibt sauber). Vorgehen:
 **Isolation erst erkennen** (schon in einem Worktree? Submodul?), dann **native Worktree-Tools bevorzugen**;
 sonst `git worktree add` in ein **ignoriertes** Verzeichnis (`.worktrees/`, vorher `git check-ignore`).

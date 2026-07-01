@@ -47,7 +47,7 @@ Extrahiere gezielt:
 - **Out-of-Scope** — was diese Story bewusst NICHT tut.
 - **Offene Fragen** — falls etwas unklar ist: hier festhalten und den Nutzer fragen, nicht raten.
 
-### 3a. Umsetzungsplan schreiben (writing-plans-Stil, Pflicht)
+### 3a. Umsetzungsplan schreiben (Pflicht)
 Ein **abhakbarer Plan**, den ein Agent ohne Vorwissen befolgen kann. Regeln:
 - **Datei-Landkarte zuerst**, dann Tasks. **Task-Right-Sizing:** kleinster Schnitt, den ein Reviewer
   eigenständig freigeben/ablehnen könnte; endet mit einem **unabhängig testbaren** Ergebnis.

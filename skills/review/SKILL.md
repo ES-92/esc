@@ -54,7 +54,7 @@ Strukturierter Report nach Schweregrad (Blocker / Sollte / Nice-to-have), je Fin
 Problem, Vorschlag. Sicherheits-Blocker sind immer Blocker. Klar sagen, ob die Story **freigegeben** ist
 oder **nachgebessert** werden muss. Bei Blockern: zurück zu `esc:implement`.
 
-> **Umgang mit Findings (receiving-code-review-Disziplin):** Wer die Findings umsetzt (`implement`/
+> **Umgang mit Findings:** Wer die Findings umsetzt (`implement`/
 > `correct-course`), reagiert **nicht** performativ („Du hast völlig recht! / Danke!"). Stattdessen: lesen,
 > in eigenen Worten wiedergeben/nachfragen, gegen die Codebase **verifizieren**, dann faktisch quittieren
 > („Behoben. [was]") **oder** technisch begründet widersprechen. Unklare Findings: erst klären, nichts
