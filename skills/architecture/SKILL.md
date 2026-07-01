@@ -65,6 +65,7 @@ Wenn ja, in `esc/specs/constitution.md` ergänzen.
 state.yaml aktualisieren (`artifacts.architecture: done`, `phase` weiter) → `esc:epics`.
 
 ## Definition of Done
+- [ ] Spec-Self-Review (Abschluss-Gate, `coauthoring.md`): Vollständigkeit · Konsistenz · Klarheit · Scope · YAGNI geprüft, Probleme inline gefixt.
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (TRACKER.md) und `esc:docs` (Komponenten + Datenmodell).
 - [ ] Jede nicht-triviale Entscheidung hat eine ADR mit ≥2 Optionen, Pro/Contra und Begründung.
 - [ ] Pflicht-Vertiefung je Empfehlung erfolgt; `gates.architecture_adrs: true`.

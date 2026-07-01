@@ -23,6 +23,12 @@ es? Beweise es mit grünen Tests." Keine Abkürzung, kein Scope-Creep
 
 ## Ablauf
 
+### 0. Isolierter Workspace (optional, `using-git-worktrees`)
+Biete an, die Story in einem **isolierten Git-Worktree** umzusetzen (main bleibt sauber). Vorgehen:
+**Isolation erst erkennen** (schon in einem Worktree? Submodul?), dann **native Worktree-Tools bevorzugen**;
+sonst `git worktree add` in ein **ignoriertes** Verzeichnis (`.worktrees/`, vorher `git check-ignore`).
+Baseline-Tests vor Start laufen lassen. Nur mit Nutzer-Zustimmung; niemals auf `main` ohne Einverständnis.
+
 ### 1. Story laden & verstehen
 Nimm `$ARGUMENTS` als ID. Lies die Story-Datei vollständig. Spiegele kurz Akzeptanzkriterien und
 betroffene Dateien zurück. Status (state.yaml) auf `in_progress`.
@@ -31,17 +37,28 @@ betroffene Dateien zurück. Status (state.yaml) auf `in_progress`.
 Kurzer Plan: welche Dateien, welche Tests zuerst. Halte dich an die in der Story genannten Pfade und
 Muster sowie an die Constitution (Standards, Test-Regeln, Security).
 
-### 3. Test-getrieben implementieren
-Pro Akzeptanzkriterium:
-1. Test(s) schreiben, die das Kriterium prüfen (red).
-2. Minimal implementieren, bis grün.
-3. Refaktorisieren, ohne das Verhalten zu ändern.
-Bestehende Muster nutzen, keine Rad-Neuerfindungen, keine neuen Abhängigkeiten ohne Deckung durch
-eine ADR/Constitution (sonst nachfragen).
+### 3. Test-getrieben implementieren (ROT-GRÜN-REFACTOR)
+Pro Akzeptanzkriterium / Plan-Schritt:
+1. **ROT:** Test schreiben, der das Kriterium prüft.
+2. **Scheitern sehen (Pflicht):** Test laufen lassen und **bestätigen, dass er scheitert** — aus dem
+   richtigen Grund (Feature fehlt, kein Tippfehler). „Wer den Test nicht scheitern sah, weiß nicht, ob er
+   das Richtige prüft." Passt er sofort → er testet Bestehendes, Test korrigieren.
+3. **GRÜN:** minimalste Implementierung bis grün — keine Extra-Features, kein „verbessern über den Test hinaus".
+4. **Grün sehen:** Test + übrige Tests grün, Ausgabe sauber (keine Fehler/Warnungen).
+5. **REFACTOR:** aufräumen, ohne Verhalten zu ändern.
+Bestehende Muster nutzen, keine Rad-Neuerfindungen, keine neuen Abhängigkeiten ohne Deckung durch eine
+ADR/Constitution. **STOPP wenn blockiert** (fehlende Abhängigkeit, unklare Anweisung, wiederholt scheiternde
+Verifikation) — nachfragen statt raten.
 
-### 4. Verifizieren — kein „fertig" ohne Beleg
-Tests **tatsächlich ausführen** (via Bash), Build/Linter laufen lassen. Zeige die Ausgabe. Jedes
-Akzeptanzkriterium gegen das Ergebnis prüfen. Schlägt etwas fehl: ehrlich berichten und beheben.
+### 4. Verifizieren — Eisernes Gesetz
+```
+KEINE FERTIG-BEHAUPTUNG OHNE FRISCH AUSGEFÜHRTE VERIFIKATIONS-EVIDENZ
+```
+Vor jeder Status-Behauptung die **Gate-Function**: 1) Welches Kommando beweist die Behauptung? →
+2) vollständig ausführen → 3) Ausgabe + Exit-Code lesen, Fehler zählen → 4) bestätigt die Ausgabe die
+Behauptung? → 5) erst dann behaupten, **mit gezeigter Ausgabe**. Schritt übersprungen = gelogen.
+**Warnsignale — STOPP:** „sollte gehen" / „bin sicher" / „Linter lief" ohne Ausführung; „Super!/Fertig!"
+vor der Verifikation; Commit ohne Verifikation. „Linter ≠ Compiler", „Zuversicht ≠ Evidenz."
 
 ### 5. Story & State aktualisieren
 In der Story-Datei einen kurzen Umsetzungs-Vermerk ergänzen (was gebaut, welche Dateien, welche

@@ -27,6 +27,22 @@ Pro Lauf den Nutzer wählen lassen:
 - **Struktur zuerst** — schlicht, Layout & Interaktion; Farbe/Effekte später als optionaler Polish-Pass.
 - **Volle Fidelity** — sofort mit Farbton, Typografie und Effekten (beeindruckend, aber teurer).
 
+### 2a. Design-Lesart & Dials (design-taste, gegen generisches Aussehen)
+Bevor du Pixel setzt, **lies den Brief** und gib **einen** Einzeiler aus:
+> „Lese das als: <Seitentyp> für <Zielgruppe>, mit <Vibe>-Sprache, Richtung <Design-System/Ästhetik>."
+
+Setze drei **Dials** (aus dem Brief; bei Produkt-UI/Trust-first konservativ): `DESIGN_VARIANZ` (Symmetrie ↔
+Chaos), `BEWEGUNG` (statisch ↔ cinematisch), `DICHTE` (luftig ↔ vollgepackt). Sie steuern Layout/Motion/Dichte.
+
+**Echte Design-Systeme statt nachbauen:** liest der Brief als bekanntes System (Fluent, Material 3, Carbon,
+Polaris, Primer, GOV.UK/USWDS, Radix, shadcn, Tailwind …), nutze das **offizielle Paket** und baue sein CSS
+nicht von Hand nach; **ein** System pro Projekt. Ist es nur eine *Ästhetik* (Glassmorphism, Bento, Editorial,
+Brutalism …), ehrlich mit nativem CSS/Tailwind bauen und im Kommentar kennzeichnen.
+
+**Anti-Default-Disziplin (nicht reflexartig):** keine KI-Lila-Verläufe, kein zentrierter Hero über dunklem
+Mesh, keine drei gleichen Feature-Cards, kein generisches Glassmorphism überall, kein Inter + slate-900 als
+Reflex. Bewusst darüber hinausgehen — passend zur Design-Lesart.
+
 ### 3. Varianten erzeugen (3–4 je Screen)
 Erzeuge **eigenständige Single-File-HTML** (inline CSS/JS, **kein Build**, kein npm) je Variante:
 `esc/docs/mockups/<screen-slug>/variant-1.html` … `variant-4.html`.

@@ -58,6 +58,7 @@ gewählten Mockups (als visuelle Referenz, kein bindender Code).
 state.yaml: `artifacts.ux_spec: done`, `phase` weiter. Routen zu `esc:architecture`.
 
 ## Definition of Done
+- [ ] Spec-Self-Review (Abschluss-Gate, `coauthoring.md`): Vollständigkeit · Konsistenz · Klarheit · Scope · YAGNI geprüft, Probleme inline gefixt.
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (TRACKER.md) und `esc:docs` (Kern-Flows).
 - [ ] Alle Kern-Flows abgedeckt und mit PRD-Requirements rückverknüpft.
 - [ ] Für jede wichtige Ansicht sind Leer-/Lade-/Fehler-/Erfolgszustände definiert.

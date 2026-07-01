@@ -45,10 +45,20 @@ Code, unsichere Defaults, riskante/veraltete Dependencies, unsichere Datei-/Netz
 Ab **Level 2** diesen Pass als **frischen Subagenten** (`esc:challenge`-Mechanik) auf den Diff laufen
 lassen — kontextlos, nur auf Sicherheit fokussiert; Befunde dann hier einsortieren.
 
+### 4b. YAGNI-Prüfung
+Bei jedem „sollte man auch X bauen / ordentlich machen": die **Codebase greppen**, ob X wirklich genutzt
+wird. **Ungenutzt → Entfernen vorschlagen** (YAGNI); genutzt → sauber umsetzen. Kein Feature auf Verdacht.
+
 ### 5. Findings berichten
 Strukturierter Report nach Schweregrad (Blocker / Sollte / Nice-to-have), je Finding: Ort,
 Problem, Vorschlag. Sicherheits-Blocker sind immer Blocker. Klar sagen, ob die Story **freigegeben** ist
 oder **nachgebessert** werden muss. Bei Blockern: zurück zu `esc:implement`.
+
+> **Umgang mit Findings (receiving-code-review-Disziplin):** Wer die Findings umsetzt (`implement`/
+> `correct-course`), reagiert **nicht** performativ („Du hast völlig recht! / Danke!"). Stattdessen: lesen,
+> in eigenen Worten wiedergeben/nachfragen, gegen die Codebase **verifizieren**, dann faktisch quittieren
+> („Behoben. [was]") **oder** technisch begründet widersprechen. Unklare Findings: erst klären, nichts
+> teilweise umsetzen.
 
 ### 6. Status setzen
 Nur wenn keine Blocker offen sind und alle Akzeptanzkriterien erfüllt: Story-Status in state.yaml auf

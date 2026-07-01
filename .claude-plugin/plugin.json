@@ -1,7 +1,7 @@
 {
   "name": "esc",
-  "version": "1.9.1",
-  "description": "ESC — Erik's Spec Crafting: scale-adaptiver, interaktiver Spec-Driven-Development-Workflow auf Deutsch für neue UND bestehende (Brownfield) Projekte. Specs werden Abschnitt für Abschnitt kritisch gemeinsam erarbeitet, aus wechselnden Sichtweisen, mit level-skalierter Schärfe. Führt von der Idee über Analyse, PRD, UX, Architektur und Stories bis zur KI-gestützten Implementierung; eine CLAUDE.md-Brücke macht die Specs als Guardrails verbindlich. Produkt-Doku gebündelt in esc/specs/.",
+  "version": "2.0.0",
+  "description": "ESC — Erik's Spec Crafting: scale-adaptiver, interaktiver Spec-Driven-Development-Workflow auf Deutsch für neue UND bestehende (Brownfield) Projekte. Specs werden Abschnitt für Abschnitt kritisch gemeinsam erarbeitet, aus wechselnden Sichtweisen, mit level-skalierter Schärfe. Verankert obra/superpowers-Disziplinen: Verifikation-vor-Behauptung (Eisernes Gesetz), TDD-Umsetzungspläne, systematisches Debugging (esc:debug), Spec-Self-Review, YAGNI, Design-Taste. Führt von der Idee bis zur KI-gestützten Implementierung; CLAUDE.md-Brücke macht die Specs verbindlich.",
   "homepage": "https://github.com/ES-92/esc",
   "repository": "https://github.com/ES-92/esc",
   "license": "MIT",

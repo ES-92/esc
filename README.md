@@ -6,7 +6,7 @@
 > Implementierung**. Die Specs sind dabei **Guardrails**, die der KI klare Regeln und Grenzen setzen —
 > gegen Halluzination, Scope-Creep und Kontextverlust.
 
-**Version 1.9.1** · Namespace `esc:` · 21 Skills · kritische Sichtweisen · Greenfield & Brownfield · Plugin für [Claude Code](https://claude.com/claude-code)
+**Version 2.0.0** · Namespace `esc:` · 22 Skills · kritische Sichtweisen · Greenfield & Brownfield · obra/superpowers-Disziplinen · Plugin für [Claude Code](https://claude.com/claude-code)
 
 ---
 
@@ -29,7 +29,7 @@
 
 ## Was ist ESC?
 
-ESC ist eine Sammlung von **21 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
+ESC ist eine Sammlung von **22 zusammenarbeitenden Claude-Code-Skills**, die einen vollständigen
 Produktentwicklungs-Prozess abbilden — für neue *und* bestehende Projekte. Der Grundgedanke:
 **Erst die Spezifikation, dann der Code.**
 
@@ -91,6 +91,10 @@ roter Faden von der Idee bis zum Code — und du behältst die Kontrolle über j
   Specs zitiert; das Review erzwingt die Einhaltung.
 - 🧭 **Kurs korrigieren.** `esc:correct-course` fängt Änderungen mitten in der Umsetzung kontrolliert auf —
   Impact-Analyse, Änderungsvorschlag, konsistentes Nachziehen der betroffenen Specs/Stories.
+- ⚡ **obra/superpowers-Disziplinen (v2.0).** Authentisch eingewoben (deutsch): **Verifikation-vor-Behauptung**
+  als Eisernes Gesetz, **TDD-Umsetzungspläne** pro Story („scheitern sehen"), **systematisches Debugging**
+  (`esc:debug`, Ursache vor Fix), **Spec-Self-Review**, **YAGNI**, **Git-Worktrees** und **Design-Taste**
+  (echte Design-Systeme, Anti-Slop) in den Mockups.
 - 🇩🇪 **Durchgängig deutsch** und auf Terminal-Bedienung per Auswahl (Pfeil + Leertaste) ausgelegt.
 
 ---
@@ -292,6 +296,9 @@ flowchart TB
 **`/esc:test [story|feature]`** — Tests aus Akzeptanzkriterien generieren
 - **Zweck:** testbare Akzeptanzkriterien in echte, laufende Tests (Unit/Integration/E2E) überführen — für eine Story oder ein bestehendes Feature, im Test-Framework des Projekts.
 
+**`/esc:debug [symptom]`** — Systematisches Debugging (Ursache vor Fix)
+- **Zweck:** bei Bug/Testfehler die **Root Cause** finden, bevor ein Fix vorgeschlagen wird — 4 Phasen, Rückwärts-Tracing zur Quelle, „≥3 Fixversuche → Architektur infrage stellen". Eisernes Gesetz: keine Fixes ohne Ursachenanalyse.
+
 #### Weiterentwicklung
 
 **`/esc:evolve`** — Neue Features erarbeiten
@@ -492,9 +499,9 @@ mit stdlib-only Fallback; fehlt Python, rendert der `track`-Skill den Tracker se
 ├── .claude-plugin/
 │   ├── plugin.json          # Plugin-Manifest (name: esc, v1.2.0)
 │   └── marketplace.json     # Lokales Marketplace (esc-local) zum Testen/Entwickeln
-├── skills/                  # Die 21 Skills (je SKILL.md)
+├── skills/                  # Die 22 Skills (je SKILL.md)
 │   ├── init/  map/  discover/  prd/  ux/  architecture/  epics/
-│   ├── story/  implement/  test/  review/  evolve/
+│   ├── story/  implement/  test/  debug/  review/  evolve/
 │   ├── status/  track/  docs/  bind/  sources/  correct-course/
 │   └── consult/  council/  challenge/        # Sichtweisen auf Abruf
 ├── scripts/

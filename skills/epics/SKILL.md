@@ -57,6 +57,7 @@ state.yaml: `artifacts.epics: done`, `phase: deliver`.
 Schlage `esc:story <id>` (für die erste Story) bzw. `esc:status` für die Reihenfolge vor.
 
 ## Definition of Done
+- [ ] Spec-Self-Review (Abschluss-Gate, `coauthoring.md`): Vollständigkeit · Konsistenz · Klarheit · Scope · YAGNI geprüft, Probleme inline gefixt.
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (Story-Board) und `esc:docs` (Verweise).
 - [ ] Readiness-Gate bestanden oder Lücken klar an den Nutzer zurückgespielt.
 - [ ] Jede Story ist vertikal, INVEST-tauglich und hat testbaren Akzeptanzkriterien mit Requirement-Bezug.

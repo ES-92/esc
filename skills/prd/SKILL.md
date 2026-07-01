@@ -66,6 +66,7 @@ Vorschlag: `esc:ux` (wenn UI), sonst `esc:architecture` (Level 2 leicht, 3/4 vol
 ohne Architektur direkt `esc:epics`.
 
 ## Definition of Done
+- [ ] Spec-Self-Review (Abschluss-Gate, `coauthoring.md`): Vollständigkeit · Konsistenz · Klarheit · Scope · YAGNI geprüft, Probleme inline gefixt.
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (TRACKER.md) und `esc:docs` (Überblick/Flows).
 - [ ] Jede FR ist testbar, eindeutig nummeriert und steht in `requirements/functional.md`.
 - [ ] NFR stehen in `requirements/non-functional.md`, jeweils mit messbarer Schwelle.

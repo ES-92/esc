@@ -18,6 +18,31 @@ Für **jeden** Abschnitt eines Dokuments:
    ins Decision-Log (`esc/state.yaml`).
 6. **Weiter.** Erst dann zum nächsten Abschnitt. Optional anbieten, eine Pause zu machen oder zu springen.
 
+## Design vor Code (hartes Gate)
+Keine Implementierung, bevor die zugehörige Spec vom Nutzer freigegeben ist — unabhängig von der
+wahrgenommenen Einfachheit. Das gilt für jedes Vorhaben.
+
+## „2–3 Ansätze + Empfehlung" an echten Entscheidungen
+An bedeutsamen Weichenstellungen (Produkt-Richtung, UX-Ansatz, Scope, Technologie) nicht die erstbeste
+Lösung nehmen: **2–3 wirklich verschiedene Optionen** mit Trade-offs vorlegen, eine **empfehlen** (mit
+Begründung), dann den Nutzer wählen lassen. (`esc:architecture` tut das für Technologie schon; gilt auch
+für `discover`/`prd`/`ux`.)
+
+## Spec-Self-Review (Abschluss-Gate jeder Spec-Phase)
+Bevor ein Spec-Artefakt (`product-brief`, `prd`, FR/NFR, `ux-spec`, `architecture`, `epics`) als `done`
+gilt, mit frischen Augen prüfen — nur **echte** Umsetzungs-Probleme flaggen, keine Stil-Nörgelei:
+
+| Kategorie | Worauf achten |
+|---|---|
+| **Vollständigkeit** | Platzhalter, „TBD/TODO", unfertige Abschnitte |
+| **Konsistenz** | interne Widersprüche, gegensätzliche Anforderungen |
+| **Klarheit** | Anforderung mehrdeutig genug, um das **Falsche** zu bauen? |
+| **Scope** | fokussiert genug für einen Plan (nicht mehrere unabhängige Subsysteme)? |
+| **YAGNI** | ungefragte Features, Over-Engineering |
+
+Gefundene Probleme **inline fixen**, dann erst `done`. Kalibrierung: „Nur flaggen, was in der Planung echte
+Probleme verursacht."
+
 ## Tiefe skaliert mit Level (`intensity.md`)
 - **Level 0/1:** kompakte Schleife — Entwurf + 1 kritische Rückfrage je Abschnitt, kein Zerreden.
 - **Level 2:** je Abschnitt skeptischer Einwand + Bestätigung.

@@ -66,6 +66,7 @@ Aktualisiere `esc/state.yaml`: `artifacts.product_brief: done`, wichtige Entsche
 Schlage `esc:prd` als nächsten Schritt vor (bzw. `esc:ux`, falls UI-lastig und gewünscht).
 
 ## Definition of Done
+- [ ] Spec-Self-Review (Abschluss-Gate, `coauthoring.md`): Vollständigkeit · Konsistenz · Klarheit · Scope · YAGNI geprüft, Probleme inline gefixt.
 - [ ] Mitlaufende Artefakte aktualisiert: `esc:track` (TRACKER.md) und `esc:docs` (Überblick/Kontext).
 - [ ] Inspiration & Wettbewerb durchgeführt: kurze Web-Wettbewerbsanalyse (immer), Nutzer-Vorlieben *und* eigene Produktvorschläge mit Quellen, je mit Begründung und bewussten Verzichten.
 - [ ] `esc/specs/product-brief.md` deckt alle Gerüst-Abschnitte ab; Non-Goals sind explizit.

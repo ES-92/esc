@@ -43,8 +43,25 @@ Extrahiere gezielt:
 - **Kontext & Constraints** — relevante Requirements, ADRs, Constitution-Regeln (zitiert, nicht nur verlinkt).
 - **Betroffene Dateien** — konkrete Pfade + ob neu/ändern, bestehende Muster zum Nachahmen.
 - **Testplan** — welche Tests (Unit/Integration/E2E) decken welche Akzeptanzkriterien ab.
+- **Umsetzungsplan** — siehe unten (Pflicht).
 - **Out-of-Scope** — was diese Story bewusst NICHT tut.
 - **Offene Fragen** — falls etwas unklar ist: hier festhalten und den Nutzer fragen, nicht raten.
+
+### 3a. Umsetzungsplan schreiben (writing-plans-Stil, Pflicht)
+Ein **abhakbarer Plan**, den ein Agent ohne Vorwissen befolgen kann. Regeln:
+- **Datei-Landkarte zuerst**, dann Tasks. **Task-Right-Sizing:** kleinster Schnitt, den ein Reviewer
+  eigenständig freigeben/ablehnen könnte; endet mit einem **unabhängig testbaren** Ergebnis.
+- Je Task **Interfaces** (Consumes/Produces mit exakten Signaturen) + **exakte Dateipfade**.
+- **Bite-sized Schritte** (je eine Aktion, 2–5 Min), TDD-strukturiert:
+  1. Scheiternden Test schreiben
+  2. Test laufen lassen — **Erwartet: FEHLSCHLAG**
+  3. Minimale Implementierung
+  4. Test laufen lassen — **Erwartet: BESTANDEN**
+  5. Committen
+- **Keine Platzhalter:** kein „TBD/TODO/später", kein „Fehlerbehandlung ergänzen" ohne Konkretisierung,
+  kein „ähnlich wie Task N" (Code wiederholen — Tasks werden evtl. außer Reihenfolge gelesen).
+- **Plan-Self-Review** (selbst, kein Subagent): Spec-Abdeckung (jede Anforderung → ein Task), Platzhalter-Scan,
+  Typ-/Namens-Konsistenz über Tasks (`clearLayers()` vs. `clearFullLayers()` ist ein Bug).
 
 ### 4. Selbst-Check
 Prüfe: Könnte ein Agent **ohne** weitere Dateien diese Story korrekt umsetzen? Wenn nein, fehlenden
@@ -58,4 +75,5 @@ Wenn der Nutzer offene Fragen geklärt hat → `esc:implement <id>`.
 - [ ] Story-Datei ist self-contained (Agent braucht nichts weiter zu lesen).
 - [ ] Akzeptanzkriterien sind testbar und mit Tests verknüpft.
 - [ ] Betroffene Dateien sind mit echten Pfaden benannt.
+- [ ] **Umsetzungsplan** vorhanden: bite-sized TDD-Schritte, exakte Pfade/Interfaces, keine Platzhalter, Plan-Self-Review erfolgt.
 - [ ] Offene Fragen sind markiert, nicht überspielt.
